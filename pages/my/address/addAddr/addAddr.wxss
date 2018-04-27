@@ -1,0 +1,106 @@
+page{
+  background: #f3f3f3;
+}
+#info-box{
+  margin-top:5rpx;
+  padding: 0 32rpx;
+  background: white;
+}
+.info{
+  height: 100rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  overflow: hidden;
+}
+.info-name{
+  float: left;
+  height: 100rpx;
+  width:150rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+.info-text{
+  float: left;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 26rpx;
+
+}
+#area-box{
+  float: left;
+  width: 536rpx;
+  height: 100rpx;
+  overflow: hidden;
+}
+#area{
+  float: left;
+  font-size: 26rpx;
+  height: 100rpx;
+  width: 400rpx;
+  line-height: 100rpx;
+  color:gray;
+}
+#areachoose{
+  float: left;
+  font-size: 26rpx;
+  height: 100rpx;
+  width: 400rpx;
+  line-height: 100rpx;
+}
+#area-right{
+  float: right;
+  width: 26rpx;
+  height: 100rpx;
+  margin-top: 37rpx;
+}
+.default{
+  height: 80rpx;
+  width: 750rpx;
+  margin-top: 20rpx;
+  background: white;
+  overflow: hidden;
+}
+.default-cho{
+  float: left;
+  margin: 25rpx 20rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.default-text{
+  float:left;
+  height: 80rpx;
+  width: 180rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: gray;
+}
+#bottom{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #ffc700;
+  font-size: 30rpx;
+  border-top: 1rpx solid #f3f3f3;
+  bottom: 0;
+}
+.picker-view {
+ width: 100%;
+ display: flex;
+ z-index:12;
+ background-color: #fff;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ position: fixed;
+ bottom: 0rpx;
+ left: 0rpx;
+ height: 40vh;
+}
+ 
+.picker-item {
+ line-height: 70rpx;
+ margin-left: 5rpx;
+ margin-right: 5rpx;
+ text-align: center;
+}

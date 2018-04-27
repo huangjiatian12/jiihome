@@ -1,0 +1,17 @@
+.cate{
+  width: 100%;
+  height: 300rpx;
+  margin-top: 5rpx;
+}
+.normal{
+   display: none;
+}
+.cate-name{
+  box-sizing: border-box;
+  height: 90rpx;
+  width: 750rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  padding-left: 32rpx;
+  border-bottom: 1rpx solid #CCCCCC;
+}

@@ -1,0 +1,39 @@
+<view id='none' wx:if="{{cartData.length == '0'}}">购物车空空如也</view>
+
+<block wx:for="{{cartData}}">
+  <view class='goods-box'>
+    <view class='top'> 
+      <image class='select' src="{{item.choose?'/image/checked.png':'/image/kong.png'}}" data-index='{{index}}' bindtap='chooseGoods' ></image>
+      
+      <image class='add' wx:if="{{item.max_num != item.cart_number}}" data-index='{{index}}' bindtap='addNum' src='/image/addone.png'></image>
+      <image class='add' wx:if="{{item.cart_number == item.max_num}}" src='/image/notaddone.png'></image>
+      <view class='num'>{{item.cart_number}}</view>
+      <image class='minus' wx:if="{{item.cart_number==1}}" src='/image/notminus.png'></image>
+      <image class='minus' data-index='{{index}}' bindtap='minusNum' wx:if="{{item.cart_number>1}}" src='/image/minus.png'></image>
+    </view>
+    <view class='info'>
+      <image src='/image/empty.png' class='empty' data-goodsId='{{item.goods_id}}' data-goodsName='{{item.goods_name}}' data-attrId='{{item.goods_attr_id}}' data-key='{{index}}' bindtap='delGoods'></image>
+      <image src='{{item.img_src}}' class='goods-img'></image>
+      <view class='info-box'>
+          <view class='name-price'>
+            <view class='goods-name'>{{item.goods_name}}</view>
+            <view class='goods-price'>￥{{item.goods_price}}</view>
+          </view>
+         <block wx:for="{{item.goods_attr}}">
+          <view class='attr-val'>{{item}}</view>
+         </block>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view id='hid'></view>
+
+<view id='bottom'>
+     <view id='choose'  bindtap='chooseAll'>
+       <image class='choose-all' src="{{chooseAll?'/image/checked.png':'/image/kong.png'}}"></image>
+       <text>全选</text>
+     </view>
+     <view id='total'>合计:{{totalPrice}}元</view>
+     <view id='balance' bindtap='goBalance'>去结算</view>
+</view>

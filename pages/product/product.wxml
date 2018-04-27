@@ -1,0 +1,136 @@
+<view catchtouchmove="{{mask?'true':''}}">
+  <view id='share' bindtap='onShare'><image src="{{share?'/image/xxx.png':'/image/share.png'}}" class='share-show' mode='widthFix' ></image></view>
+  <view id="{{share?'share-per':'share-none'}}"><image src='/image/per.png' class='share-show' mode='widthFix' ></image><button open-type='share' class="btn-share" ></button></view>
+  <view id="{{share?'share-fri':'share-none'}}" bindtap='shareFri'><image src='/image/fri.png' class='share-show' mode='widthFix' ></image></view>
+
+  <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" current="{{currentNum}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" style='height:550rpx' >
+        <block wx:for="{{goodsPic}}">
+          <swiper-item>
+            <image src="{{item.img_src}}" class="slide-image"></image>
+          </swiper-item>
+        </block>
+          <swiper-item wx:if="{{goodsPic.length == '0'}}">
+            <image src="/image/nopic.jpg" class="slide-image"></image>
+          </swiper-item>
+      </swiper> 
+  </view>
+
+  <view id='name'>{{goodsData.goods_name}}</view>
+
+  <view wx:if="{{price && (price.discount_price == '0')}}" id='price'>
+    <text class='shop-price'>￥{{price.goods_price}}</text>
+  </view>
+
+  <view wx:if="{{price && (price.discount_price != '0')}}" id='price'>
+    <text class='shop-price'>￥{{price.discount_price}}</text><text class='market-price'>￥{{price.goods_price}}</text>
+  </view>
+
+  <view wx:if="{{!price && goodsPrice.max_discount_price == '0'}}" id='price'>
+      <text class='shop-price'>￥{{goodsPrice.min_goods_price}}</text><text wx:if="{{goodsPrice.min_goods_price != goodsPrice.max_goods_price}}" class='shop-price'>-{{goodsPrice.max_goods_price}}</text>
+  </view>
+
+  <view wx:if="{{!price && goodsPrice.max_discount_price != '0'}}" id='price'>
+    <text class='shop-price'>￥{{goodsPrice.min_discount_price}}</text><text wx:if="{{goodsPrice.min_discount_price != goodsPrice.max_discount_price}}" class='shop-price'>-{{goodsPrice.max_discount_price}}</text>
+    <text class='market-price'>￥{{goodsPrice.min_goods_price}}</text><text wx:if="{{goodsPrice.min_goods_price != goodsPrice.max_goods_price}}" class='market-price'>-{{goodsPrice.max_goods_price}}</text>
+  </view>
+
+  <view class='hr'></view>
+
+  <view class='attr'>
+  <block wx:for="{{attrNouniData}}">
+    <view class='attr-name'>{{item[0].attr_name}}：</view>
+      <block wx:for="{{item}}">
+        <view wx:if="{{item.num !='false'}}" class="{{item.attr == item.id ? 'attr-val-choose':'attr-val'}}" data-attr='{{item.attr_id}}' data-id='{{item.id}}' data-tag='2' bindtap="chooseAttr">{{item.attr_value}}</view>
+        <view wx:if="{{item.num =='false'}}" class="attr-val-none">{{item.attr_value}}</view>
+      </block> 
+  </block>
+  </view>
+
+  <view class='attr'>
+  <block wx:for="{{attrColData}}">
+    <view class='attr-name'>{{item[0].attr_name}}：</view>
+    <block wx:for="{{item}}">
+      <view wx:if="{{item.num !='false'}}" class="{{item.attr == item.id ? 'attr-col-choose':'attr-col'}}">
+        <view class='attr-img' data-attr='{{item.attr_id}}' data-id='{{item.id}}' data-tag='3' bindtap="chooseAttr" style="background:url('{{item.img_src}}');background-size:cover;background-position:center;"></view>
+      </view>
+      <view wx:if="{{item.num =='false'}}" class="attr-col-none">
+        <view class='attr-img' style="background:url('{{item.img_src}}');background-size:cover;background-position:center;"></view>
+      </view>
+    </block>
+  </block>
+  </view>
+
+  <view class='attr' wx:if="{{gnData.goods_attr_id == '0' && gnData.goods_number != 0}}">
+    <view class='attr-name' >规格:</view> 
+    <view class="{{chooseDef?'attr-val-choose':'attr-val'}}" data-tag='1' bindtap="chooseAttr">默认</view>           
+  </view>
+
+  <view class='attr' wx:if="{{gnData.goods_attr_id == '0' && gnData.goods_number == '0'}}">
+    <view class='attr-name' >规格:</view> 
+    <view class="attr-val-none">默认</view>           
+  </view>
+
+
+  <view class='hr'></view>
+
+  <view id='info-box'>
+    <view id="info">单品信息</view>
+    <view id='tag-box'>
+        <block wx:for="{{goodsData.tag}}">
+          <text class='tag'>{{item}}</text>
+        </block>  
+    </view>
+
+  <block wx:for="{{attrUniData}}">
+    <view class='info'>
+      <view class='info-name'>{{item[0].attr_name}}:</view>
+      <view class='info-val'>{{item[0].attr_value}}</view>
+    </view>
+  </block> 
+
+  <navigator url="/pages/product/productList/pr-list?catId={{goodsData.cat_id}}&catName={{goodsData.cat_name}}" hover-class="none">
+    <view class='info'>
+      <view class='info-name'>类别:</view>
+      <view class='info-val'>{{goodsData.cat_name}}</view>
+      <image class='info-more' src='/image/right.png'></image>
+    </view>
+  </navigator>   
+  </view>
+
+  <block wx:for="{{goodsDesc}}">
+    <image class='goods-desc' src='{{item.img_src}}' mode='widthFix'></image>
+  </block>
+
+  <view id='hid'></view>
+
+  <navigator url="/pages/index/index" open-type="switchTab" hover-class="none">
+  <image id='go-index' src='/image/homee.png' mode='scale ToFill' ></image>
+  </navigator>
+
+  <image id='go-connect' src='/image/service.png' mode='scale ToFill' ></image>
+  <view id='btn-connect'>
+  <contact-button  type="default-light" size="20" ></contact-button>
+  </view>
+  
+
+
+  <view id='bottom'>
+    <view id="num">
+      <image class='add' src="{{goodsNum == price.goods_number ? '/image/notaddone.png' : '/image/addone.png'}}" bindtap='addNum'></image>
+      <view class='num'>{{goodsNum}}</view>
+      <image class='minus' src="{{goodsNum === 1 ? '/image/notminus.png' : '/image/minus.png'}}" bindtap='minusNum'></image>
+    </view>
+    <view id="cart" bindtap="addCart">加入购物车</view>
+  </view>
+
+  <view id="{{generate?'fs':'bottom-hid'}}">
+  <image id='close' bindtap='closeAll' src='/image/close.png'></image>
+  <canvas id='canv' catchtouchmove='true' canvas-id="myCanvas"></canvas>
+  <view class='ft'>保存图片到手机相册，分享到朋友圈</view>  
+  <view style="text-align:center;padding-bottom:20px"><button  bindtap='savetup' type="primary" size='mini'>保存到相册</button></view>
+</view>
+
+  <view id="{{mask?'mask':''}}" bindtap='closeAll'></view>
+</view>

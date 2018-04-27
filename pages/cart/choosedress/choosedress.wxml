@@ -1,0 +1,14 @@
+<view id="address-box">
+  <block wx:for="{{addressData}}">
+    <view class='address-list' data-index="{{index}}" bindtap='chooseaddress'>
+      <view class='top'>
+          <view class='name'>{{item.name}}</view>
+          <view class='mobile'>{{item.mobile}}</view>
+      </view>
+      <view class='address'>{{item.city}}{{item.address}}</view>
+    </view>
+  </block>
+</view>
+<navigator url="/pages/my/address/addAddr/addAddr" hover-class="none">
+<view id='add-address'>添加收获地址</view>
+</navigator>

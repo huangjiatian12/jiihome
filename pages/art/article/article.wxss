@@ -1,0 +1,130 @@
+@import "/utils/goods.wxss";
+.article-bri{
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+#product-list{
+  margin-top: 10rpx;
+}
+#canv{
+  margin:0 auto;
+  margin-bottom:60rpx;
+  margin-top: 100rpx;
+  width: 480rpx; 
+  height: 700rpx;
+  box-shadow:1px 2px 2px #ccc;
+  border-raidus:1px;
+  opacity:1;
+}
+#mask{
+  margin:0;
+  padding:0;
+  border:none;
+  width:100%;
+  height:100%;
+  background:#333;
+  opacity:0.8;
+  filter:alpha(opacity=60);
+  z-index:99;
+  position:fixed;
+  top:0;
+  left:0;
+}
+.ft{
+  text-align: center;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+  color: #ccc;
+}
+#fs{
+  margin:0;
+  padding:0;
+  border:none;
+  width:100%;
+  height:100%;
+  z-index:999;
+  position:fixed;
+  top:0;
+  left:0;
+}
+#hid{
+  height: 100rpx;
+  width: 100%;
+}
+#bottom{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  bottom: 0;
+  border-top: 1rpx solid #f3f3f3;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  background: #ffc700;
+}
+#bottom-hid{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  bottom: 0;
+  border-top: 1rpx solid #f3f3f3;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  background: #ffc700;
+}
+#bottom-share{
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  height: 400rpx;
+  bottom: 0;
+  border-top: 1rpx solid #f3f3f3;
+  text-align: center;
+}
+#share-top{
+  width: 100%;
+  height: 300rpx;
+  background: #f3f3f3;
+}
+#share-bot{
+  width: 100%;
+  height: 100rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background: white;
+}
+.share-box{
+  float: left;
+  width: 50%;
+  height: 300rpx;
+}
+.share-img{
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 65rpx;
+  margin-top:40rpx; 
+  background: white;
+}
+.share-text{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+#btn-share{
+  z-index: 1222;
+  position: absolute; 
+  opacity:0;
+  width: 350rpx;
+  height: 300rpx;
+}
+#close{
+  float: right;
+  width: 50rpx;
+  height: 50rpx;
+  margin: 60rpx 75rpx 0 0 ;
+  border-radius: 25rpx; 
+}

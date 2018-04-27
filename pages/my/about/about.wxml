@@ -1,0 +1,14 @@
+<view id='top'>
+ <image bindtap="bindViewTap" id="head-img" src="/image/icon.png" background-size="cover"></image>
+</view>
+<view id="{{more?'desc':'desc-more'}}">
+  <text>
+JIIHOME是一个场景化整体搭配全屋家居直供平台，崇尚自然，简约并同时彰显个性的居家环境，从一件家居产品到整屋家居的组合搭配，我们除了有自己的全屋定制品牌-原炁之外，还集合了许多来自国内外的原创设计家居品牌，另外通过互联网的3D场景展示技术，帮助人们更好地选择心仪的家居用品。从根本上解决家居购买难，搭配难的问题。\n 生活是立体的，场景化的，我们希望把我们的产品以及对美好生活的理念传递给更多的人，帮助越来越多的人拥有他们的Dream Home！
+  </text>
+</view>
+<view id='more' bindtap='showmore'>
+ <image src="{{more?'/image/bottom.png':'/image/top.png'}}"></image>
+</view>
+<image class='us' src='http://p5koaz6je.bkt.clouddn.com/descrip1.jpg' mode='widthFix'></image>
+<image class='us' src='http://p5koaz6je.bkt.clouddn.com/descrip2.jpg' mode='widthFix'></image>
+<image class='us' src='http://p5koaz6je.bkt.clouddn.com/descrip3.jpg' mode='widthFix'></image>

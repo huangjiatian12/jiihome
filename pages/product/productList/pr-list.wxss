@@ -1,0 +1,76 @@
+@import "/utils/goods.wxss";
+#top{
+  position: fixed;
+  top: 0;
+  height: 100rpx;
+  width: 100%;
+  border-top: 1rpx solid #cccccc;
+  border-bottom: 1rpx solid #cccccc;
+  background: white;
+}
+.top{
+  float: left;
+  width: 250rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #ccc;
+}
+.choose{
+  float: left;
+  width: 250rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: black;
+}
+#price{
+  margin-left: 50rpx;
+  float: left;
+}
+#price-box{
+  margin-left: 15rpx;
+  float: left;
+}
+#price-up{
+  height:0rpx;
+  width:0rpx;
+  border-bottom: 10rpx solid #ccc;
+  border-left: 10rpx solid white;
+  border-right: 10rpx solid white;
+  margin-top: 38rpx;
+  
+}
+#price-up-choose{
+  height:0rpx;
+  width:0rpx;
+  border-bottom: 10rpx solid black;
+  border-left: 10rpx solid white;
+  border-right: 10rpx solid white;
+  margin-top: 38rpx;
+}
+#price-down{
+  height:0rpx;
+  width:0rpx;
+  border-top: 10rpx solid #ccc;
+  border-left: 10rpx solid white;
+  border-right: 10rpx solid white;
+  background: gray;
+  margin-top:5rpx;
+}
+#price-down-choose{
+  height:0rpx;
+  width:0rpx;
+  border-top: 10rpx solid black;
+  border-left: 10rpx solid white;
+  border-right: 10rpx solid white;
+  margin-top:5rpx;
+}
+#product-list{
+  margin-top: 101rpx;
+}
+.nodata{
+  margin-top: 550rpx;
+  text-align: center;
+  font-size: 30rpx;
+}

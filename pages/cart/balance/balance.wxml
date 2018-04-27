@@ -1,0 +1,57 @@
+<view id='address' wx:if="{{!address}}">
+  <navigator url="/pages/cart/choosedress/choosedress" hover-class="none">
+  <view id='address-left'>请选择收获地址</view>
+  <image id='address-right' src='/image/right.png ' mode="widthFix"></image>
+  </navigator>
+</view>
+
+<view id='ha-address' wx:if="{{address}}">
+ <navigator url="/pages/cart/choosedress/choosedress" hover-class="none">
+  <view id='ha-address-left'>
+     <view id='name-mobile'>
+       <text id='name'>{{address.name}}</text>
+       <text id='mobile'>{{address.mobile}}</text>
+     </view>
+     <view id='city-address'>{{address.city}}{{address.address}}</view>
+  </view>
+  <image id='ha-address-right' src='/image/right.png ' mode="widthFix"></image>
+ </navigator>
+</view>
+
+<view id='goods-list'>
+  <block wx:for="{{cartData}}">
+   <view class='goods-box'>
+      <image class='goods-left' src='{{item.img_src}}'></image>
+      <view class='goods-right'>
+         <view class='goods-name'>{{item.goods_name}}</view>
+         <view class='goods-attr'>
+          <block wx:for="{{item.goods_attr}}">
+            <text class='attr-text'>{{item}}</text>
+          </block>
+         </view>
+         <view class='num-price'>
+           <view class='num'>x{{item.cart_number}}</view>
+           <view class='price'>￥{{item.goods_price}}</view>
+         </view>
+      </view>
+   </view>
+  </block>
+</view>
+
+<view id='coupon'>
+  <view id='coupon-left'>
+     <text id='left-text'>优惠券</text>
+     <text id='right-text'>目前无可用优惠券</text>
+  </view>
+  <image id='coupon-right' src='/image/right.png' mode="widthFix"></image>
+</view>
+
+<view id='message-box'>
+  <view id='mes-top' >买家留言</view>
+  <input type='text' id='mes-text' placeholder='写下你的特殊需求' bindblur='changeMes'></input>
+</view>
+
+<view id='bottom'>
+     <view id='total'>合计:￥{{totalPrice}}元</view>
+     <view id='pay' bindtap='goPay'>去支付</view>
+  </view>

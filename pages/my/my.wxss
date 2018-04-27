@@ -1,0 +1,105 @@
+page{
+  background: #f3f3f3;
+}
+#info{
+  height: 320rpx;
+  width: 100%;
+  background: white;
+  background: white;
+}
+#head-img{
+  width: 176rpx;
+  height: 176rpx;
+  border-radius: 88rpx;
+  margin: 52rpx 287rpx 0;
+  background-size: cover;
+}
+#user-name{
+  text-align: center;
+  margin-top: 10rpx;
+  font-size: 36rpx;
+}
+#my-order{
+  box-sizing: border-box;
+  height: 80rpx;
+  width: 100%;
+  margin-top: 40rpx;
+  padding:30rpx 0 0 32rpx;
+  font-size: 28rpx;
+  background: white;
+}
+#order-state{
+  background: white;
+  padding-left: 2.5rpx;
+}
+.order-state{
+  display: inline-block;
+  box-sizing: border-box;
+  padding:0 0 10rpx 81rpx;
+  width: 166rpx;
+}
+.state-num{
+  float: right;
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 17rpx;
+  margin-right:5rpx;
+  background: #ffc700;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  text-align: center;
+}
+.state-img{
+  box-sizing: border-box;
+  width: 85rpx;
+  height: 85rpx;
+  padding: 5rpx 5rpx 0 0;
+}
+.order-state image{
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+}
+.state-img image{
+  display: inline;
+  width: 80rpx;
+  height: 80rpx;
+}
+.state-text{
+  font-size: 24rpx;
+  width: 80rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+  color: gray;
+}
+.info-box{
+  margin-top: 40rpx;
+}
+.info{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100rpx;
+  padding: 0 32rpx;
+  background: white;
+  border-bottom: 1rpx solid #f3f3f3;
+}
+.info-img{
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
+  margin: 25rpx 0;
+}
+.info-text{
+  float: left;
+  height: 100rpx;
+  margin-left: 20rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+.info-more{
+  float: right;
+  width: 30rpx;
+  height: 30rpx;
+  padding-top: 35rpx;
+}

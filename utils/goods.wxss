@@ -1,0 +1,53 @@
+.goods{
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1rpx solid #f3f3f3;
+  padding: 20rpx;
+  width: 375rpx;
+  background: white;
+}
+.goods-img{
+  margin-left: 16.5rpx;
+  width: 300rpx;
+  height: 300rpx;
+}
+.goods-name{
+   width: 100%;
+   height: 40rpx;
+   line-height: 40rpx;
+   text-align: center;
+   font-size: 26rpx;
+   overflow: hidden;
+   display: -webkit-box;
+   word-break: break-all;
+   text-overflow: ellipsis;
+   -webkit-box-orient: vertical;
+}
+.goods-price{
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.shop-price{
+  font-size: 26rpx;
+}
+.market-price{
+  font-size: 22rpx;
+  text-decoration:line-through;
+  color: #ccc;
+}
+.goods-tag{
+  margin-top:8rpx;
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+}
+.goods-tag text{
+  height: 25rpx;
+  line-height: 25rpx;
+  margin-right: 10rpx;
+  padding: 2rpx 5rpx;
+  font-size: 22rpx;
+  border: 1rpx solid #ccc;
+}

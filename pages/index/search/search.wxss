@@ -1,0 +1,78 @@
+@import "/utils/goods.wxss";
+#search{
+  width: 750rpx;
+  height: 100rpx;
+  position: fixed;
+  top: 0;
+  border-bottom: 1rpx solid #f3f3f3;
+  overflow: hidden;
+}
+#search-img{
+  float: left;
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 10rpx;
+}
+#search-text{
+  float: left;
+  width: 550rpx;
+  height: 70rpx;
+  font-size: 28rpx;
+  margin-top: 18rpx;
+}
+#cancel{
+  float: left;
+  height: 100rpx;
+  width: 120rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: black;
+  font-size: 28rpx;
+}
+#history{
+overflow: hidden;
+margin-top: 100rpx;
+}
+#history-hide{
+  display: none;
+}
+#top{
+  margin:20rpx 32rpx 0 32rpx;
+  overflow: hidden;
+}
+#top-left{
+  float: left;
+  font-size: 28rpx;
+  color: gray;
+}
+#top-right{
+  float: right;
+  width: 45rpx;
+  height: 45rpx;
+}
+#history-list{
+  width: 685rpx;
+  margin:0 32rpx;
+}
+.content{
+  float: left;
+  height: 60rpx;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  padding: 0 15rpx;
+  margin: 22rpx 22rpx 0 0;
+  background: #f3f3f3;
+}
+#product-list-hide{
+  display: none;
+}
+#product-list{
+  margin-top: 100rpx;
+}
+.nodata{
+  margin:500rpx 240rpx;
+  height: 50rpx;
+  width: 270rpx;
+  text-align: center;
+  color: gray;
+}

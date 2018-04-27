@@ -1,0 +1,38 @@
+<view id="search">
+     <image src="/image/search.png" id='search-img'></image>
+     <input id='search-text' bindconfirm="searchSubmit" confirm-type='search' focus='true'></input>
+     <navigator url="/pages/index/index" open-type="switchTab" hover-class="none">
+     <view id='cancel'>取消</view>
+     </navigator>  
+</view>
+
+<view id="{{historyShow && historyData != '' ? 'history' : 'history-hide'}}">
+   <view id='top'>
+      <view id='top-left'>历史搜索</view>
+      <image src='/image/empty.png' id='top-right' bindtap="delHistory"></image>
+   </view>
+   <view id='history-list'>
+   <block wx:for="{{historyData}}">
+     <view class='content' data-value='{{item.value}}' bindtap="searchAgain">{{item.value}}</view>
+   </block>
+   </view>
+</view>
+
+<view id="{{historyShow ? 'product-list-hide' : 'product-list'}}">
+  <view wx:if="{{goodsData.length == 0}}" class='nodata'>暂无数据</view>
+  <block wx:for="{{goodsData}}">
+  <view class='goods'>
+   <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
+    <image class='goods-img' src='{{item.img_src}}'></image>
+    <view class='goods-name'>{{item.goods_name}}</view>
+    <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
+    <view class='goods-tag'>
+      <block wx:for="{{item.tag}}">
+       <text>{{item}}</text>
+      </block>
+    </view>
+   </navigator> 
+  </view>
+ </block>
+</view>

@@ -1,0 +1,16 @@
+<block wx:for="{{catData}}">
+   <image wx:if="{{item.child}}" class='cate' bindtap="showChild" src='{{item.img_src}}'></image>
+   <view wx:if="{{item.child}}" class="{{show?'':'normal'}}">
+     <block wx:for="{{item.child}}">
+      <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
+       <view class='cate-name'>{{item.name}}</view>
+      </navigator>
+     </block>
+   </view>
+</block>
+
+<block wx:for="{{catData}}">
+  <navigator wx:if="{{!item.child}}" url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
+    <image class='cate' src='{{item.img_src}}'></image>
+  </navigator>
+</block>

@@ -1,0 +1,182 @@
+<navigator url="/pages/index/search/search" hover-class="none">
+  <view id="search">
+     <view id="search-img">
+     <image src="/image/search.png" />
+     </view>
+     <view id='search-ch'>搜索</view>
+  </view>
+</navigator>
+
+<view class='swiper'>
+    <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" style='height:496rpx' >
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+    </swiper>
+</view>
+
+<view id='begin'>
+  <view id='begin-text'>从这里开始...</view>
+  <view id='begin-box'>
+     <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+       <view class='begin-info-cen'>
+          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin1.png'></image>
+          <view class='begin-title'>1. 规划测量您的家具尺寸</view>
+          <view class='begin-bri'>如果您有图纸请发给我们，当然我们也提供上门测量服务</view>
+       </view>
+       <view class='begin-info'>
+          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin2.png'></image>
+          <view class='begin-title'>2. 沟通确定家具的功能布局</view>
+          <view class='begin-bri'>如果您有图纸请发给我们，当然我们也提供上门测量服务</view>
+       </view>
+       <view class='begin-info'>
+          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin3.png'></image>
+          <view class='begin-title'>3. 搭配您想要的造型风格</view>
+          <view class='begin-bri'>通过面板、台面、拉手、支撑脚的选择创造属于你的风格</view>
+       </view>
+       <view class='begin-info'>
+          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin4.png'></image>
+          <view class='begin-title'>4. 送货上门及安装 </view>
+          <view class='begin-bri'>我们承诺在您下单后30-45天内上门安装</view>
+       </view>
+     </scroll-view>
+  </view>
+</view>
+
+<view class='hr'></view>
+
+<view class='cate' wx:if="{{designData && designData != ''}}">
+   <view class='cate-ch'>设计</view>
+   <view class='cate-en'>Design</view>
+      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
+       <block wx:for="{{designData}}">
+        <view class="{{(index == '0')?'article-one':'article'}}">
+        <navigator url="/pages/art/article/article?artId={{item.id}}&artTitle={{item.article_name}}&img={{item.img_src}}" hover-class="none">
+          <image class='article-img' src='{{item.img_src}}' ></image>
+          <view class='article-name'>{{item.article_name}}</view>
+          <view class='article-bri'>{{item.article_brief}}</view>
+        </navigator>  
+        </view>
+       </block>
+      </scroll-view>
+   <view class='more'>
+    <navigator url="/pages/art/art" open-type="switchTab" hover-class="none">
+       <text>查看全部 </text>  
+       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
+    </navigator>
+   </view>
+</view>
+
+<view class='hr'></view>
+
+<block wx:for="{{catGoods}}">
+<view class='cate'>
+   <view class='cate-ch'>{{item.name}}</view>
+   <view class='cate-en'>{{item.name_en}}</view>
+   <image class='cate-img' src='{{item.img_src}}'></image>
+      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
+        <block wx:for="{{item.goods}}">
+         <view class='goods'>
+         <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
+            <image class='goods-img' src='{{item.img_src}}'></image>
+            <view class='goods-name'>{{item.goods_name}}</view>
+            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
+            <view class='goods-tag' wx:if="{{item.tag != ''}}">
+             <block wx:for="{{item.tag}}">
+              <text>{{item}}</text>
+             </block>
+            </view>   
+        </navigator>
+         </view>
+        </block>
+      </scroll-view>
+   <view class='more'>
+     <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
+       <text>查看全部 </text>  
+       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
+     </navigator>
+   </view>
+</view>
+<view class='hr'></view>
+</block>
+
+<block wx:for="{{bigGoods}}">
+<view class='cate'>
+   <view class='cate-ch'>{{item.name}}</view>
+   <view class='cate-en'>{{item.name_en}}</view>
+   <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
+        <block wx:for="{{item.goods}}">
+         <view class="{{(index == '0')?'front-goods-one':'front-goods'}}">
+         <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
+            <image class='front-goods-img' src='{{item.img_src}}'></image>
+            <view class='goods-name'>{{item.goods_name}}</view>
+            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
+            <view class='goods-tag'>
+             <block wx:for="{{item.tag}}">
+              <text>{{item}}</text>
+             </block>
+            </view>
+         </navigator>   
+         </view>
+        </block>
+   </scroll-view>
+   <view class='more'>
+      <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
+       <text>查看全部 </text>  
+       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
+     </navigator>
+   </view>
+</view>
+<view class='hr'></view>
+</block>
+
+<block wx:for="{{smallGoods}}">
+<view class='cate'>
+   <view class='cate-ch'>{{item.name}}</view>
+   <view class='cate-en'>{{item.name_en}}</view>
+   <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
+        <block wx:for="{{item.goods}}">
+         <view class='goods'>
+         <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
+            <image class='goods-img' src='{{item.img_src}}'></image>
+            <view class='goods-name'>{{item.goods_name}}</view>
+            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
+            <view class='goods-tag'>
+             <block wx:for="{{item.tag}}">
+              <text>{{item}}</text>
+             </block>
+            </view>
+        </navigator>
+         </view>
+        </block>
+  </scroll-view>
+  <view class='more'>
+     <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
+       <text>查看全部 </text>  
+       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
+     </navigator>
+  </view>
+</view>
+<view class='hr'></view>
+</block>
+
+<block wx:for="{{onlyCat}}">
+<view class='cate'>
+   <view class='cate-ch'>{{item.name}}</view>
+   <view class='cate-en'>{{item.name_en}}</view>
+   <image class='cate-img' src='{{item.img_src}}'></image>
+   <view class='more'>
+      <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
+       <text>查看全部 </text>  
+       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
+     </navigator>
+   </view>
+</view>
+<view class='hr'></view>
+</block>

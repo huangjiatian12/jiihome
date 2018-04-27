@@ -1,0 +1,55 @@
+ <view id='info-box'>
+    <view class='info'>
+      <view class='info-name'>收件人</view>
+      <input class='info-text' placeholder='请输入收货人姓名' value='{{name}}' bindblur='changeName'></input>
+    </view>
+
+    <view class='info'>
+      <view class='info-name' type='number'>手机号</view>
+      <input class='info-text' placeholder='请输入收货人手机号' value='{{mobile}}' bindblur='changeMobile'></input>
+    </view>
+
+    <view class='info' bindtap='showArea'>
+      <view class='info-name'>省市区</view>
+      <view id='area-box'>
+         <view id="{{areaInfo?'areachoose':'area'}}">{{areaInfo?areaInfo:'请点击选择地区'}}</view>
+         <image id='area-right' src='/image/right.png' mode="widthFix"></image>
+      </view>
+    </view>
+
+    <view class='info'>
+      <view class='info-name'>详细地址</view>
+      <input class='info-text' placeholder='请输入详细地址' value='{{address}}' bindblur='changeAddress'></input>
+    </view>
+  </view>
+
+  <view class='default' bindtap='chooseDefault'>
+    <image class='default-cho' src="{{defaul?'/image/checked.png':'/image/kong.png'}}" ></image>
+    <view class='default-text'>设为默认</view>
+  </view>
+
+  <view class='del' bindtap='deladdr'>
+    <view class='deladdr'>删除地址</view>
+  </view>
+
+  <view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{showArea?'visible':'hidden'}}">
+ <view style="height:10% ;width:95%;margin-top:10rpx">
+  <text catchtap="cityCancel">取消</text>
+  <text style="float: right" catchtap="citySure">确定</text>
+ </view>
+ <picker-view style="width: 100%; height: 300px;" bindchange="cityChange" value="{{value}}" wx:key="">
+  <picker-view-column>
+   <view wx:for="{{provinces}}" class="picker-item">
+    {{item.name}}</view>
+  </picker-view-column>
+  <picker-view-column>
+   <view wx:for="{{citys}}" class="picker-item" wx:key="">
+    {{item.name}}</view>
+  </picker-view-column>
+  <picker-view-column>
+   <view wx:for="{{areas}}" class="picker-item" wx:key="">
+    {{item.name}}</view>
+  </picker-view-column>
+ </picker-view>
+</view>
+<view id='bottom' bindtap='addAddress'>确认</view>

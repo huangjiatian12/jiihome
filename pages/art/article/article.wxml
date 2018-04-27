@@ -1,0 +1,51 @@
+
+<view catchtouchmove="{{mask?'true':''}}">
+<block wx:for="{{articleData}}">
+<image class='article-bri' src='{{item.img_src}}' mode='widthFix'></image>
+</block>
+
+<view id='product-list'>
+    <block wx:for="{{goodsData}}">
+    <view class='goods'>
+    <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
+      <image class='goods-img' src='{{item.img_src}}'></image>
+      <view class='goods-name'>{{item.goods_name}}</view>
+      <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
+      <view class='goods-tag'>
+        <block wx:for="{{item.tag}}">
+        <text>{{item}}</text>
+        </block>
+      </view>
+    </navigator> 
+    </view>
+  </block>
+</view>
+<view id='hid'></view>
+<view id="{{generate?'fs':'bottom-hid'}}">
+  <image id='close' bindtap='closeAll' src='/image/close.png'></image>
+  <canvas id='canv' catchtouchmove='true' canvas-id="myCanvas"></canvas>
+  <view class='ft'>保存图片到手机相册，分享到朋友圈</view>  
+  <view style="text-align:center;padding-bottom:20px"><button  bindtap='savetup' type="primary" size='mini'>保存到相册</button></view>
+</view>
+
+<view id="{{mask?'mask':''}}" bindtap='closeAll'></view>
+</view>
+<view id="{{share?'bottom-share':'bottom-hid'}}">
+   <view id='share-top'>
+      <view class='share-box'>
+        <button open-type='share' id="btn-share" ></button>
+        <image class='share-img' src='/image/weixin.png' mode='widthFix'></image>
+        <view class='share-text'>分享给朋友</view>
+      </view>
+      <view class='share-box' bindtap='geneImg'>
+        <image class='share-img' src='/image/bao.png'></image>
+        <view class='share-text'>生成海报图</view>
+      </view>
+   </view>
+   <view id='share-bot' bindtap='closeShare'>关闭</view>
+</view>
+<view id="{{share?'bottom-hid':'bottom'}}"  bindtap='share'>立即分享</view>
+  
+
+ 

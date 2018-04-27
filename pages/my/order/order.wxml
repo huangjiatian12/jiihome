@@ -1,0 +1,147 @@
+<view id='top'>
+  <view class="{{(status == '0')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='0'>
+     <view class='nav-sta'>待付款</view>
+     <view class='bothr' wx:if="{{status == '0'}}"></view>
+  </view>
+  <view class="{{(status == '2')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='2'>
+     <view class='nav-sta'>待发货</view>
+     <view class='bothr' wx:if="{{status == '2'}}"></view>
+  </view>
+  <view class="{{(status == '3')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='3'>
+     <view class='nav-sta'>待收货</view>
+     <view class='bothr' wx:if="{{status == '3'}}"></view>
+  </view>
+  <view class="{{(status == '1')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='1'>
+     <view class='nav-sta'>已完成</view>
+     <view class='bothr' wx:if="{{status == '1'}}"></view>
+  </view>
+
+</view>
+<view id='hid'></view>
+
+<block wx:for="{{orderData}}" wx:if="{{status == '0'}}">
+  <view class='order-list'>
+    <view class='order-id'>订单号：{{item.order_id}}</view>
+    <block wx:for="{{item.goods}}">
+      <view class='order-info'>
+      <navigator url="/pages/product/product?goodsId={{item.goods_id}}" hover-class="none">
+        <image class='img' src='{{item.img_src}}'></image>
+        <view class='name-attr'>
+          <view class='name'>{{item.goods_name}}</view>
+          <view class='attr-list'>
+          <block wx:for="{{item.goods_attr_value}}">
+            <text class='attr'>{{item}}</text>
+          </block>
+          </view>
+        </view>
+        <view class='pri-num'>
+          <view class='price'>￥{{item.price}}</view>
+          <view class='num'>X{{item.cart_number}}</view>
+        </view>
+      </navigator>  
+      </view>
+    </block>
+  
+    <view class='state'>
+      <view class='total'>合计：￥{{item.price}}</view>
+      <view class='bit-pay' data-order='{{item.order_id}}' data-prepay='{{item.prepay_id}}' bindtap='goPay'>去支付</view>
+      <view class='bit-del' data-order='{{item.order_id}}' data-index='{{index}}' bindtap='removeOrder'>取消</view>
+    </view>
+  </view>
+</block>
+
+<block wx:for="{{orderData}}" wx:if="{{status == '2'}}">
+  <view class='order-list'>
+    <view class='order-id'>订单号：{{item.order_id}}</view>
+    <block wx:for="{{item.goods}}">
+      <view class='order-info'>
+      <navigator url="/pages/product/product?goodsId={{item.goods_id}}" hover-class="none">
+        <image class='img' src='{{item.img_src}}'></image>
+        <view class='name-attr'>
+          <view class='name'>{{item.goods_name}}</view>
+          <view class='attr-list'>
+          <block wx:for="{{item.goods_attr_value}}">
+            <text class='attr'>{{item}}</text>
+          </block>
+          </view>
+        </view>
+        <view class='pri-num'>
+        <view class='price'>￥{{item.price}}</view>
+        <view class='num'>X{{item.cart_number}}</view>
+        </view>
+      </navigator>   
+      </view>
+    </block>
+    
+    <view class='state'>
+      <view class='total'>合计：￥{{item.price}}</view>
+      <view class='bit-del' data-order='{{item.order_id}}' data-index='{{index}}' bindtap='removeOrder'>取消</view>
+    </view>
+  </view>
+</block>
+
+<block wx:for="{{orderData}}" wx:if="{{status == '3'}}">
+  <view class='order-list'>
+    <view class='order-id'>订单号：{{item.order_id}}</view>
+    <block wx:for="{{item.goods}}">
+      <view class='order-info'>
+      <navigator url="/pages/product/product?goodsId={{item.goods_id}}" hover-class="none">
+        <image class='img' src='{{item.img_src}}'></image>
+        <view class='name-attr'>
+          <view class='name'>{{item.goods_name}}</view>
+          <view class='attr-list'>
+          <block wx:for="{{item.goods_attr_value}}">
+            <text class='attr'>{{item}}</text>
+          </block>
+          </view>
+        </view>
+        <view class='pri-num'>
+        <view class='price'>￥{{item.price}}</view>
+        <view class='num'>X{{item.cart_number}}</view>
+        </view>
+      </navigator>   
+      </view>
+    </block>
+    <view class='express' wx:if="{{item.express != ''}}">快递单号：{{item.express}}</view>
+    <view class='state'>
+      <view class='total'>合计：￥{{item.price}}</view>
+      <view class='bit-pay' data-order='{{item.order_id}}' bindtap='comOrder'>确认收货</view>
+      <view class='bit-cancel' bindtap='cancelOrd'>申请退货</view>
+    </view>
+  </view>
+</block>
+
+
+
+<block wx:for="{{orderData}}" wx:if="{{status == '1'}}">
+  <view class='order-list'>
+    <view class='order-id'>订单号：{{item.order_id}}</view>
+    <block wx:for="{{item.goods}}">
+      <view class='order-info'>
+      <navigator url="/pages/product/product?goodsId={{item.goods_id}}" hover-class="none">
+        <image class='img' src='{{item.img_src}}'></image>
+        <view class='name-attr'>
+          <view class='name'>{{item.goods_name}}</view>
+          <view class='attr-list'>
+          <block wx:for="{{item.goods_attr_value}}">
+            <text class='attr'>{{item}}</text>
+          </block>
+          </view>
+        </view>
+        <view class='pri-num'>
+        <view class='price'>￥{{item.price}}</view>
+        <view class='num'>X{{item.cart_number}}</view>
+        </view>
+      </navigator>    
+      </view>
+    </block>
+    <view class='express' wx:if="{{item.express != ''}}">快递单号：{{item.express}}</view>
+    <view class='state'>
+      <view class='total'>合计：￥{{item.price}}</view>
+    </view>
+  </view>
+</block>
+
+<view wx:if="{{orderData.length == '0'}}" id='none'>
+暂无此状态订单
+</view>

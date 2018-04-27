@@ -1,0 +1,88 @@
+<view id='info'>
+   <image id="head-img" src="{{userInfo.avatarUrl}}" background-size="cover" background-position="center"></image>
+   <view id='user-name'>{{userInfo.nickName}}</view>
+</view>
+
+
+<view id='my-order'>我的订单</view>
+<view id='order-state'>
+  
+   <view class='order-state'>
+   <navigator url="/pages/my/order/order?sta=0" hover-class="none">
+     <view class='state-num' wx:if="{{orderSta.wait_pay}}">{{orderSta.wait_pay}}</view>
+     <view class='state-img'>
+        <image src='/image/waitpay.png'></image>
+     </view>
+     <view class='state-text'>待付款</view>
+   </navigator>  
+   </view>
+   
+  
+   <view class='order-state'>
+   <navigator url="/pages/my/order/order?sta=2" hover-class="none">
+     <view class='state-num' wx:if="{{orderSta.wait_deli}}">{{orderSta.wait_deli}}</view>
+     <view class='state-img'>
+        <image src='/image/waitdeli.png'></image>
+     </view>
+     <view class='state-text'>待发货</view>
+   </navigator>   
+   </view>
+  
+
+  
+   <view class='order-state'>
+   <navigator url="/pages/my/order/order?sta=3" hover-class="none"> 
+     <view class='state-num' wx:if="{{orderSta.wait_take}}">{{orderSta.wait_take}}</view>
+     <view class='state-img'>
+        <image src='/image/waittake.png'></image>
+     </view>
+     <view class='state-text'>待收货</view>
+     </navigator> 
+   </view>
+
+  
+   <view class='order-state'>
+   <navigator url="/pages/my/order/order?sta=1" hover-class="none"> 
+     <view class='state-num' wx:if="{{orderSta.finish}}"></view>
+     <view class='state-img'>
+        <image src='/image/finish.png'></image>
+     </view>
+     <view class='state-text'>已完成</view>
+   </navigator>   
+   </view>
+  
+</view>
+<view class='info-box'>
+
+  <navigator url="/pages/my/coupon/coupon" hover-class="none">
+  <view class='info'>
+    <image class='info-img' src='/image/coupon.png'></image>
+    <view class='info-text'>优惠券</view>
+    <image class='info-more' src='/image/right.png'></image>
+  </view>
+  </navigator>
+  
+  <navigator url="/pages/my/address/address" hover-class="none">
+  <view class='info'>
+    <image class='info-img' src='/image/address.png'></image>
+    <view class='info-text'>收货地址</view>
+    <image class='info-more' src='/image/right.png'></image>
+  </view>
+  </navigator>
+
+  <view class='info'>
+    <image class='info-img' src='/image/question.png'></image>
+    <view class='info-text'>常见问题</view>
+    <image class='info-more' src='/image/right.png'></image>
+  </view>
+</view>
+
+<view class='info-box'>
+  <navigator url="/pages/my/about/about" hover-class="none">
+  <view class='info'>
+    <image class='info-img' src='/image/about.png'></image>
+    <view class='info-text'>关于我们</view>
+    <image class='info-more' src='/image/right.png'></image>
+  </view>
+  </navigator>
+</view>

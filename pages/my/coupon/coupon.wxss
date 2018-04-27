@@ -1,0 +1,11 @@
+#a{
+  float:right;
+  width: 400rpx;
+  height: 300rpx;
+  background: green;
+}
+#b{
+  widows: 500rpx;
+  height: 400rpx;
+  background: red;
+}

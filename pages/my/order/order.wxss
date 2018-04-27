@@ -1,0 +1,172 @@
+page{
+  background: #f3f3f3;
+}
+#top{
+  position: fixed;
+  width: 100%;
+  height: 80rpx;
+  background: white;
+  top: 0;
+  overflow: hidden;
+}
+#hid{
+  height: 80rpx;
+  width: 100%;
+}
+.nav{
+  float: left;
+  width: 25%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: gray;
+}
+.nav-choose{
+  float: left;
+  box-sizing: border-box;
+  width: 25%;
+  height: 80rpx;
+  
+  text-align: center;
+  font-size: 28rpx;
+  color: black;
+}
+.nav-sta{
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.bothr{
+  height: 2rpx;
+  width: 70%;
+  margin-left: 15%;
+  background: black;
+}
+.order-list{
+  width: 100%;
+  margin-top: 20rpx;
+  background: white;
+}
+.order-id{
+  height: 50rpx;
+  width: 750rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  padding: 0 32rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color: gray;
+}
+.order-info{
+  box-sizing: border-box;
+  width: 750rpx;
+  height: 150rpx;
+  padding: 0 32rpx;
+}
+.img{
+  float: left;
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: 5rpx;
+}
+.name-attr{
+  float: left;
+  margin: 10rpx 20rpx;
+}
+.name{
+  width: 420rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+}
+.attr-list{
+  width: 420rpx;
+}
+.attr{
+  height: 40rpx;
+  background: #f3f3f3;
+  margin-right: 10rpx;
+  font-size: 24rpx;
+  padding:2rpx 8rpx;
+  color: gray;
+}
+.pri-num{
+  float: left;
+  width: 85rpx;
+  height: 100rpx;
+  margin-top: 10rpx; 
+}
+.price{
+  font-size: 24rpx;
+  text-align: right;
+}
+.num{
+  font-size: 24rpx;
+  text-align: right;
+  color: gray;
+}
+.state{
+  box-sizing: border-box;
+  width: 750rpx;
+  height: 80rpx;
+  padding:0 32rpx;
+  border-top: 1rpx solid #f3f3f3;
+  overflow: hidden;
+}
+.total{
+  float: left;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+}
+.bit-del{
+  box-sizing: border-box;
+  float: right;
+  width: 100rpx;
+  height: 50rpx;
+  border: 1rpx solid #f3f3f3;
+  margin-top: 15rpx;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+  text-align: center;
+  line-height: 48rpx;
+}
+.bit-pay{
+  float: right;
+  width: 120rpx;
+  height: 50rpx;
+  margin-top: 15rpx;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+  text-align: center;
+  line-height: 50rpx;
+  background: #ffc700;
+}
+.bit-cancel{
+  box-sizing: border-box;
+  float: right;
+  width: 120rpx;
+  height: 50rpx;
+  border: 1rpx solid #f3f3f3;
+  margin-top: 15rpx;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+  text-align: center;
+  line-height: 48rpx;
+}
+#none{
+  width: 750rpx;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 400rpx;
+}
+.express{
+  box-sizing: border-box;
+  width: 100%;
+  height: 50rpx;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  padding: 0 32rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  text-align: right;
+  color: gray;
+}

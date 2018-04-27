@@ -1,0 +1,25 @@
+<view id='none' wx:if="{{addressData.length == '0'}}">暂无收获地址</view>
+
+<block wx:for="{{addressData}}">
+  <view id='address-list'>
+    <view class='address'>
+      <view class='info'>
+        <view class='name'>{{item.name}}  {{item.mobile}}</view>
+        <view class='city'>{{item.city}}{{item.address}}</view>
+      </view>
+      <view class='edit-box'>
+        <view class='default'  data-index='{{index}}' data-id='{{item.id}}' bindtap="{{(item.status == '0')?'chooseDefault':''}}">
+          <image class='default-cho' src="{{(item.status == '0')?'/image/kong.png':'/image/checked.png'}}"></image>
+          <view class='default-text'>设为默认</view>
+        </view>
+       <navigator url="/pages/my/address/editAddr/editAddr?id={{item.id}}"> 
+        <view class='edit'>编辑</view> 
+       </navigator>
+      </view>
+    </view>    
+  </view>
+</block>
+
+<navigator url="/pages/my/address/addAddr/addAddr">
+<view id='bottom'>添加收获地址</view>
+</navigator>

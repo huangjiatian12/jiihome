@@ -1,0 +1,179 @@
+page{
+  background: #f3f3f3;
+}
+#address{
+  margin-top: 10rpx;
+  padding: 10rpx 32rpx;
+  background: white;
+  overflow: hidden;
+  height: 80rpx;
+}
+#address-left{
+  float: left;
+  width: 650rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+}
+#address-right{
+  float: right;
+  width: 25rpx;
+  margin-top: 27.5rpx;
+}
+#ha-address{
+  box-sizing: border-box;
+  width: 100%;
+  height: 150rpx;
+  margin-top: 10rpx;
+  padding: 25rpx 32rpx;
+  background: white;
+  overflow: hidden;
+}
+#ha-address-left{
+   float: left;
+   width: 640rpx;
+   height: 100rpx;
+}
+#name{
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  margin-right: 30rpx;
+}
+#mobile{
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+#city-address{
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+#ha-address-right{
+  float: right;
+  width: 30rpx;
+  margin-top: 35rpx;
+}
+#goods-list{
+  margin-top: 20rpx;
+}
+.goods-box{
+  box-sizing: border-box;
+  padding:25rpx 32rpx;
+  width: 100%;
+  height: 200rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  background: white;
+}
+.goods-left{
+  float: left;
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 20rpx;
+  background: red;
+}
+.goods-name{
+  height: 40rpx;
+  font-size: 28rpx;
+}
+.goods-attr{
+  height: 70rpx;
+  font-size: 24rpx;
+  margin-top: 5rpx;
+}
+.attr-text{
+  height: 30rpx;
+  line-height: 30rpx;
+  padding:2.5rpx 8rpx;
+  margin-right:15rpx;
+  background: #f3f3f3;
+  color: gray;
+}
+.num-price{
+  height: 40rpx;
+  overflow: hidden;
+}
+.num{
+  float: left;
+  font-size: 24rpx;
+  height: 40rpx;
+  line-height: 60rpx;
+  color: gray;
+}
+.price{
+  float: right;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+#coupon{
+  margin-top: 20rpx;
+  padding: 10rpx 32rpx;
+  background: white;
+  overflow: hidden;
+  height: 80rpx;
+}
+#coupon-left{
+  float: left;
+  width: 650rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+}
+#left-text{
+  float: left;
+}
+#right-text{
+  float: right;
+  color: gray;
+  font-size: 24rpx;
+}
+#coupon-right{
+  float: right;
+  width: 25rpx;
+  margin-top: 27.5rpx;
+}
+#message-box{
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  height: 130rpx;
+  width: 100%;
+  padding: 25rpx 32rpx;
+  background: white;
+}
+#mes-top{
+  height: 40rpx;
+  font-size: 28rpx;
+}
+#mes-text{
+  height: 40rpx;
+  color: gray;
+  font-size: 26rpx;
+}
+#bottom{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  border-top: 1rpx solid #f3f3f3;
+  bottom: 0;
+}
+#total{
+  box-sizing: border-box;
+  float: left;
+  height: 100rpx;
+  width: 70%;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  padding-left: 32rpx;
+  background: white;
+}
+#pay{
+  float: right;
+  height: 100rpx;
+  width: 30%;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background:#ffc700;
+
+}
