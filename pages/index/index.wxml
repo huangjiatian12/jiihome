@@ -1,7 +1,7 @@
 <navigator url="/pages/index/search/search" hover-class="none">
   <view id="search">
-     <view id="search-img">
-     <image src="/image/search.png" />
+     <view id="search-img">   
+     <image src="/image/search.png" /> 
      </view>
      <view id='search-ch'>搜索</view>
   </view>
@@ -11,9 +11,11 @@
     <swiper indicator-dots="{{indicatorDots}}"
     autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" style='height:496rpx' >
     <block wx:for="{{imgUrls}}">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image"/>
+     <navigator url="{{item.url}}" hover-class="none">
+      <swiper-item>  
+         <image src="{{item.img_src}}" class="slide-image"/> 
       </swiper-item>
+     </navigator>
     </block>
     </swiper>
 </view>
@@ -23,25 +25,26 @@
   <view id='begin-box'>
      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
        <view class='begin-info-cen'>
-          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin1.png'></image>
+          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin1.png'></image>
           <view class='begin-title'>1. 规划测量您的家具尺寸</view>
-          <view class='begin-bri'>如果您有图纸请发给我们，当然我们也提供上门测量服务</view>
+          <view class='begin-bri'>如果您有图纸也可以发给我们</view>
        </view>
        <view class='begin-info'>
-          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin2.png'></image>
+          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin2.png'></image>
           <view class='begin-title'>2. 沟通确定家具的功能布局</view>
-          <view class='begin-bri'>如果您有图纸请发给我们，当然我们也提供上门测量服务</view>
+          <view class='begin-bri'>我们的家具功能规划师让家具更符合您的使用习惯</view>
        </view>
        <view class='begin-info'>
-          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin3.png'></image>
+          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin3.png'></image>
           <view class='begin-title'>3. 搭配您想要的造型风格</view>
-          <view class='begin-bri'>通过面板、台面、拉手、支撑脚的选择创造属于你的风格</view>
+          <view class='begin-bri'>选择面板、台面、拉手、支撑脚来创造属于你的风格</view>
        </view>
        <view class='begin-info'>
-          <image class='begin-img' src='http://static.jiihome.com/jiimade/begin4.png'></image>
+          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin4.png'></image>
           <view class='begin-title'>4. 送货上门及安装 </view>
-          <view class='begin-bri'>我们承诺在您下单后30-45天内上门安装</view>
+          <view class='begin-bri'>我们承诺在您下单后30-45天内送货上门</view>
        </view>
+       <view id="begin-ri"></view>
      </scroll-view>
   </view>
 </view>
@@ -61,6 +64,7 @@
         </navigator>  
         </view>
        </block>
+       <view id="design-ri"></view>
       </scroll-view>
    <view class='more'>
     <navigator url="/pages/art/art" open-type="switchTab" hover-class="none">
@@ -83,13 +87,18 @@
          <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
             <image class='goods-img' src='{{item.img_src}}'></image>
             <view class='goods-name'>{{item.goods_name}}</view>
-            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'>
+            <text class='shop-price' wx:if="{{item.min_goods_price > 0}}">￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price && item.min_goods_price > 0}}" class='shop-price'>-{{item.max_goods_price}}</text>
+            <text class='shop-price' wx:if="{{item.min_goods_price < 0}}">-</text>
+            </view>
+           
             <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
-            <view class='goods-tag' wx:if="{{item.tag != ''}}">
+            <view class='goods-tag'>
              <block wx:for="{{item.tag}}">
-              <text>{{item}}</text>
+              <text class="show-tag">{{item}}</text>
              </block>
-            </view>   
+              <text wx:if="{{item.tag.length == 0}}" class='hide-tag'></text>
+            </view>  
         </navigator>
          </view>
         </block>
@@ -114,16 +123,21 @@
          <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
             <image class='front-goods-img' src='{{item.img_src}}'></image>
             <view class='goods-name'>{{item.goods_name}}</view>
-            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'>
+            <text class='shop-price' wx:if="{{item.min_goods_price > 0}}">￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price && item.min_goods_price > 0}}" class='shop-price'>-{{item.max_goods_price}}</text>
+            <text class='shop-price' wx:if="{{item.min_goods_price < 0}}">-</text>
+            </view>
             <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
             <view class='goods-tag'>
              <block wx:for="{{item.tag}}">
-              <text>{{item}}</text>
+              <text class="show-tag">{{item}}</text>
              </block>
-            </view>
+              <text wx:if="{{item.tag.length == 0}}" class='hide-tag'></text>
+            </view> 
          </navigator>   
          </view>
         </block>
+        <view id="front-goods-ri"></view>
    </scroll-view>
    <view class='more'>
       <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
@@ -145,13 +159,17 @@
          <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
             <image class='goods-img' src='{{item.img_src}}'></image>
             <view class='goods-name'>{{item.goods_name}}</view>
-            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
+            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'>
+            <text class='shop-price' wx:if="{{item.min_goods_price > 0}}">￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price && item.min_goods_price > 0}}" class='shop-price'>-{{item.max_goods_price}}</text>
+            <text class='shop-price' wx:if="{{item.min_goods_price < 0}}">-</text>
+            </view>
             <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
             <view class='goods-tag'>
              <block wx:for="{{item.tag}}">
-              <text>{{item}}</text>
+              <text class="show-tag">{{item}}</text>
              </block>
-            </view>
+              <text wx:if="{{item.tag.length == 0}}" class='hide-tag'></text>
+            </view> 
         </navigator>
          </view>
         </block>

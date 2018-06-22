@@ -20,6 +20,36 @@ Page({
     mask: false, 
     generate:false,
     chooseDef:false,
+    addCart:false,
+  },
+  changeAdd(){
+    var self = this
+    var gnData = self.data.price
+    if (gnData) {
+      if(gnData.goods_price < 0){
+        wx.showToast({
+          title: '此商品不单独售卖！',
+          icon: 'none',
+          duration: 1000
+        })
+      }else{
+        self.setData({
+          addCart: true
+        })
+      }
+    } else {
+      wx.showToast({
+        title: '请选择合适的规格',
+        icon: 'none',
+        duration: 1000
+      })
+    }
+  },
+  showIc(){
+    var self = this 
+    self.setData({
+      addCart:false
+    })
   },
   onShare(){
     var self = this
@@ -39,13 +69,16 @@ Page({
     })
     var goodsData = self.data.goodsData
     var goodsPrice = self.data.goodsPrice
-    var basicprofile = '/image/icon.png';
+    var basicprofile = '/image/finger.png';
     var xcxcode = app.globalData.api + '/home/index/get_prcode?id=' + goodsData.id;
     var imgPath = app.globalData.api + "/home/index/showPrImg?id=" + goodsData.id;
+    /*
     if(goodsPrice.max_discount_price == '0'){
-      if (goodsPrice.min_goods_price != goodsPrice.max_goods_price){
+      if (goodsPrice.min_goods_price < 0) {
+        var price = '-'
+      } else if (goodsPrice.min_goods_price != goodsPrice.max_goods_price) {
         var price = '￥' + goodsPrice.min_goods_price + '-' + goodsPrice.max_goods_price
-      }else{
+      } else {
         var price = '￥' + goodsPrice.max_goods_price
       }
     }else{
@@ -53,8 +86,9 @@ Page({
         var price = '￥' + goodsPrice.min_discount_price + '-' + goodsPrice.max_discount_price
       } else {
         var price = '￥' + goodsPrice.max_discount_price
-      }
+      } 
     }
+    */
     wx.downloadFile({
       url: xcxcode,
       success: function (sres) {
@@ -68,42 +102,32 @@ Page({
             ctx.setFillStyle('#cccccc');
             ctx.fillRect(0, 0, 240, 360);
             ctx.setFillStyle('#ffffff');
-            ctx.fillRect(1, 1, 238, 358);
-
-
-            //绘制产品图  
-            ctx.drawImage(imgPath, 2, 2, 236, 200);
+            ctx.fillRect(1, 1, 238, 368);
+            ctx.setFillStyle('#ccc');
+            ctx.fillRect(20, 10, 1, 20);
+            
+            //绘制分类  
+            ctx.setFontSize(14);
+            ctx.setFillStyle('#000000');
+            ctx.fillText(goodsData.cat_name, 25, 25);
 
             //绘制标题  
-            ctx.setFontSize(16);
+            ctx.setFontSize(10);
             ctx.setFillStyle('#000000');
-            ctx.fillText(goodsData.goods_name, 10, 225);
+            ctx.fillText(goodsData.goods_name, 20, 50);
 
-            //绘制介绍产品  
-            ctx.setFontSize(12);
-            ctx.setFillStyle('#000000');
-            ctx.fillText(price, 10, 250);
+            //绘制产品图  
+            ctx.drawImage(imgPath,20, 60, 200, 200);
 
-            //绘制一条虚线  
+            
 
-            ctx.strokeStyle = 'blue';
-            ctx.beginPath();
-            ctx.setLineWidth(1);
-            ctx.setLineDash([2, 4]);
-            ctx.moveTo(10, 267);
-            ctx.lineTo(230, 267);
-            ctx.stroke();
+            //绘制二维码
+            ctx.drawImage(xcxcode, 90, 275, 60, 60);
 
-            //绘制几和图标  
-            ctx.drawImage(basicprofile, 10, 290, 30, 30);
-
-            //绘制介绍  
-            ctx.setFontSize(11);
-            ctx.setFillStyle('#aaaaaa');
-            ctx.fillText('长按扫码查看详情', 47, 298);
-            ctx.fillText('分享自几和定制小程序', 47, 318);
-            ctx.drawImage(xcxcode, 165, 275, 60, 60);
-
+            //ctx.drawImage(basicprofile, 95, 353, 7, 7);
+            ctx.setFontSize(8)
+            ctx.fillText('长按扫码查看', 98, 350);
+      
             ctx.draw();
             wx.hideLoading()
           },
@@ -121,7 +145,7 @@ Page({
       x: 0,
       y: 0,
       width: 240,
-      height: 360,
+      height: 370,
       canvasId: 'myCanvas',
       fileType: 'jpg',
       success: function (res) {
@@ -129,22 +153,18 @@ Page({
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
           success(res) {
-            wx.showModal({
-              title: '存图成功',
-              content: '图片成功保存到相册了，去发圈噻~',
-              showCancel: false,
-              confirmText: '好哒',
-              confirmColor: '#72B9C3',
-              success: function (res1) {
-                if (res1.confirm) {
-                  that.setData({
-                    share: false,
-                    mask: false,
-                    generate: false
-                  })
-                }
-              }
+            wx.showToast({
+              title: '存图成功!',
+              icon: 'success',
+              duration: 1000
             })
+            setTimeout(function(){
+              that.setData({
+                share: false,
+                mask: false,
+                generate: false
+              })
+            },1000)
           }
         })
       },
@@ -248,6 +268,7 @@ Page({
              price:'',
            })
         }
+        
       }
     })
     
@@ -304,7 +325,7 @@ Page({
                      wx.showToast({
                        title: '登陆失败',
                        icon: 'none',
-                       duration: 2000
+                       duration: 1000
                      })
                    } else {
                      wx.setStorage({
@@ -323,7 +344,10 @@ Page({
        wx.showToast({
          title: '请选择合适的规格',
          icon: 'none',
-         duration: 2000
+         duration: 1000
+       })
+       self.setData({
+         addCart: false
        })
      }
   },
@@ -353,36 +377,53 @@ Page({
               wx.showToast({
                 title: '添加购物车成功',
                 icon: 'success',
-                duration: 2000
+                duration: 1500
               })
             } else if (res1.data.flag == '10'){
               wx.showToast({
                 title: '添加购物车失败！',
                 icon: 'none',
-                duration: 2000
+                duration: 1500
               })
             } else if (res1.data.flag == '20') {
               wx.showToast({
                 title: '购物车已存在该商品！',
                 icon: 'none',
-                duration: 2000
+                duration: 1500
               })
             } else if (res1.data.flag == '00') {
               wx.showToast({
                 title: '商品库存不足！',
                 icon: 'none',
-                duration: 2000
+                duration: 1500
               })
             } else if (res1.data.flag == '0') {
               wx.showToast({
                 title: '网络连接状态错误！',
                 icon: 'none',
-                duration: 2000
+                duration: 1500
               })
             }
+            self.setData({
+              addCart: false
+            })
           }
         })
       },
+    })
+  },
+  imgYu(e) {
+    var self = this
+    var goodsPic = self.data.goodsPic
+    var src = e.currentTarget.dataset.src
+    var urls = []
+    for (var i in goodsPic) {
+      urls.push(goodsPic[i].img_src)
+    }
+
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: urls // 需要预览的图片http链接列表
     })
   },
   /**
@@ -400,14 +441,16 @@ Page({
         id: options.goodsId
       },
       success: function (res) {
-        console.log(res.data.gnData)
-        console.log(res.data.goodsPrice)
         wx.setNavigationBarTitle({ title: res.data.goodsData.goods_name })
+        var img = [{ 'img_src': res.data.goodsPrice.img_src }]
+        for (var i in res.data.goodsPic) {
+          img.push(res.data.goodsPic[i])
+        }
         self.setData({
           gnData: res.data.gnData,
           goodsData:res.data.goodsData,
           goodsPrice: res.data.goodsPrice,
-          goodsPic: res.data.goodsPic,
+          goodsPic: img,
           goodsPicbeta: res.data.goodsPic,
           goodsDesc: res.data.goodsdescData,
           attrUniData: res.data.attrUniData,

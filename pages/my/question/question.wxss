@@ -1,28 +1,6 @@
 page{
   background: #f3f3f3;
 }
-#top{
-  width: 686rpx;
-  height: 300rpx;
-  margin: 0 32rpx;
-  border-bottom: 2rpx solid black;
-  overflow: hidden;
-}
-#icon{
-  box-sizing: border-box;
-  height: 168rpx;
-  width: 168rpx;
-  border-radius: 84rpx;
-  background: white;
-  margin: 48rpx auto;
-}
-#head-img{
-  width: 168rpx;
-  height: 168rpx;
-  border-radius: 84rpx;
-  margin: 66rpx 259rpx;
-  background-size: cover;
-}
 .question{
   width: 686rpx;
   height: 80rpx;
@@ -34,6 +12,7 @@ page{
   width: 686rpx;
   height: 80rpx;
   overflow: hidden;
+  color: #ccc;
   margin: 0 32rpx;
 }
 .ques-tit{
@@ -54,6 +33,13 @@ page{
   font-size: 24rpx;
   line-height: 40rpx;
   border-bottom: 2rpx solid black;
+}
+#hr{
+  width: 686rpx;
+  margin-left: 32rpx;
+  margin-top: 40rpx;
+  height: 2rpx;
+  background: black;
 }
 .hide{
   display: none;

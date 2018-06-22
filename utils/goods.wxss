@@ -43,11 +43,19 @@
   text-align: center;
   line-height: 30rpx;
 }
-.goods-tag text{
-  height: 25rpx;
-  line-height: 25rpx;
-  margin-right: 10rpx;
+.show-tag{
+  height: 24rpx;
+  line-height: 24rpx;
+  margin-right: 5rpx;
   padding: 2rpx 5rpx;
   font-size: 22rpx;
   border: 1rpx solid #ccc;
+}
+.hide-tag{
+  height: 24rpx;
+  width: 20rpx;
+  line-height: 24rpx;
+  margin-right: 5rpx;
+  padding: 2rpx 5rpx;
+  font-size: 22rpx;
 }

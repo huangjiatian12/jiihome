@@ -1,11 +1,38 @@
-#a{
-  float:right;
-  width: 400rpx;
-  height: 300rpx;
-  background: green;
+page{
+  background: #f3f3f3;
 }
-#b{
-  widows: 500rpx;
-  height: 400rpx;
-  background: red;
+#top{
+  width: 100%;
+  height: 120rpx;
+  background: white;
+  overflow: hidden;
+}
+#coupon-text-box{
+  height: 60rpx;
+  width: 450rpx;
+  margin: 30rpx 50rpx;
+  padding-left: 30rpx;
+  border: 1rpx solid #f3f3f3;
+  float: left;
+}
+#coupon-text{
+  height: 60rpx;
+  width: 450rpx;
+  font-size: 28rpx;
+}
+#draw{
+  float: left;
+  width: 120rpx;
+  height: 60rpx;
+  margin-top: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #ffc700;
+  font-size: 32rpx;
+}
+#none{
+  width: 100%;
+  margin-top: 450rpx;
+  font-size: 28rpx;
+  text-align: center;
 }

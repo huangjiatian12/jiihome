@@ -16,12 +16,16 @@
     "pages/my/address/editAddr/editAddr",
     "pages/product/productList/pr-list",
     "pages/art/article/article",
-    "pages/my/about/about"
+    "pages/my/about/about",
+    "pages/my/question/question",
+    "pages/my/quote/quote",
+    "pages/my/quote/furniture/furniture",
+    "pages/my/quote/myQuote/myQuoe"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "jiihome定制",
+    "navigationBarTitleText": "Select",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

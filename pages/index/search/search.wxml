@@ -25,13 +25,17 @@
    <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
     <image class='goods-img' src='{{item.img_src}}'></image>
     <view class='goods-name'>{{item.goods_name}}</view>
-    <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='shop-price'>-{{item.max_goods_price}}</text></view>
-            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
+    <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'>
+      <text class='shop-price' wx:if="{{item.min_goods_price > 0}}">￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price && item.min_goods_price > 0}}" class='shop-price'>-{{item.max_goods_price}}</text>
+      <text class='shop-price' wx:if="{{item.min_goods_price < 0}}">-</text>
+    </view>
+    <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
     <view class='goods-tag'>
       <block wx:for="{{item.tag}}">
-       <text>{{item}}</text>
+         <text class="show-tag">{{item}}</text>
       </block>
-    </view>
+         <text wx:if="{{item.tag.length == 0}}" class='hide-tag'></text>
+    </view> 
    </navigator> 
   </view>
  </block>

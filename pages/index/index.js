@@ -5,52 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'http://p5koaz6je.bkt.clouddn.com/index/swiperbanner1.jpg',
-      'http://p5koaz6je.bkt.clouddn.com/index/swiperbanner2.jpg',
-      'http://p5koaz6je.bkt.clouddn.com/index/swiperbanner3.jpg'
-    ],
     indicatorDots: true,
     autoplay: true,
     circular: true,
     interval: 3000,
     duration: 500
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中',
-    })
+  getInfo(){
     var self = this
-    wx.login({
+
+    //获取轮播图
+    wx.request({
+      url: app.globalData.api + '/Home/index/getCarouselImg',
       success: function (res) {
-        var code = res.code
-        wx.request({
-          url: app.globalData.api + '/home/index/login',
-          data: {
-            code: code,
-          },
-          success: function (res1) {
-            if (res1.data == 'false') {
-              wx.showToast({
-                title: '登陆失败',
-                icon: 'none',
-                duration: 2000
-              })
-            } else {
-              wx.setStorage({
-                key: "userKey",
-                data: res1.data
-              })
-            }
-          }
+        self.setData({
+          imgUrls: res.data,
         })
       }
     })
-
     //获取设计文章
     wx.request({
       url: app.globalData.api + '/Home/index/getArticle',
@@ -67,9 +39,9 @@ Page({
     //获取分类图商品同时加载信息
     wx.request({
       url: app.globalData.api + '/Home/index/getBlockInfo',
-      data:{
-        block:1,
-        goodsNum:8
+      data: {
+        block: 1,
+        goodsNum: 8
       },
       success: function (res) {
         self.setData({
@@ -117,7 +89,43 @@ Page({
         })
       }
     })
-    
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    var self = this
+    wx.login({
+      success: function (res) {
+        var code = res.code
+        wx.request({
+          url: app.globalData.api + '/home/index/login',
+          data: {
+            code: code,
+          },
+          success: function (res1) {
+            if (res1.data == 'false') {
+              wx.showToast({
+                title: '登陆失败',
+                icon: 'none',
+                duration: 2000
+              })
+            } else {
+              wx.setStorage({
+                key: "userKey",
+                data: res1.data
+              })
+            }
+          }
+        })
+      }
+    })
+   
+    self.getInfo()
+
   },
 
   /**
@@ -131,7 +139,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     var self = this
+     self.getInfo()
   },
 
   /**

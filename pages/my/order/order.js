@@ -69,7 +69,6 @@ Page({
           },
           success: function (res1) {
             wx.hideLoading()
-            console.log(res1.data)
             self.setData({
               orderData: res1.data
             })
@@ -139,7 +138,6 @@ Page({
             orderId: orderId
           },
           success: function (res1) {
-            console.log(res1.data)
               if (res1.data == '1') {
                 wx.showToast({
                   title: '取消订单成功！',
@@ -238,9 +236,6 @@ Page({
                 title: '支付失败',
                 icon: 'none',
                 duration: 1000
-              })
-              wx.navigateTo({
-                url: '/pages/my/order/order?sta=0',
               })
             },
           })

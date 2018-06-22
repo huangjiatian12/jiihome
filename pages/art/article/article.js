@@ -7,7 +7,8 @@ Page({
   data: {
     share:false,
     mask:false,
-    generate:false
+    generate:false,
+    load:true
   },
   share(){
      var self = this 
@@ -34,7 +35,7 @@ Page({
     })
     var artBrief = self.data.artBrief
 
-    var basicprofile = '/image/icon.png';
+    var basicprofile = '/image/finger.png';
     var xcxcode = app.globalData.api + '/home/index/get_artcode?artId=' + artBrief.id;
     var imgPath = app.globalData.api + "/home/index/showArtImg?artId=" + artBrief.id;
     
@@ -55,44 +56,39 @@ Page({
             const ctx = wx.createCanvasContext('myCanvas');
             //填充背景  
             ctx.setFillStyle('#cccccc');
-            ctx.fillRect(0, 0, 240, 360);
+            ctx.fillRect(0, 0, 240, 350);
             ctx.setFillStyle('#ffffff');
-            ctx.fillRect(1, 1, 238, 358);
+            ctx.fillRect(1, 1, 238, 348);
+            ctx.setFillStyle('#ccc');
+            ctx.fillRect(10, 20, 1, 20);
 
+            //绘制分类  
+            ctx.setFontSize(14);
+            ctx.setFillStyle('#000000');
+            ctx.fillText('设计', 15, 35);
+           
+            //绘制标题  
+            ctx.setFontSize(10);
+            ctx.setFillStyle('#000000');
+            ctx.fillText(artBrief.article_name, 10, 90);
 
             //绘制产品图  
-            ctx.drawImage(imgPath, 2, 2, 236, 200);
+            ctx.drawImage(imgPath, 10, 100, 220, 128);
 
-            //绘制标题  
-            ctx.setFontSize(16);
-            ctx.setFillStyle('#000000');
-            ctx.fillText(artBrief.article_name, 10, 225);
+            //绘制二维码
+            ctx.drawImage(xcxcode, 90, 258, 60, 60);
 
-            //绘制介绍产品  
-            ctx.setFontSize(12);
-            ctx.setFillStyle('#6F6F6F');
-            ctx.fillText(brief, 10, 250);
-
-            //绘制一条虚线  
-
-            ctx.strokeStyle = 'blue';
-            ctx.beginPath();
-            ctx.setLineWidth(1);
-            ctx.setLineDash([2, 4]);
-            ctx.moveTo(10, 267);
-            ctx.lineTo(230, 267);
-            ctx.stroke();
-
-            //绘制几和图标  
-            ctx.drawImage(basicprofile, 10, 290, 30, 30);
-
+            //ctx.drawImage(basicprofile, 100, 333, 10, 10); 
+            ctx.setFontSize(8)
+            ctx.fillText('长按扫码查看', 97, 333);
             //绘制介绍  
+/*  
             ctx.setFontSize(11);
             ctx.setFillStyle('#aaaaaa');
             ctx.fillText('长按扫码查看详情', 47, 298);
             ctx.fillText('分享自几和定制小程序', 47, 318);
             ctx.drawImage(xcxcode, 165, 275, 60, 60);
-            
+            */
             ctx.draw();   
             wx.hideLoading()
           },
@@ -110,7 +106,7 @@ Page({
       x: 0,
       y: 0,
       width: 240,
-      height: 360,
+      height: 350,
       canvasId: 'myCanvas',
       fileType:'jpg',
       success: function (res) {
@@ -118,22 +114,18 @@ Page({
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
           success(res) {
-            wx.showModal({
-              title: '存图成功',
-              content: '图片成功保存到相册了，去发圈噻~',
-              showCancel: false,
-              confirmText: '好哒',
-              confirmColor: '#72B9C3',
-              success: function (res1) {
-                if (res1.confirm) {
-                  that.setData({
-                    share: false,
-                    mask: false,
-                    generate: false
-                  })
-                }
-              }
+            wx.showToast({
+              title: '存图成功!',
+              icon: 'success',
+              duration: 1000
             })
+            setTimeout(function () {
+              that.setData({
+                share: false,
+                mask: false,
+                generate: false
+              })
+            }, 1000)
           }
         })
       },
@@ -148,6 +140,20 @@ Page({
        mask: false,
        generate: false
      })
+  },
+  imgYu(e){
+    var self = this
+    var articleData = self.data.articleData
+    var src = e.currentTarget.dataset.src
+    var urls = []
+    for (var i in articleData){
+      urls.push(articleData[i].img_src)
+    }
+
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: urls // 需要预览的图片http链接列表
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -187,14 +193,13 @@ Page({
       })
       
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
-  },
 
+  },
   /**
    * 生命周期函数--监听页面显示
    */

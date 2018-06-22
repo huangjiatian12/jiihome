@@ -15,7 +15,6 @@
      <view class='nav-sta'>已完成</view>
      <view class='bothr' wx:if="{{status == '1'}}"></view>
   </view>
-
 </view>
 <view id='hid'></view>
 

@@ -1,2 +1,7 @@
-<view id='a'></view>
-<view id='b'></view>
+<view id='top'>
+  <view id='coupon-text-box'>
+   <input id='coupon-text' type='number' placeholder='请输入优惠码领取优惠券'></input>
+  </view>
+  <view id="draw" bindtap='drawCoupon'>领取</view>
+</view>
+<view id="none">暂无优惠券</view>

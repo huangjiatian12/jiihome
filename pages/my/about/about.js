@@ -5,17 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    more: true
+    id:1
   },
-  showmore() {
+  changeQus(e) {
     var self = this
-    if (self.data.more) {
+    var id = self.data.id
+    var cId = e.currentTarget.dataset.id
+    if (id == cId) {
       self.setData({
-        more: false
+        id: 0
       })
     } else {
       self.setData({
-        more: true
+        id: cId
       })
     }
   },

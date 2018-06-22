@@ -1,0 +1,220 @@
+<view id='top'>
+  <view class="{{(status == '1')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='1'>
+     <view class='nav-sta'>柜架</view>
+     <view class='bothr' wx:if="{{status == '1'}}"></view>
+  </view>
+  <view class="{{(status == '2')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='2'>
+     <view class='nav-sta'>门控</view>
+     <view class='bothr' wx:if="{{status == '2'}}"></view>
+  </view>
+  <view class="{{(status == '3')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='3'>
+     <view class='nav-sta'>饰面</view>
+     <view class='bothr' wx:if="{{status == '3'}}"></view>
+  </view>
+</view>
+<view id='hid'></view>
+
+<view wx:if="{{status == '1'}}">
+  <block wx:for="{{cabinet.module}}" wx:for-index="key" wx:for-item="val">
+    <view class='module-list'>
+      <view class='top'> 
+          <view class='top-img'>
+             <image class='select' src="/image/kong.png"></image>
+             <text class='sort'>{{val.fur_name}}G{{val.sort_id}}</text>
+          </view>
+          <view class='top-space'><text>{{val.space}}</text></view>
+          <view class='top-del' data-key='{{key}}' data-cat='1'  bindtap='removeModule'>
+            <image src='/image/empty.png'></image>
+          </view>
+      </view>
+      <view class='info-box'>
+         <view class='info-img'>
+           <image src="{{val.img_src}}"></image>
+         </view>
+         <view class='info-info'>
+            <view class='attr-para'>
+              <view class='info-para'>
+               <block wx:for="{{val.parStrAttr}}" wx:for-index="k" wx:for-item="v">
+                <text wx:if="{{k%2 == 0}}" decode="{{true}}">{{v}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+                <text wx:if="{{k%2 == 1}}">{{v}}\n</text>
+               </block>
+              </view>
+              <view class='info-attr'>
+               <block wx:for="{{val.attr}}" wx:for-item="attr">
+                <text >{{attr}}</text>
+               </block> 
+              </view>
+            </view>
+            <view class='area-price'>
+            <view class='info-area'>投影面积：{{val.project_area}}㎡</view>
+            <view class='info-price'>￥{{val.totalModulePrice}}</view>
+         </view>
+         </view>
+      </view>
+      <view class='more' data-sort='{{val.sort_id}}' bindtap='showCabDet'><image src="{{cabinetShow[val.sort_id]?'/image/module_close.png':'/image/module_more.png'}}"></image></view>
+      <view class='module-detail' wx:if="{{cabinetShow[val.sort_id]}}">
+         <view class='detail-row'>
+            <view class='row-title'><text decode="{{true}}">&nbsp;</text> </view>
+            <view class='row-type'>类别</view>
+            <view class='row-title'>单价</view>
+            <view class='row-title'>数量</view>
+            <view class='row-title'>金额</view>
+         </view>
+         <block wx:for="{{val.formula}}" wx:for-item="formula">
+         <view class='detail-row'>
+            <view class='row-item'>{{formula.name}}</view>
+            <view class='row-long'>{{formula.remarkes}}</view>
+            <view class='row-common'>{{formula.price}}</view>
+            <view class='row-common'>{{formula.num}}</view>
+            <view class='row-common'>{{formula.agioFee}}</view>
+         </view>
+         </block>
+         <view class='point'>*此价格仅供参考</view>
+      </view>
+    </view>
+  </block>
+
+<view class='bottom-hid'></view>
+  <view class='bottom'>
+     <view class='bottom-left'>柜架合计：￥{{cabinet.agioFee}}</view>
+     <view class='bottom-right' bindtap='getCel'>导出</view>
+  </view>
+</view>
+
+<view wx:if="{{status == '2'}}">
+  <block wx:for="{{door.module}}" wx:for-index="key" wx:for-item="val">
+    <view class='module-list'>
+      <view class='top'> 
+          <view class='top-img'>
+             <image class='select' src="/image/kong.png"></image>
+             <text class='sort'>{{val.fur_name}}D{{val.sort_id}}</text>
+          </view>
+          <view class='top-space'><text>{{val.space}}</text></view>
+          <view class='top-del' data-key='{{key}}' data-cat='2'  bindtap='removeModule'>
+            <image src='/image/empty.png'></image>
+          </view>
+      </view>
+      <view class='info-box'>
+         <view class='info-img'>
+           <image src="{{val.img_src}}"></image>
+         </view>
+         <view class='info-info'>
+            <view class='attr-para'>
+              <view class='info-para'>
+               <block wx:for="{{val.parStrAttr}}" wx:for-index="k" wx:for-item="v">
+                <text wx:if="{{k%2 == 0}}" decode="{{true}}">{{v}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+                <text wx:if="{{k%2 == 1}}">{{v}}\n</text>
+               </block>
+              </view>
+              <view class='info-attr'>
+               <block wx:for="{{val.attr}}" wx:for-item="attr">
+                <text >{{attr}}</text>
+               </block> 
+              </view>
+            </view>
+            <view class='area-price'>
+            <view class='info-area'>投影面积：{{val.project_area}}㎡</view>
+            <view class='info-price'>￥{{val.totalModulePrice}}</view>
+         </view>
+         </view>
+      </view>
+      <view class='more' data-sort='{{val.sort_id}}' bindtap='showCabDet'><image src="{{cabinetShow[val.sort_id]?'/image/module_close.png':'/image/module_more.png'}}"></image></view>
+      <view class='module-detail' wx:if="{{cabinetShow[val.sort_id]}}">
+         <view class='detail-row'>
+            <view class='row-title'><text decode="{{true}}">&nbsp;</text> </view>
+            <view class='row-type'>类别</view>
+            <view class='row-title'>单价</view>
+            <view class='row-title'>数量</view>
+            <view class='row-title'>金额</view>
+         </view>
+         <block wx:for="{{val.formula}}" wx:for-item="formula">
+         <view class='detail-row'>
+            <view class='row-item'>{{formula.name}}</view>
+            <view class='row-long'>{{formula.remarkes}}</view>
+            <view class='row-common'>{{formula.price}}</view>
+            <view class='row-common'>{{formula.num}}</view>
+            <view class='row-common'>{{formula.agioFee}}</view>
+         </view>
+         </block>
+         <view class='point'>*此价格仅供参考</view>
+      </view>
+    </view>
+  </block>
+
+<view class='bottom-hid'></view>
+  <view class='bottom'>
+     <view class='bottom-left'>门控合计：￥{{door.agioFee}}</view>
+     <view class='bottom-right' bindtap='getCel'>导出</view>
+  </view>
+</view>
+
+<view wx:if="{{status == '3'}}">
+  <block wx:for="{{front.module}}" wx:for-index="key" wx:for-item="val">
+    <view class='module-list'>
+      <view class='top'> 
+          <view class='top-img'>
+             <image class='select' src="/image/kong.png"></image>
+             <text class='sort'>{{val.fur_name}}S{{val.sort_id}}</text>
+          </view>
+          <view class='top-space'><text>{{val.space}}</text></view>
+          <view class='top-del' data-key='{{key}}' data-cat='3'  bindtap='removeModule'>
+            <image src='/image/empty.png'></image>
+          </view>
+      </view>
+      <view class='info-box'>
+         <view class='info-img'>
+           <image src="{{val.img_src}}"></image>
+         </view>
+         <view class='info-info'>
+            <view class='attr-para'>
+              <view class='info-para'>
+               <block wx:for="{{val.parStrAttr}}" wx:for-index="k" wx:for-item="v">
+                <text wx:if="{{k%2 == 0}}" decode="{{true}}">{{v}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+                <text wx:if="{{k%2 == 1}}">{{v}}\n</text>
+               </block>
+              </view>
+              <view class='info-attr'>
+               <block wx:for="{{val.attr}}" wx:for-item="attr">
+                <text >{{attr}}</text>
+               </block> 
+              </view>
+            </view>
+            <view class='area-price'>
+            <view class='info-area'>投影面积：{{val.project_area}}㎡</view>
+            <view class='info-price'>￥{{val.totalModulePrice}}</view>
+         </view>
+         </view>
+      </view>
+      <view class='more' data-sort='{{val.sort_id}}' bindtap='showCabDet'><image src="{{cabinetShow[val.sort_id]?'/image/module_close.png':'/image/module_more.png'}}"></image></view>
+      <view class='module-detail' wx:if="{{cabinetShow[val.sort_id]}}">
+         <view class='detail-row'>
+            <view class='row-title'><text decode="{{true}}">&nbsp;</text> </view>
+            <view class='row-type'>类别</view>
+            <view class='row-title'>单价</view>
+            <view class='row-title'>数量</view>
+            <view class='row-title'>金额</view>
+         </view>
+         <block wx:for="{{val.formula}}" wx:for-item="formula">
+         <view class='detail-row'>
+            <view class='row-item'>{{formula.name}}</view>
+            <view class='row-long'>{{formula.remarkes}}</view>
+            <view class='row-common'>{{formula.price}}</view>
+            <view class='row-common'>{{formula.num}}</view>
+            <view class='row-common'>{{formula.agioFee}}</view>
+         </view>
+         </block>
+         <view class='point'>*此价格仅供参考</view>
+      </view>
+    </view>
+  </block>
+
+  <view class='bottom-hid'></view>
+  <view class='bottom'>
+     <view class='bottom-left'>饰面合计：￥{{front.agioFee}}</view>
+     <view class='bottom-right' bindtap='getCel'>导出</view>
+  </view>
+</view>
+
+<navigator open-type='redirect' url="/pages/my/quote/quote" hover-class="none">
+<view id='goQuote'><text>\n继续\n报价</text></view>
+</navigator>

@@ -59,6 +59,12 @@ page{
   width: 570rpx;
   height: 350rpx;
 }
+#begin-ri{
+  display: inline-block;
+  width: 40rpx;
+  height: 350rpx;
+  background: white;
+}
 .begin-img{
   width: 500rpx;
   height: 300rpx;
@@ -90,6 +96,12 @@ page{
   box-sizing: border-box;
   width: 640rpx;
   margin: 20rpx 0 0 22rpx;
+  background: white;
+}
+#design-ri{
+  display: inline-block;
+  width:46rpx;
+  height: 200rpx;
   background: white;
 }
 .article-img{
@@ -140,7 +152,7 @@ page{
 .goods{
   display: inline-block;
   box-sizing: border-box;
-  padding: 20rpx;
+  padding: 20rpx 20rpx 0;
   width: 280rpx;
 }
 .goods-img{
@@ -178,13 +190,21 @@ page{
   text-align: center;
   line-height: 30rpx;
 }
-.goods-tag text{
-  height: 25rpx;
-  line-height: 25rpx;
+.show-tag{
+  height: 24rpx;
+  line-height: 24rpx;
   margin-right: 5rpx;
   padding: 2rpx 5rpx;
   font-size: 22rpx;
   border: 1rpx solid #ccc;
+}
+.hide-tag{
+  height: 24rpx;
+  width: 20rpx;
+  line-height: 24rpx;
+  margin-right: 5rpx;
+  padding: 2rpx 5rpx;
+  font-size: 22rpx;
 }
 .more{
   width: 100%;
@@ -207,6 +227,12 @@ page{
   margin: 20rpx 0 20rpx 48rpx;
   width: 600rpx;
   height: 720rpx;
+}
+#front-goods-ri{
+  display: inline-block;
+  width: 80rpx;
+  height: 720rpx;
+  background: white;
 }
 .front-goods-img{
   width: 600rpx;

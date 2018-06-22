@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    quote:true
   },
   orderSta(){
     var self = this
@@ -21,6 +21,27 @@ Page({
           success: function (e) {
             self.setData({
               orderSta: e.data
+            })
+          }
+        })
+      },
+    })
+  },
+  //判断报价订单是否存在
+  checkQuote(){
+    var self = this
+    wx.getStorage({
+      key: 'userKey',
+      success: function (res) {
+        wx.request({
+          url: app.globalData.api + '/Home/index/checkQuote',
+          data: {
+            userId: res.data.id,
+            thr_session: res.data.thr_session,
+          },
+          success: function (e) {
+            self.setData({
+              quote:e.data
             })
           }
         })
@@ -57,11 +78,13 @@ Page({
         }
       })
     }
+    
     var self = this
     wx.checkSession({
       success: function () {
         //session_key 未过期，并且在本生命周期一直有效
         self.orderSta()
+        self.checkQuote()
       },
       fail: function () {
         // session_key 已经失效，需要重新执行登录流程
@@ -91,8 +114,10 @@ Page({
           }
         })
         self.orderSta()
+        self.checkQuote()
       }
     })
+    
   },
 
   /**
@@ -143,5 +168,75 @@ Page({
    */
   onShareAppMessage: function () {
     
-  }
+  },
+  /*
+  *获取用户手机号
+  */
+  getPhoneNumber: function (e) {
+    var iv = e.detail.iv
+    var encryptedData = e.detail.encryptedData
+    if (e.detail.errMsg == 'getPhoneNumber:ok'){
+      wx.getStorage({
+        key: 'userKey',
+        success: function(res) {
+          wx.getLocation({
+            type: 'wgs84',
+            success: function (res2) {
+              var latitude = res2.latitude
+              var longitude = res2.longitude
+              wx.request({
+                url: app.globalData.api + '/Home/index/getPhone',
+                data: {
+                  userId: res.data.id,
+                  thr_session: res.data.thr_session,
+                  iv: iv,
+                  encryptedData: encryptedData,
+                  latitude: latitude,
+                  longitude: longitude,
+                },
+                success: function (res1) {
+                  if(!res1.data){
+                    wx.login({
+                      success: function (res) {
+                        var code = res.code
+                        wx.request({
+                          url: app.globalData.api + '/home/index/login',
+                          data: {
+                            code: code,
+                          },
+                          success: function (res1) {
+                            if (res1.data == 'false') {
+                              wx.showToast({
+                                title: '登陆失败',
+                                icon: 'none',
+                                duration: 2000
+                              })
+                            } else {
+                              wx.setStorage({
+                                key: "userKey",
+                                data: res1.data
+                              })
+                              wx.showToast({
+                                title: '请重新点击尝试！',
+                                icon: 'none',
+                                duration: 2000
+                              })
+                            }
+                          }
+                        })
+                      }
+                    })
+                  }else{
+                    wx.navigateTo({
+                      url: '/pages/my/quote/quote',
+                    })
+                  }
+                }
+              })
+            }
+          })
+        },
+      })
+    }
+  } 
 })

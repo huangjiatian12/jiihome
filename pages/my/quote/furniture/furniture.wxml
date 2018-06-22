@@ -1,0 +1,162 @@
+<view catchtouchmove="{{mask?'true':''}}">
+<view id="fur-img"><image src="{{furQuoImg?furQuoImg:furData.img_src}}" data-src="{{furQuoImg?furQuoImg:furData.img_src}}" bindtap='imgYu'></image></view>
+
+<view id='attr-box'>
+  <block wx:for="{{attribute}}" wx:for-index="attrName">
+    <view class='att-name'>{{attrName}}</view>
+    <block wx:for="{{item}}">
+      <view wx:if="{{index == '1'}}">
+        <block wx:for="{{item}}" wx:for-index="id">
+          <view class="{{(chooseData[attrName] == id)?'att-val-choose':'att-val'}}" data-index='{{attrName}}' data-val='{{id}}' data-valCh='{{item}}' bindtap='chooseAtt'>{{item}}</view>
+        </block>
+      </view>
+
+      <view wx:if="{{index == '2'}}">
+        <view class='minus-hide' wx:if="{{!minusShow[attrName]}}">-</view>
+        <view class='minus' wx:if="{{minusShow[attrName]}}" data-index='{{attrName}}' bindtap='minusAttr'>-</view>
+        <view class='add-minus-val'>{{chooseVal[attrName]?chooseVal[attrName]:item[0]}}</view>
+        <view class='add' wx:if="{{!addHide[attrName]}}" data-index='{{attrName}}' bindtap='addAttr'>+</view>
+        <view class='add-hide' wx:if="{{addHide[attrName]}}">+</view>
+      </view>
+    </block>
+  </block>
+</view>
+
+<view id='para-box' wx:if="{{parameter}}">
+
+ 
+ <view class='att-name'>根据图示输入 长X高X深(m)</view>
+
+  <block wx:for="{{parameter}}">
+    <input wx:if="{{furData.cate_id != '2'}}" class='para-val' data-key='{{item}}' placeholder="{{item}}" value='{{para[item]}}' bindblur="changePara"/>
+    <input wx:if="{{(furData.cate_id == '2') && (item == 'H')}}" class='para-val' data-key='{{item}}' placeholder="H≤2.4" value='{{para[item]}}' bindblur="changePara"/>
+    <input wx:if="{{(furData.cate_id == '2') && (item == 'W')}}" class='para-val' data-key='{{item}}' placeholder="{{widthLim?widthLim:item}}" value='{{para[item]}}' bindblur="changePara"/>
+    <input wx:if="{{(furData.cate_id == '2') && (item == 'D')}}" class='para-val' data-key='{{item}}' placeholder="{{item}}" value='{{para[item]}}' bindblur="changePara"/>
+  </block>
+  
+ <block wx:for="{{material}}" wx:for-index="price">
+   <block wx:for="{{item}}" wx:for-index="title">
+     <view class='att-name'>{{title}}</view>
+     <block wx:for="{{item}}">
+     <view class='para-goods-box'>
+       <view class="{{(chooseGoods[price][0] == item.id)?'goods-box-choose':'goods-box'}}" data-id='{{item.id}}' data-pr='{{price}}'  bindtap='chooseGoods'>
+         <view class='goods-id' data-id='{{item.id}}' data-pr='{{price}}' catchtap='goodsDetail'>
+           <image src='/image/addone.png'></image>
+         </view>
+         <image class='box-img' src="{{goodsImg[price][item.id]?goodsImg[price][item.id]:item.img_src}}"></image>
+       </view>
+       <view class='para-goods-name'>{{item.goods_name}}</view>
+     </view>
+     </block>
+   </block>
+ </block>
+
+ 
+
+
+
+
+  <block  wx:for="{{ext}}">
+    <block wx:for="{{item}}" wx:for-index="cat">
+        <view class='att-name'>{{item[0]}}</view>
+        <block wx:if="{{cat == '1'}}" wx:for="{{item[2]}}" wx:for-index="name" wx:for-item="val">
+          <view class="{{(extData[item[1]][name] == val)?'att-val-choose':'att-val'}}" data-key='{{item[1]}}' data-val='{{val}}' data-name='{{name}}' bindtap='changeRadio'>{{name}}</view>
+        </block>
+        <block wx:if="{{cat == '2'}}" wx:for="{{item[2]}}" wx:for-index="name" wx:for-item="val" >
+          <view class="{{(extData[item[1]][name] == val)?'att-val-choose':'att-val'}}" data-key='{{item[1]}}' data-val='{{val}}' data-name='{{name}}' bindtap='changeCheck'>{{name}}</view>
+        </block>
+        <input wx:if="{{cat == '3'}}" data-key='{{item[1]}}' class='para-val' value='{{para[item[1]]}}' bindblur='changeInput' />
+    </block>
+  </block>
+
+<view class='att-name'>家具所在位置</view>
+ <input id='space'  placeholder="例如：主卧,次卧,客厅等"  bindblur="changeSpace"/>
+</view>
+
+<view id='submit' wx:if="{{parameter}}" bindtap='submit'>提交</view>
+
+<view id="{{mask?'mask':''}}" bindtap='closeGoods'></view>
+</view>
+
+
+<scroll-view scroll-y="true" id='goodsDetai-box' wx:if="{{showGoods}}">
+  <image id='close' bindtap='closeGoods' src=''></image>
+
+  <view id='goods-img'><image src="{{price?price.img_src:goodsPrice.img_src}}" data-src="{{price?price.img_src:goodsPrice.img_src}}" bindtap='imgYu'></image></view>
+
+  <view id='goods-name'>{{goodsData.goods_name}}</view>
+
+  <view wx:if="{{price && (price.discount_price == '0')}}" id='price'>
+    <text class='shop-price' wx:if="{{price.goods_price > 0}}">￥{{price.goods_price}}</text>
+    <text class='shop-price' wx:if="{{price.goods_price < 0}}">-</text>
+  </view>
+
+   <view wx:if="{{price && (price.discount_price != '0')}}" id='price'>
+    <text class='shop-price'>￥{{price.discount_price}}</text><text class='market-price'>￥{{price.goods_price}}</text>
+  </view>
+
+  <view wx:if="{{!price && goodsPrice.max_discount_price == '0'}}" id='price'>
+      <text class='shop-price' wx:if="{{goodsPrice.min_goods_price > 0}}">￥{{goodsPrice.min_goods_price}}</text><text wx:if="{{goodsPrice.min_goods_price != goodsPrice.max_goods_price && goodsPrice.min_goods_price > 0}}" class='shop-price'>-{{goodsPrice.max_goods_price}}</text>
+      <text class='shop-price' wx:if="{{goodsPrice.min_goods_price < 0}}">-</text>
+  </view>
+  
+  <view wx:if="{{!price && goodsPrice.max_discount_price != '0'}}" id='price'>
+    <text class='shop-price'>￥{{goodsPrice.min_discount_price}}</text><text wx:if="{{goodsPrice.min_discount_price != goodsPrice.max_discount_price}}" class='shop-price'>-{{goodsPrice.max_discount_price}}</text>
+    <text class='market-price'>￥{{goodsPrice.min_goods_price}}</text><text wx:if="{{goodsPrice.min_goods_price != goodsPrice.max_goods_price}}" class='market-price'>-{{goodsPrice.max_goods_price}}</text>
+  </view>
+
+  <view class='hr'></view>
+
+  <view class='attr'>
+  <block wx:for="{{attrColData}}">
+    <view class='attr-name'>{{item[0].attr_name}}：</view>
+    <block wx:for="{{item}}">
+      <view wx:if="{{item.num !='false'}}" class="{{item.attr == item.id ? 'attr-col-choose':'attr-col'}} {{(index%8 == 6)?'last':'col-usual'}}">
+        <view class='attr-img' data-attr='{{item.attr_id}}' data-id='{{item.id}}' data-tag='3' bindtap="chooseAttr" style="background:url('{{item.img_src}}');background-size:cover;background-position:center;"></view>
+      </view>
+      <view wx:if="{{item.num =='false'}}" class="attr-col-none {{(index%8 == 7)?'last':'col-usual'}}">
+        <view class='attr-img' style="background:url('{{item.img_src}}');background-size:cover;background-position:center;"></view>
+      </view>
+    </block>
+  </block>
+  </view>
+
+  <view class='attr'>
+  <block wx:for="{{attrNouniData}}">
+    <view class='attr-name'>{{item[0].attr_name}}：</view>
+      <block wx:for="{{item}}">
+        <view wx:if="{{item.num !='false'}}" class="{{item.attr == item.id ? 'attr-val-choose':'attr-val'}} {{(index%3 == 2)?'last':'usual'}}" data-attr='{{item.attr_id}}' data-id='{{item.id}}' data-tag='2' bindtap="chooseAttr">{{item.attr_value}}</view>
+        <view wx:if="{{item.num =='false'}}" class="attr-val-none {{(index%3 == 2)?'last':'usual'}}">{{item.attr_value}}</view>
+      </block> 
+  </block>
+  </view>
+
+
+
+  <view class='attr' wx:if="{{gnData.goods_attr_id == '0' && gnData.goods_number != 0}}">
+    <view class='attr-name' >规格:</view> 
+    <view class="{{chooseDef?'attr-val-choose':'attr-val'}}" data-tag='1' bindtap="chooseAttr">默认</view>           
+  </view>
+
+  <view class='attr' wx:if="{{gnData.goods_attr_id == '0' && gnData.goods_number == '0'}}">
+    <view class='attr-name' >规格:</view> 
+    <view class="attr-val-none">默认</view>           
+  </view>
+
+  <view class='hr'></view>
+
+  <view id='info-box'>
+    <view id='tag-box'>
+        <block wx:for="{{goodsData.tag}}">
+          <text class='tag'>{{item}}</text>
+        </block>  
+    </view>
+
+    <block wx:for="{{attrUniData}}">
+      <view class='info'>
+        <view class='info-name'>{{item[0].attr_name}}:</view>
+        <text class='info-val'>{{item[0].attr_value}}</text>
+      </view>
+    </block> 
+  </view>
+</scroll-view>

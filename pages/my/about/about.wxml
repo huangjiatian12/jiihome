@@ -1,14 +1,41 @@
 <view id='top'>
- <image bindtap="bindViewTap" id="head-img" src="/image/icon.png" background-size="cover"></image>
+ <image id="head-img" src="/image/icon.png" background-size="cover"></image>
 </view>
-<view id="{{more?'desc':'desc-more'}}">
-  <text>
-JIIHOME是一个场景化整体搭配全屋家居直供平台，崇尚自然，简约并同时彰显个性的居家环境，从一件家居产品到整屋家居的组合搭配，我们除了有自己的全屋定制品牌-原炁之外，还集合了许多来自国内外的原创设计家居品牌，另外通过互联网的3D场景展示技术，帮助人们更好地选择心仪的家居用品。从根本上解决家居购买难，搭配难的问题。\n 生活是立体的，场景化的，我们希望把我们的产品以及对美好生活的理念传递给更多的人，帮助越来越多的人拥有他们的Dream Home！
-  </text>
+
+<view class="{{(id == 1)?'question-c':'question'}}" data-id='1' bindtap='changeQus'>
+  <view class='ques-tit'>我们的理念</view>
+  <image src="{{(id == 1)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
 </view>
-<view id='more' bindtap='showmore'>
- <image src="{{more?'/image/bottom.png':'/image/top.png'}}"></image>
+<view class="{{(id==1)?'ques-ans':'hide'}}">
+ <text>我们想给家具创造更多的可能性，因此我们将家具拆分又重组,通过不同组件的搭配，变化出无数的面貌。就像人穿不同的衣服,戴不同的首饰所散发不同的韵味。我们的产品经过精心设计，经久不衰，当人们还在讨论时下流行什么风格的时候，我们宁愿去探讨我们的产品十年之后是否还感觉是现代的。因此，我们将我们的品牌命名为“Select”，他代表了我们对设计、工艺和品质的挑剔，也代表了一种丰富多样的选择，你会发现创造你自己的家具既简单又有趣。</text>
+ <image src='http://p5koaz6je.bkt.clouddn.com/jiimade/about/spirit.png' mode='widthFix' style='width:100%;'></image>
 </view>
-<image class='us' src='http://p5koaz6je.bkt.clouddn.com/descrip1.jpg' mode='widthFix'></image>
-<image class='us' src='http://p5koaz6je.bkt.clouddn.com/descrip2.jpg' mode='widthFix'></image>
-<image class='us' src='http://p5koaz6je.bkt.clouddn.com/descrip3.jpg' mode='widthFix'></image>
+
+<view class="{{(id == 2)?'question-c':'question'}}" data-id='2' bindtap='changeQus'>
+  <view class='ques-tit'>我们的产品</view>
+  <image src="{{(id == 2)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==2)?'ques-ans':'hide'}}">
+ <text>我们提供的产品都是定制的，而非批量生产的，这使我们能够密切关注我们的材料和工艺。我们精心筛选一部分木匠来生产我们的产品。 他们熟悉传统工艺，并使用高科技设备来达到我们严格的标准。 同时他们承载着我们共同的使命，为人们提供更好的定制家具。</text>
+ <image src='http://p5koaz6je.bkt.clouddn.com/jiimade/about/product.png' mode='widthFix' style='width:100%;'></image>
+</view>
+
+<view class="{{(id == 3)?'question-c':'question'}}" data-id='3' bindtap='changeQus'>
+  <view class='ques-tit'>我们的展厅</view>
+  <image src="{{(id == 3)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==3)?'ques-ans':'hide'}}">
+<image src='http://p5koaz6je.bkt.clouddn.com/jiimade/about/ting.jpg' mode='widthFix' style='width:100%;'></image>
+ <text>宁波展厅
+位于慈溪史家工业园内，由旧厂房改造。展厅的开放时间从周一至周六（9 a.m. - 5 p.m）</text>
+</view>
+
+<view class="{{(id == 4)?'question-c':'question'}}" data-id='4' bindtap='changeQus'>
+  <view class='ques-tit'>联系我们</view>
+  <image src="{{(id == 4)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==4)?'ques-ans':'hide'}}">
+ <text>info@jiihome.com
+0574-2796-4414</text>
+<image src='http://p5koaz6je.bkt.clouddn.com/jiimade/about/erweima.png' mode='widthFix' style='width:100%;'></image>
+</view>

@@ -1,0 +1,14 @@
+
+ <block wx:for="{{furData}}">
+  <view class='furniture'>
+  <navigator url="/pages/my/quote/furniture/furniture?furId={{item.id}}" hover-class="none">
+     <image src='{{item.img_src}}'></image>
+     <view class='fur-name'>{{item.fur_name}}</view>
+     <view class='ext-attr'>{{item.attribute}}</view>
+  </navigator>
+  </view>
+ </block>
+
+<navigator open-type='redirect' url="/pages/my/quote/myQuote/myQuoe" hover-class="none">
+<view id='goMyQuote'><text>\n我的\n报价</text></view>
+</navigator>

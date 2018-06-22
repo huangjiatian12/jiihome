@@ -1,11 +1,11 @@
 .swiper{
-  height:550rpx;
+  height:750rpx;
   width: 750rpx;
 }
 .slide-image{
   display: block;
   width:750rpx;
-  height: 550rpx;
+  height: 750rpx;
 }
 #share{
   z-index: 99;
@@ -14,10 +14,11 @@
   width: 90rpx;
   height: 90rpx;
   border-radius: 45rpx;
-  top:510rpx;
+  top:705rpx;
   left: 620rpx;
   background: white;
   border: 1rpx solid #f3f3f3;
+  box-shadow: 3px 3px 6px #ccc;
 }
 #share-per{
   z-index: 99;
@@ -26,7 +27,7 @@
   width: 90rpx;
   height: 90rpx;
   border-radius: 45rpx;
-  top:450rpx;
+  top:650rpx;
   left: 500rpx;
   background: white;
   border: 1rpx solid #f3f3f3;
@@ -38,7 +39,7 @@
   width: 90rpx;
   height: 90rpx;
   border-radius: 45rpx;
-  top:570rpx;
+  top:770rpx;
   left: 500rpx;
   background: white;
   border: 1rpx solid #f3f3f3;
@@ -54,14 +55,10 @@
   height: 90rpx;
   border-radius: 45rpx;
 }
-.share-img{
-  width: 50rpx;
-  margin: 15rpx 0 0 20rpx;
-}
 .share-show{
-  width: 60rpx;
-  height: 60rpx;
-  margin: 15rpx;
+  width: 70rpx;
+  height: 70rpx;
+  margin: 10rpx;
 }
 #name{
   box-sizing: border-box;
@@ -104,26 +101,41 @@
   font-size: 28rpx;
 }
 .attr-val{
+  box-sizing: border-box;
   display: inline-block;
+  height: 66rpx;
+  width: 216rpx;
+  line-height: 66rpx;
+  text-align: center;
   font-size: 26rpx;
   border: 1rpx solid #ccc;
-  margin:0 10rpx 10rpx 0;
-  padding: 5rpx 10rpx;
+  margin-bottom: 15rpx;
 }
 .attr-val-choose{
+  box-sizing: border-box;
   display: inline-block;
+  height: 66rpx;
+  width: 216rpx;
+  line-height: 66rpx;
+  text-align: center;
   font-size: 26rpx;
   border: 1rpx solid black;
-  margin:0 10rpx 10rpx 0;
-  padding: 5rpx 10rpx;
+  margin-bottom: 15rpx;
 }
 .attr-val-none{
+  box-sizing: border-box;
   display: inline-block;
+  height: 66rpx;
+  width: 216rpx;
+  line-height: 66rpx;
+  text-align: center;
   font-size: 26rpx;
   border: 1rpx dashed #ccc;
-  margin:0 10rpx 10rpx 0;
-  padding: 5rpx 10rpx;
+  margin-bottom: 15rpx;
   color: #ccc;
+}
+.usual{
+   margin-right: 19rpx;
 }
 .attr-col-choose{
   display: inline-block;
@@ -131,7 +143,7 @@
   width: 66rpx;
   height: 66rpx;
   border-radius: 33rpx;
-  margin:0 15rpx 10rpx 0;
+  margin-bottom: 10rpx;
   padding: 5rpx;
   border: 1rpx solid black;
 }
@@ -141,7 +153,7 @@
   width: 66rpx;
   height: 66rpx;
   border-radius: 33rpx;
-  margin:0 15rpx 10rpx 0;
+  margin-bottom: 10rpx;
   padding: 5rpx;
   border: 1rpx solid #ccc;
 }
@@ -151,14 +163,17 @@
   width: 66rpx;
   height: 66rpx;
   border-radius: 33rpx;
-  margin:0 15rpx 10rpx 0;
+  margin-bottom: 10rpx;
   padding: 5rpx;
   border: 1rpx dashed #ccc;
+}
+.col-usual{
+  margin-right: 22.57rpx;
 }
 .attr-img{
   width: 54rpx;
   height: 54rpx;
-  border-radius: 28rpx;
+  border-radius: 27rpx;
 }
 #info-box{
   box-sizing: border-box;
@@ -169,14 +184,14 @@
 }
 #info{
   box-sizing: border-box;
-  height: 80rpx;
+  height: 800rpx;
   width: 100%;
   line-height: 100rpx;
   font-size: 32rpx;
   font-weight: bold;
 }
 #tag-box{
-  margin-bottom: 20rpx;
+  margin-top: 20rpx;
 }
 .tag{
   height: 60rpx;
@@ -187,29 +202,30 @@
   color: gray;
 }
 .info{
-  height: 60rpx;
   width: 100%;
   border-bottom: 1rpx solid #f3f3f3;
+  overflow: hidden;
 }
 .info-name{
   float: left;
-  height: 60rpx;
-  line-height: 60rpx;
+  width: 20%;
+  line-height: 80rpx;
   font-size: 26rpx;
 }
 .info-val{
   float: left;
-  height: 60rpx;
-  line-height: 60rpx;
+  width: 70%;
+  display: inline-block;
+  line-height: 80rpx;
   margin-left: 20rpx;
   font-size: 24rpx;
   color: gray;
 }
 .info-more{
   float: right;
-  width: 20rpx;
-  height: 20rpx;
-  padding-top: 20rpx;
+  width: 24rpx;
+  height: 24rpx;
+  padding-top: 28rpx;
 }
 .goods-desc{
   width: 100%;
@@ -218,6 +234,7 @@
   flex-direction: column;
 }
 #bottom{
+  z-index: 101;
   position: fixed;
   width: 100%;
   height: 100rpx;
@@ -232,7 +249,7 @@
 }
 .num{
   float: right;
-  width: 70rpx;
+  width: 50rpx;
   height: 70rpx;
   font-size: 30rpx;
   text-align: center;
@@ -242,13 +259,13 @@
   float: right;
   width: 50rpx;
   height: 50rpx;
-  margin:25rpx 20rpx;
+  margin:25rpx 40rpx 25rpx 10rpx;
 }
 .minus{
   float: right;
   width: 50rpx;
   height: 50rpx;
-  margin:25rpx 20rpx;
+  margin:25rpx 10rpx;
 }
 #cart{
   float: left;
@@ -258,34 +275,6 @@
   line-height: 100rpx;
   font-size: 30rpx;
   background: #ffc700;
-}
-#go-connect{
-  z-index: 9;
-  position: fixed;  
-  display: flex;
-  width: 70rpx;
-  height: 70rpx;
-  border-radius: 35rpx;
-  bottom:150rpx;
-  left: 650rpx;
-  background: white;
-  border: 1rpx solid #f3f3f3;
-}
-#go-index{
-  z-index: 9;
-  position: fixed;  
-  display: flex;
-  width: 70rpx;
-  height: 70rpx;
-  border-radius: 33rpx;
-  bottom:250rpx;
-  left: 650rpx;
-  background: white;
-  border: 1rpx solid #f3f3f3;
-}
-#go-cart image{
-  width: 50rpx;
-  margin: 15rpx 0 0 15rpx;
 }
 #hid{
   width: 100%;
@@ -327,8 +316,8 @@
   margin:0 auto;
   margin-bottom:60rpx;
   margin-top: 100rpx;
-  width: 480rpx; 
-  height: 700rpx;
+  width: 240px; 
+  height: 360px;
   box-shadow:1px 2px 2px #ccc;
   border-raidus:1px;
   opacity:1;
@@ -353,4 +342,72 @@
   bottom:150rpx;
   left: 650rpx;
   opacity:0;
+}
+.btn-ic{
+  float: left;
+  width: 15%;
+  height: 100%;
+  background: white;
+}
+.btn-ic image{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 15rpx 0 0 32rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.btn-text{
+  margin: 0;
+  padding: 0;
+  height: 30rpx;
+  font-size: 20rpx;
+  width: 100%;
+  text-align: center;
+}
+#l-hr{
+  border-left: 1rpx solid #ccc;
+  background: red;
+  margin-top:15rpx;
+  z-index: 10;
+  position: fixed;  
+  display: flex;
+  height: 70rpx;
+  bottom:15rpx;
+  left: 15%;
+}
+#share-now{
+  float: left;
+  text-align: center;
+  line-height: 100rpx;
+  width: 70%;
+  font-size: 30rpx;
+  background: #ffc700;
+}
+#connect{
+  box-sizing: border-box;
+  border-left: 1rpx solid #ccc;
+}
+#btn-connect{
+  z-index: 10;
+  position: fixed;  
+  display: flex;
+  width: 100rpx;
+  height: 90rpx;
+  bottom:0rpx;
+  left: 16%;
+  opacity:0;
+}
+#mawhite{
+  margin:0;
+  padding:0;
+  border:none;
+  width:100%;
+  height:100%;
+  opacity:0;
+  filter:alpha(opacity=60);
+  z-index:99;
+  position:fixed;
+  top:0;
+  left:0;
 }

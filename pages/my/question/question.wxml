@@ -1,0 +1,57 @@
+<view id='hr'></view>
+<view class="{{(id == 1)?'question-c':'question'}}" data-id='1' bindtap='changeQus'>
+  <view class='ques-tit'>我怎样定制我的家具？</view>
+  <image src="{{(id == 1)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==1)?'ques-ans':'hide'}}">
+ <text>定制流程很简单，第一步先测量您所需的家具尺寸，第二步规划家具的功能布局，最后一步选择您喜欢的台面、面板、拉手、支撑脚，通过这些元素的组合变化出无数的设计形态，搭配出您自己的家具风格。假如您遇到任何困难，我们有专业的设计师给您提供帮助。</text>
+</view>
+
+<view class="{{(id == 2)?'question-c':'question'}}" data-id='2' bindtap='changeQus'>
+  <view class='ques-tit'>你们可以帮我设计吗？</view>
+  <image src="{{(id == 2)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==2)?'ques-ans':'hide'}}">
+ <text>可以。请提供给我们精确的尺寸或图纸，我们会给您家具功能布局的建议，以及台面、面板、拉手、支撑脚的推荐清单。另外我们也会提供一份效果图。但最好是您来我们展厅进行当面交流。我们会告知您整个设计方案需要花多长时间。</text>
+ <image src='http://p5koaz6je.bkt.clouddn.com/503175929.jpg' style='width:100%' mode='widthFix'></image>
+</view>
+
+<view class="{{(id == 3)?'question-c':'question'}}" data-id='3' bindtap='changeQus'>
+  <view class='ques-tit'>发货周期要多久？</view>
+  <image src="{{(id == 3)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==3)?'ques-ans':'hide'}}">
+ <text>根据定制产品的款式或者数量不同，发货时间会有所不同，不过我们承诺会在4-6周内送货上门。您可以在产品下单后咨询我们获得较为准确的发货时间。</text>
+</view>
+
+<view class="{{(id == 4)?'question-c':'question'}}" data-id='4' bindtap='changeQus'>
+  <view class='ques-tit'>我可以无理由退换货吗？</view>
+  <image src="{{(id == 4)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==4)?'ques-ans':'hide'}}">
+ <text>因为我们的家具都是个性化定制的，因此在没有质量问题的前提下不接受退换货。我们建议在您下单之前反复确认您的订单。但如果在运输过程中造成了损坏，我们会及时安排补发新的给您。</text>
+</view>
+
+<view class="{{(id == 5)?'question-c':'question'}}" data-id='5' bindtap='changeQus'>
+  <view class='ques-tit'>你们的产品质量怎么样？环保吗？</view>
+  <image src="{{(id == 5)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==5)?'ques-ans':'hide'}}">
+ <text>我们非常注重设计及品质，我们所使用的柜体材料是E0级实木颗粒板，烤漆面板采用20mm厚的密度板，通过六面油漆喷涂达到最好的效果和耐用性。我们通过筛选市场上的材料来满足我们对设计、品质、性价比的要求。</text>
+</view>
+
+<view class="{{(id == 6)?'question-c':'question'}}" data-id='6' bindtap='changeQus'>
+  <view class='ques-tit'>你们提供上门测量或安装服务吗？</view>
+  <image src="{{(id == 6)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==6)?'ques-ans':'hide'}}">
+ <text>目前我们仅提供宁波地区的上门测量或安装服务，需收取额外的费用。</text>
+</view>
+
+<view class="{{(id == 7)?'question-c':'question'}}" data-id='7' bindtap='changeQus'>
+  <view class='ques-tit'>除了开门，我还可以选择做移门或折叠门吗？</view>
+  <image src="{{(id == 7)?'/image/minus.png':'/image/addone.png'}}" class='btn-ri'></image>
+</view>
+<view class="{{(id==7)?'ques-ans':'hide'}}">
+ <text>可以。这些门的不同开启方式涉及到不同功能五金的应用，需要由我们专业的设计师来指导。</text>
+</view>
