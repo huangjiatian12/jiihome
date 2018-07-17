@@ -1,6 +1,6 @@
 <scroll-view  class="scroll-style" scroll-x="true" scroll-with-animation="{{true}}" style="width:100%">
   <view class='tablist'>
-      <block wx:for="{{tabList}}">
+    <block wx:for="{{tabList}}">
       <view class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='switchNav'>
         <text>{{item}}</text>
       </view>

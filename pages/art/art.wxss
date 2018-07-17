@@ -16,7 +16,12 @@ page {
   width:500rpx;
   display: inline-block;
   text-align: center;
-  margin-left: 10rpx;
+  
+}
+.item text{
+  box-sizing: border-box;
+  width: 130rpx;
+  margin-left: 20rpx;
   background: yellow;
 }
 .tablist .item {

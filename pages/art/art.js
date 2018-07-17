@@ -11,7 +11,7 @@ Page({
     circular: true,
     interval: 3000,
     duration: 500,
-    tabList: ['全部', '户型', '风格', '风格', '风格', '风格', '风格'],
+    tabList: ['全部', '风格', '风格', '风格', '风格', '风格', '风格'],
     current: 0,//当前选中的Tab项
   },
   contentChange: function (e) {

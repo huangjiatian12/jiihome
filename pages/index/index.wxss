@@ -45,7 +45,7 @@ page{
   text-align: center;    
   line-height: 50rpx;
 }
-.swiper-tab-list{  
+.swiper-tab-list{
   font-size: 30rpx;  
   display: inline-block;   
   color: black;
