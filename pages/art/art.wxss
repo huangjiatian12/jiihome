@@ -22,7 +22,6 @@ page {
   box-sizing: border-box;
   width: 130rpx;
   margin-left: 20rpx;
-  background: yellow;
 }
 .tablist .item {
   flex: auto;
@@ -71,3 +70,45 @@ page {
   z-index: 50;
   border-bottom: 1rpx solid #eee;
   }
+.nav {
+  height: 60rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 80rpx;
+  font-size: 16px;
+  white-space: nowrap;
+  position: absolute;
+  top:80rpx;
+  left: 0;
+  z-index: 99;
+}
+.swiper-tab{    
+ 
+  line-height: 50rpx;
+}
+.son{
+  display: inline-block;   
+  color: black;
+  background-color: whitesmoke; 
+  margin-left: 10rpx; 
+}
+.swiper-item-H{
+  top: 40rpx;
+}
+.text{
+  height: 50rpx;
+  width: 100rpx;
+  font-size: 25rpx;
+  text-align: center;
+}
+.text4{
+  height: 50rpx;
+  width: 100rpx;
+  font-size: 20rpx;
+  text-align: center;
+}
+.on{ 
+  background-color: #55AA66;
+  color: white;    
+  }    

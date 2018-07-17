@@ -13,7 +13,7 @@ Page({
     duration: 500,
   },
 
-  getInfo(){
+  getInfo() {
     var self = this
 
     //获取轮播图
@@ -130,20 +130,20 @@ Page({
     self.getInfo()
 
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-     var self = this
-     self.getInfo()
+    var self = this
+    self.getInfo()
   },
 
   /**

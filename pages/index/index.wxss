@@ -42,7 +42,7 @@ page{
   top: 0;
 }
 .swiper-tab{    
-  text-align: center;    
+   
   line-height: 50rpx;
 }
 .swiper-tab-list{
@@ -82,8 +82,9 @@ page{
   height: 50rpx;
   width: 100rpx;
   font-size: 25rpx;
+  text-align: center; 
 }
 .on{ 
   background-color: #55AA66;
   color: white;    
-  }    
+  }
