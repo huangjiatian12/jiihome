@@ -5,8 +5,8 @@ page{
   box-sizing: border-box;
   display: inline-block;
   width: 50%;
-  height: 385rpx;
-  padding: 40rpx 40rpx 0;
+  height: 415rpx;
+  padding: 20rpx 40rpx 0;
 }
 .furniture image{
   width: 100%;
@@ -14,14 +14,14 @@ page{
 }
 .fur-name{
   width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 40rpx;
+  line-height: 30rpx;
   font-size: 26rpx;
   text-align: center;
 }
 .ext-attr{
   width: 295rpx;
-  height: 30rpx;
+  height: 60rpx;
   line-height:30rpx;
   font-size: 22rpx;
   text-align: center;
@@ -41,4 +41,9 @@ page{
   box-shadow: 3px 3px 3px #ccc;
   font-size: 28rpx;
   line-height: 25rpx;
+}
+#goMyQuote image{
+  width: 74rpx;
+  height: 74rpx;
+  margin: 13rpx;
 }

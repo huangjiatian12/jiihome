@@ -105,14 +105,18 @@ Page({
      var valCh = e.currentTarget.dataset.valch
      var chooseData = self.data.chooseData
      var chooseCh = self.data.chooseCh
+     var chooseVal = self.data.chooseVal
+     var attribute = self.data.attribute
      chooseCh[attrName] = valCh
      chooseData[attrName] = attrVal
      self.setData({
        chooseCh: chooseCh,
        chooseData:chooseData,
      })
+     
      self.checkAttr()
   },
+
   checkAttr(){
      var self = this
      var chooseData = self.data.chooseData
@@ -120,6 +124,11 @@ Page({
      var furData = self.data.furData
      var para = self.data.para
      var parData = self.data.parData
+     var extData = self.data.extData
+     var chooseVal = self.data.chooseVal
+     var addHide = self.data.addHide
+     var minusShow = self.data.minusShow
+     var chooseData = self.data.chooseData
      var gatData = true
      var gatherAttr = ''
      for(var i in attribute){
@@ -131,6 +140,7 @@ Page({
              gatData = false
            }
          }else{
+           var addName = i
            if (chooseData[i]) {
              gatherAttr = gatherAttr + chooseData[i] + ','
            } else {
@@ -139,14 +149,13 @@ Page({
          }
        }
      }
-
+    
      if(gatData){
        wx.request({
          url: app.globalData.api + '/Home/index/getFurModel',
          data: { furId: furData.id, gatAttr: gatherAttr },
          success: function (res) {
-
-           if(!res.data.parameter){
+           if(!res.data){
              wx.showToast({
                title: '此搭配不存在，请重新选择',
                icon: 'none',
@@ -162,6 +171,25 @@ Page({
                gatherAttr: '',
              })
             }else{
+             if (res.data.minVal){
+               chooseVal[addName] = res.data.minVal
+               chooseData[addName] = parseInt(res.data.minVal)
+               if(res.data.minData == '2'){
+                 minusShow[addName] = false;
+               }else{
+                 minusShow[addName] = true;
+               }
+               if(res.data.addData == '2'){
+                 addHide[addName] = true;
+               }else{
+                 addHide[addName] = false;
+               }
+               self.setData({
+                 chooseVal: chooseVal,
+                 minusShow: minusShow,
+                 addHide: addHide,
+               })
+             }
                self.setData({
                  furQuoId:res.data.furQuoId,
                  furQuoImg: res.data.furQuoImg,
@@ -171,8 +199,8 @@ Page({
                  ext:res.data.ext,
                  gatherAttr: gatherAttr,
                })
-               if(furData.id == '3'){
               
+               if(furData.id == '3'){
                  if(gatherAttr == '0,0,'){
                    para.H = 0.85
                    parData.H = 0.85
@@ -260,6 +288,13 @@ Page({
                      para: para,
                      parData: parData
                    })
+                 } else {
+                   para = {}
+                   parData = {}
+                   self.setData({
+                     para: para,
+                     parData: parData
+                   })
                  }
                } else if (furData.id == '2'){
                  para.H = 2.4
@@ -296,6 +331,13 @@ Page({
                      para: para,
                      parData: parData
                    })
+                 } else {
+                   para = {}
+                   parData = {}
+                   self.setData({
+                     para: para,
+                     parData: parData
+                   })
                  }
                } else if (furData.id == '5') {
                  para.H = 2.4
@@ -315,6 +357,32 @@ Page({
                      parData: parData
                    })
                }
+
+               var ext = res.data.ext
+               for (var i in ext) {
+                 for (var p in ext[i]) {
+                   if (p == '3') {
+                     if (ext[i][p][1] == 'kai') {
+                       para['kai'] = 0
+                       extData['kai'] = {}
+                       extData['kai'][0] = 0
+                     } else if (ext[i][p][1] == 'cao') {
+                       para['cao'] = 1
+                       extData['cao'] = {}
+                       extData['cao'][0] = 1
+                     } else if (ext[i][p][1] == 'tai') {
+                       para['tai'] = 1
+                       extData['tai'] = {}
+                       extData['tai'][0] = 1
+                     }
+                     self.setData({
+                       para: para,
+                       extData: extData
+                     })
+                   }
+                 }
+               }
+
                if(furData.cate_id == '2'){
                  if (gatherAttr == '0,0,'){
                    //门套
@@ -1090,6 +1158,7 @@ Page({
       extData[key] = {}
       extData[key][0] = val
     }
+
   },
   submit(){
     var self = this

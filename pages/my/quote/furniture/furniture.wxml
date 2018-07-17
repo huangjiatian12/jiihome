@@ -24,6 +24,7 @@
 
 <view id='para-box' wx:if="{{parameter}}">
 
+
  
  <view class='att-name'>根据图示输入 长X高X深(m)</view>
 

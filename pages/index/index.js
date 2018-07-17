@@ -1,16 +1,18 @@
 const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    currentTab: 0,
+    navScrollLeft: 0,
     indicatorDots: true,
     autoplay: true,
     circular: true,
     interval: 3000,
-    duration: 500
+    duration: 500,
   },
+
   getInfo(){
     var self = this
 
@@ -97,6 +99,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+
     var self = this
     wx.login({
       success: function (res) {
@@ -123,11 +126,11 @@ Page({
         })
       }
     })
-   
+
     self.getInfo()
 
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -153,8 +156,46 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onLoad: function () {
+    var that = this;
 
+    /**  
+     * 获取系统信息  
+     */
+    wx.getSystemInfo({
+
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+
+    });
+  },
+  /**  
+     * 滑动切换tab  
+     */
+  bindChange: function (e) {
+
+    var that = this;
+    that.setData({ currentTab: e.detail.current });
+
+  },
+  /**  
+   * 点击tab切换  
+   */
+  swichNav: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
   },
 
   /**

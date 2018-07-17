@@ -37,5 +37,5 @@
 <view class="{{(id==4)?'ques-ans':'hide'}}">
  <text>info@jiihome.com
 0574-2796-4414</text>
-<image src='http://p5koaz6je.bkt.clouddn.com/jiimade/about/erweima.png' mode='widthFix' style='width:100%;'></image>
+<image src='http://p5koaz6je.bkt.clouddn.com/jiimade/about/erweima.png' mode='widthFix' style='width:100%;' data-src="http://p5koaz6je.bkt.clouddn.com/jiimade/about/erweima.png" bindtap='imgYu'></image>
 </view>

@@ -95,6 +95,14 @@
     <image class='info-more' src='/image/right.png'></image>
   </view>
   </navigator>
+
+  <navigator url="/pages/my/share/share"  hover-class="none">
+  <view class='info'>
+    <image class='info-img' src='/image/question.png'></image>
+    <view class='info-text'>会员中心</view>
+    <image class='info-more' src='/image/right.png'></image>
+  </view>
+  </navigator>
 </view>
 
 <view class='info-box'>

@@ -19,23 +19,23 @@
     <view class='module-list'>
       <view class='top'> 
           <view class='top-img'>
-             <image class='select' src="/image/kong.png"></image>
+             <image class='select' src="{{item.choose?'/image/checked.png':'/image/kong.png'}}"></image>
              <text class='sort'>{{val.fur_name}}G{{val.sort_id}}</text>
           </view>
           <view class='top-space'><text>{{val.space}}</text></view>
           <view class='top-del' data-key='{{key}}' data-cat='1'  bindtap='removeModule'>
-            <image src='/image/empty.png'></image>
+            <image src="/image/empty.png"></image>
           </view>
       </view>
       <view class='info-box'>
          <view class='info-img'>
-           <image src="{{val.img_src}}"></image>
+           <image src="{{val.img_src}}" data-src="{{val.img_src}}" bindtap='imgYu'></image>
          </view>
          <view class='info-info'>
             <view class='attr-para'>
               <view class='info-para'>
                <block wx:for="{{val.parStrAttr}}" wx:for-index="k" wx:for-item="v">
-                <text wx:if="{{k%2 == 0}}" decode="{{true}}">{{v}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+                <text wx:if="{{k%2 == 0}}" decode="{{true}}">{{v}}&nbsp;&nbsp;&nbsp;</text>
                 <text wx:if="{{k%2 == 1}}">{{v}}\n</text>
                </block>
               </view>
@@ -77,7 +77,7 @@
 <view class='bottom-hid'></view>
   <view class='bottom'>
      <view class='bottom-left'>柜架合计：￥{{cabinet.agioFee}}</view>
-     <view class='bottom-right' bindtap='getCel'>导出</view>
+     <view class='bottom-right' bindtap='getCel'>加入购物车</view>
   </view>
 </view>
 
@@ -96,7 +96,7 @@
       </view>
       <view class='info-box'>
          <view class='info-img'>
-           <image src="{{val.img_src}}"></image>
+           <image src="{{val.img_src}}" data-src="{{val.img_src}}" bindtap='imgYu'></image>
          </view>
          <view class='info-info'>
             <view class='attr-para'>
@@ -144,7 +144,7 @@
 <view class='bottom-hid'></view>
   <view class='bottom'>
      <view class='bottom-left'>门控合计：￥{{door.agioFee}}</view>
-     <view class='bottom-right' bindtap='getCel'>导出</view>
+     <view class='bottom-right' bindtap='getCel'>加入购物车</view>
   </view>
 </view>
 
@@ -163,7 +163,7 @@
       </view>
       <view class='info-box'>
          <view class='info-img'>
-           <image src="{{val.img_src}}"></image>
+           <image src="{{val.img_src}}" data-src="{{val.img_src}}" bindtap='imgYu'></image>
          </view>
          <view class='info-info'>
             <view class='attr-para'>
@@ -210,11 +210,18 @@
 
   <view class='bottom-hid'></view>
   <view class='bottom'>
-     <view class='bottom-left'>饰面合计：￥{{front.agioFee}}</view>
-     <view class='bottom-right' bindtap='getCel'>导出</view>
+     <view class='bottom-left'>饰面合计：￥{{agioFee}}</view>
+     <view class='bottom-right' bindtap='getCel'>加入购物车</view>
   </view>
 </view>
 
 <navigator open-type='redirect' url="/pages/my/quote/quote" hover-class="none">
-<view id='goQuote'><text>\n继续\n报价</text></view>
+<view id='goQuote'><image src='/image/continue_quote.png'></image></view>
 </navigator>
+
+<view id='bottom'>
+     <view id='choose'  bindtap='chooseAll'>
+       <image class='choose-all' src="{{chooseAll?'/image/checked.png':'/image/kong.png'}}"></image>
+       <text>全选</text>
+     </view>
+</view>

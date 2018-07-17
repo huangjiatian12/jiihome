@@ -6,195 +6,140 @@
      <view id='search-ch'>搜索</view>
   </view>
 </navigator>
-
 <view class='swiper'>
-    <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" style='height:496rpx' >
-    <block wx:for="{{imgUrls}}">
-     <navigator url="{{item.url}}" hover-class="none">
-      <swiper-item>  
-         <image src="{{item.img_src}}" class="slide-image"/> 
-      </swiper-item>
-     </navigator>
-    </block>
-    </swiper>
+  <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
+    <view class="swiper-tab">    
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}} text" data-current="0" bindtap="swichNav">整屋</view>   
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}} text" data-current="1" bindtap="swichNav">客厅</view>   
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}} text" data-current="2" bindtap="swichNav">餐厅</view>  
+      <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}} text" data-current="3" bindtap="swichNav">卧室</view>  
+      <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}} text" data-current="4" bindtap="swichNav">书房</view>       
+      <view class="swiper-tab-list {{currentTab==5 ? 'on' : ''}} text" data-current="5" bindtap="swichNav">玄关</view>
+      <view class="swiper-tab-list {{currentTab==6 ? 'on' : ''}} text" data-current="6" bindtap="swichNav">里屋</view>
+      <view class="swiper-tab-list {{currentTab==7 ? 'on' : ''}} text" data-current="7" bindtap="swichNav">玄关</view>
+    </view>  
+  </scroll-view>    
 </view>
 
-<view id='begin'>
-  <view id='begin-text'>从这里开始...</view>
-  <view id='begin-box'>
-     <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
-       <view class='begin-info-cen'>
-          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin1.png'></image>
-          <view class='begin-title'>1. 规划测量您的家具尺寸</view>
-          <view class='begin-bri'>如果您有图纸也可以发给我们</view>
-       </view>
-       <view class='begin-info'>
-          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin2.png'></image>
-          <view class='begin-title'>2. 沟通确定家具的功能布局</view>
-          <view class='begin-bri'>我们的家具功能规划师让家具更符合您的使用习惯</view>
-       </view>
-       <view class='begin-info'>
-          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin3.png'></image>
-          <view class='begin-title'>3. 搭配您想要的造型风格</view>
-          <view class='begin-bri'>选择面板、台面、拉手、支撑脚来创造属于你的风格</view>
-       </view>
-       <view class='begin-info'>
-          <image class='begin-img' src='http://p5koaz6je.bkt.clouddn.com/begin4.png'></image>
-          <view class='begin-title'>4. 送货上门及安装 </view>
-          <view class='begin-bri'>我们承诺在您下单后30-45天内送货上门</view>
-       </view>
-       <view id="begin-ri"></view>
-     </scroll-view>
-  </view>
-</view>
-
-<view class='hr'></view>
-
-<view class='cate' wx:if="{{designData && designData != ''}}">
-   <view class='cate-ch'>设计</view>
-   <view class='cate-en'>Design</view>
-      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
-       <block wx:for="{{designData}}">
-        <view class="{{(index == '0')?'article-one':'article'}}">
-        <navigator url="/pages/art/article/article?artId={{item.id}}&artTitle={{item.article_name}}&img={{item.img_src}}" hover-class="none">
-          <image class='article-img' src='{{item.img_src}}' ></image>
-          <view class='article-name'>{{item.article_name}}</view>
-          <view class='article-bri'>{{item.article_brief}}</view>
-        </navigator>  
-        </view>
-       </block>
-       <view id="design-ri"></view>
-      </scroll-view>
-   <view class='more'>
-    <navigator url="/pages/art/art" open-type="switchTab" hover-class="none">
-       <text>查看全部 </text>  
-       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
-    </navigator>
-   </view>
-</view>
-
-<view class='hr'></view>
-
-<block wx:for="{{catGoods}}">
-<view class='cate'>
-   <view class='cate-ch'>{{item.name}}</view>
-   <view class='cate-en'>{{item.name_en}}</view>
-   <image class='cate-img' src='{{item.img_src}}'></image>
-      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
-        <block wx:for="{{item.goods}}">
-         <view class='goods'>
-         <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
-            <image class='goods-img' src='{{item.img_src}}'></image>
-            <view class='goods-name'>{{item.goods_name}}</view>
-            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'>
-            <text class='shop-price' wx:if="{{item.min_goods_price > 0}}">￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price && item.min_goods_price > 0}}" class='shop-price'>-{{item.max_goods_price}}</text>
-            <text class='shop-price' wx:if="{{item.min_goods_price < 0}}">-</text>
-            </view>
-           
-            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
-            <view class='goods-tag'>
-             <block wx:for="{{item.tag}}">
-              <text class="show-tag">{{item}}</text>
-             </block>
-              <text wx:if="{{item.tag.length == 0}}" class='hide-tag'></text>
-            </view>  
-        </navigator>
-         </view>
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px"  bindchange="bindChange">   
+    <!-- 整屋 -->    
+  <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"          circular="{{circular}}"  style='height:1000rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
         </block>
-      </scroll-view>
-   <view class='more'>
-     <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
-       <text>查看全部 </text>  
-       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
-     </navigator>
-   </view>
-</view>
-<view class='hr'></view>
-</block>
-
-<block wx:for="{{bigGoods}}">
-<view class='cate'>
-   <view class='cate-ch'>{{item.name}}</view>
-   <view class='cate-en'>{{item.name_en}}</view>
-   <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
-        <block wx:for="{{item.goods}}">
-         <view class="{{(index == '0')?'front-goods-one':'front-goods'}}">
-         <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
-            <image class='front-goods-img' src='{{item.img_src}}'></image>
-            <view class='goods-name'>{{item.goods_name}}</view>
-            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'>
-            <text class='shop-price' wx:if="{{item.min_goods_price > 0}}">￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price && item.min_goods_price > 0}}" class='shop-price'>-{{item.max_goods_price}}</text>
-            <text class='shop-price' wx:if="{{item.min_goods_price < 0}}">-</text>
-            </view>
-            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
-            <view class='goods-tag'>
-             <block wx:for="{{item.tag}}">
-              <text class="show-tag">{{item}}</text>
-             </block>
-              <text wx:if="{{item.tag.length == 0}}" class='hide-tag'></text>
-            </view> 
-         </navigator>   
-         </view>
+      </swiper>
+     </view>    
+  </swiper-item>    
+    <!-- 客厅 -->    
+    <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"          circular="{{circular}}"  style='height:1025rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
         </block>
-        <view id="front-goods-ri"></view>
-   </scroll-view>
-   <view class='more'>
-      <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
-       <text>查看全部 </text>  
-       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
-     </navigator>
-   </view>
-</view>
-<view class='hr'></view>
-</block>
-
-<block wx:for="{{smallGoods}}">
-<view class='cate'>
-   <view class='cate-ch'>{{item.name}}</view>
-   <view class='cate-en'>{{item.name_en}}</view>
-   <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
-        <block wx:for="{{item.goods}}">
-         <view class='goods'>
-         <navigator url="/pages/product/product?goodsId={{item.id}}" hover-class="none">
-            <image class='goods-img' src='{{item.img_src}}'></image>
-            <view class='goods-name'>{{item.goods_name}}</view>
-            <view wx:if="{{item.max_discount_price == '0'}}" class='goods-price'>
-            <text class='shop-price' wx:if="{{item.min_goods_price > 0}}">￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price && item.min_goods_price > 0}}" class='shop-price'>-{{item.max_goods_price}}</text>
-            <text class='shop-price' wx:if="{{item.min_goods_price < 0}}">-</text>
-            </view>
-            <view wx:if="{{item.max_discount_price != '0'}}" class='goods-price'><text class='shop-price'>￥{{item.min_discount_price}}</text><text wx:if="{{item.min_discount_price != item.max_discount_price}}" class='shop-price'>-{{item.max_discount_price}}</text><text class='market-price'>￥{{item.min_goods_price}}</text><text wx:if="{{item.min_goods_price != item.max_goods_price}}" class='market-price'>-{{item.max_goods_price}}</text></view>
-            <view class='goods-tag'>
-             <block wx:for="{{item.tag}}">
-              <text class="show-tag">{{item}}</text>
-             </block>
-              <text wx:if="{{item.tag.length == 0}}" class='hide-tag'></text>
-            </view> 
-        </navigator>
-         </view>
+      </swiper>
+     </view>    
+  </swiper-item>    
+    <!-- 餐厅 -->    
+    <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"          circular="{{circular}}"  style='height:1025rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
         </block>
-  </scroll-view>
-  <view class='more'>
-     <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
-       <text>查看全部 </text>  
-       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
-     </navigator>
-  </view>
-</view>
-<view class='hr'></view>
-</block>
-
-<block wx:for="{{onlyCat}}">
-<view class='cate'>
-   <view class='cate-ch'>{{item.name}}</view>
-   <view class='cate-en'>{{item.name_en}}</view>
-   <image class='cate-img' src='{{item.img_src}}'></image>
-   <view class='more'>
-      <navigator url="/pages/product/productList/pr-list?catId={{item.id}}&catName={{item.name}}" hover-class="none">
-       <text>查看全部 </text>  
-       <image src='/image/more.png' style='width:20rpx;height:20rpx;padding-top:21rpx;margin-left:15rpx;' />
-     </navigator>
-   </view>
-</view>
-<view class='hr'></view>
-</block>
+      </swiper>
+     </view>    
+  </swiper-item>  
+    <!-- 卧室 -->  
+    <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"            circular="{{circular}}"   style='height:1025rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+     </view>    
+  </swiper-item>   
+    <!-- 书房 --> 
+    <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"            circular="{{circular}}"   style='height:1025rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+     </view>    
+  </swiper-item>
+    <!-- 玄关 -->
+    <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"            circular="{{circular}}"   style='height:1025rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+     </view>    
+  </swiper-item>
+  <!-- 里屋 -->
+    <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"            circular="{{circular}}"   style='height:1025rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+     </view>    
+  </swiper-item>
+  <!-- 里屋 -->
+    <swiper-item class="item">    
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"  interval="{{interval}}"            
+                duration="{{duration}}"            circular="{{circular}}"   style='height:1025rpx' >
+        <block wx:for="{{imgUrls}}">
+          <navigator url="{{item.url}}" hover-class="none">
+            <swiper-item>  
+              <image src="{{item.img_src}}" class="slide-image"/> 
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+     </view>    
+  </swiper-item>     
+</swiper>

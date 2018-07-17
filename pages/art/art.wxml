@@ -1,9 +1,17 @@
-<block wx:for="{{articleData}}">
-  <navigator url="/pages/art/article/article?artId={{item.id}}&artTitle={{item.article_name}}&img={{item.img_src}}" hover-class="none">
-  <view class='article'>
-    <image class='article-img' src='{{item.img_src}}' ></image>
-    <view class='article-name'>{{item.article_name}}</view>
-    <view class='article-bri'>{{item.article_brief}}</view>
+<scroll-view  class="scroll-style" scroll-x="true" scroll-with-animation="{{true}}" style="width:100%">
+  <view class='tablist'>
+      <block wx:for="{{tabList}}">
+      <view class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='switchNav'>
+        <text>{{item}}</text>
+      </view>
+    </block>
   </view>
-  </navigator>
-</block>
+</scroll-view>
+
+<swiper class='out' current='{{current}}' indicator-dots="{{false}}" autoplay="{{false}}" bindchange="contentChange">
+  <swiper-item wx:for="{{tabList}}">
+    <view class='content'>
+      <text>{{item}}</text>
+    </view>
+  </swiper-item>
+</swiper>

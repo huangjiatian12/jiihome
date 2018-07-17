@@ -1,0 +1,129 @@
+#info{
+  height: 130rpx;
+  width: 100%;
+  background: yellow;
+}
+#head-img{
+  display: flex;
+  float: left;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 88rpx;
+  background-size: cover;
+  margin: 0 auto;
+  margin-top: 17rpx;
+  margin-left: 20rpx;
+}
+#user-name{
+  font-size: small;
+  float: right;
+  margin-top: 50rpx;
+  margin-right: 60%;
+}
+.score{
+  border-bottom:1px whitesmoke solid;
+}
+.score2{
+  border-bottom: 10px whitesmoke solid;
+}
+.text-score{
+  font-size: small;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+.text-score-1{
+  font-size: small;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+  color: grey;
+}
+.text-score-2{
+  font-size: 60rpx;
+  margin-left: 0rpx;
+  margin-top: 8rpx;
+}
+.text-can{
+  margin-left: 10rpx;
+}
+.score-use{
+  float: right;
+  font-size: small;
+  margin-right: 20rpx;
+  color: blue;
+  margin-bottom: -6rpx;
+  margin-top: -6rpx;
+}
+.text-wait{
+  font-size: small;
+  color: gray;
+}
+.total{
+  margin-left: 30rpx;
+}
+.score-use-2{
+  float: right;
+  font-size: small;
+  margin-right: 20rpx;
+  color: red;
+  margin-bottom: -6rpx;
+  margin-top: -6rpx;
+}
+.button-switch{
+  float: right;
+  margin-top: -15rpx;
+  margin-right: 10rpx;
+  color: blue;
+}
+.button-switch-1{
+  float: right;
+  margin-top: -15rpx;
+  margin-right: 10rpx;
+  color: red;
+}
+.member-button{
+  float: right;
+  color: yellow;
+  margin-top: -90rpx;
+  margin-right: 10rpx;
+  background: tomato;
+}
+.btn-hover{
+  background-color: orangered;
+}
+.text-rule{
+  position: fixed;
+  bottom: 20rpx;
+  font-size: x-small;
+}
+.rule{
+  display: flex;
+  justify-content: center;  
+}
+.content{
+  display: flex;
+  flex-direction: row;
+}
+.text-share{
+  display: flex;
+  justify-content: center;
+  font-size: 20rpx;
+  margin-top: -75rpx;
+  font-weight: bold;
+}
+.text-share-2{
+  display: flex;
+  justify-content: center;
+  font-size: 20rpx;
+  margin-top: 230rpx;
+  font-weight: bold;
+}
+.pic{
+  width: 300rpx;
+  height: 300rpx;
+}
+.picsta{
+  display: inline;
+  margin-left: -10rpx;
+}

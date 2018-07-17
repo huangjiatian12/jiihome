@@ -1,5 +1,5 @@
 <view id='top'>
-  <view class="{{(status == '0')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='0'>
+  <view  class="{{(status == '0')?'nav-choose':'nav'}}" bindtap='changesta' data-sta='0'>
      <view class='nav-sta'>待付款</view>
      <view class='bothr' wx:if="{{status == '0'}}"></view>
   </view>

@@ -1,36 +1,13 @@
-// pages/my/about/about.js
+// pages/my/share/sharecode/sharecode.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id:1
+  
   },
-  changeQus(e) {
-    var self = this
-    var id = self.data.id
-    var cId = e.currentTarget.dataset.id
-    if (id == cId) {
-      self.setData({
-        id: 0
-      })
-    } else {
-      self.setData({
-        id: cId
-      })
-    }
-  },
-  imgYu(e) {
-    console.log(e)
-    var src = e.currentTarget.dataset.src
-    var urls = []
-    urls.push(src)
-    wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: urls // 需要预览的图片http链接列表
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
