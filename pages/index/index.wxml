@@ -9,7 +9,7 @@
 <view class='swiper'>
   <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
     <view class="swiper-tab">    
-      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}} text" data-current="0" bindtap="swichNav">整屋</view>   
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}} text" data-current="0" bindtap="swichNav">整屋</view> 
       <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}} text" data-current="1" bindtap="swichNav">客厅</view>   
       <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}} text" data-current="2" bindtap="swichNav">餐厅</view>  
       <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}} text" data-current="3" bindtap="swichNav">卧室</view>  

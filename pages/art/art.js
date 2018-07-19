@@ -28,7 +28,8 @@ Page({
    */
   switchNav: function (e) {
     this.setData({
-      current: e.currentTarget.dataset.pos
+      current: e.currentTarget.dataset.pos,
+      currentTab:0
     })
   },
 
@@ -54,7 +55,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

@@ -12,14 +12,26 @@
   <swiper-item class="swiper-item-H">
     <view class='content'>
       <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
-        <view class="swiper-tab">
-          <block class="block">
-            <view class="son {{currentTab==0?'on':''}} text" data-current="0" bindtap='switchSon'>别墅</view>
-            <view class="son {{currentTab==1?'on':''}} text" data-current="1" bindtap='switchSon'>平层</view>
-            <view class="son {{currentTab==2?'on':''}} text4" data-current="2" bindtap='switchSon'>单身公寓</view>
-            <view class="son {{currentTab==3?'on':''}} text" data-current="3" bindtap='switchSon'>欧式</view>
-            <view class="son {{currentTab==4?'on':''}} text" data-current="4" bindtap='switchSon'>现代</view>
-            <view class="son {{currentTab==5?'on':''}} text" data-current="5" bindtap='switchSon'>中式</view>
+        <view class='swiper-tab'>
+          <block>
+            <view class="son text">
+              <view class= "{{currentTab==0?'on':''}}" data-current="0" bindtap='switchSon'>别墅</view>
+            </view>
+            <view class="son text">
+              <view class="{{currentTab==1?'on':''}}" data-current="1" bindtap='switchSon'>平层</view>
+            </view>
+            <view class="son text4">
+              <view class=" {{currentTab==2?'on':''}}" data-current="2" bindtap='switchSon'>单身公寓</view>
+            </view>
+            <view class="son text" >
+              <view class="{{currentTab==3?'on':''}}" data-current="3" bindtap='switchSon'>欧式</view>
+            </view>
+            <view class="son text">
+              <view class="{{currentTab==4?'on':''}}" data-current="4" bindtap='switchSon'>现代</view>
+            </view>
+            <view class="son text">
+              <view class="{{currentTab==5?'on':''}}" data-current="5" bindtap='switchSon'>中式</view>
+            </view>
           </block>
         </view>
       </scroll-view>
