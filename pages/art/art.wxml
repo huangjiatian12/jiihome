@@ -2,65 +2,37 @@
   <view class='tablist'>
     <block wx:for="{{tabList}}">
       <view class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='switchNav'>
-        <text>{{item}}</text>
+        <text>{{item.name}}</text>
       </view>
     </block>
   </view>
 </scroll-view>
+<view class='childTab'>
+  <swiper class='out' current='{{current}}' indicator-dots="{{false}}" autoplay="{{false}}" bindchange="contentChange">
+  <block wx:for="{{tabList}}">
+    <swiper-item class="swiper-item-H">
+      <view class='content'>
+        <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
+          <view class='swiper-tab'>
+            <block wx:for="{{item.child}}">
+              <view class="son text">
+                <view class= "{{currentTab==item.id?'on':''}}" data-current="{{item.id}}" bindtap='switchSon'>{{item.name}}</view>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </block> 
+  </swiper>
+</view>
 
-<swiper class='out' current='{{current}}' indicator-dots="{{false}}" autoplay="{{false}}" bindchange="contentChange">
-  <swiper-item class="swiper-item-H">
-    <view class='content'>
-      <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
-        <view class='swiper-tab'>
-          <block>
-            <view class="son text">
-              <view class= "{{currentTab==0?'on':''}}" data-current="0" bindtap='switchSon'>别墅</view>
-            </view>
-            <view class="son text">
-              <view class="{{currentTab==1?'on':''}}" data-current="1" bindtap='switchSon'>平层</view>
-            </view>
-            <view class="son text4">
-              <view class=" {{currentTab==2?'on':''}}" data-current="2" bindtap='switchSon'>单身公寓</view>
-            </view>
-            <view class="son text" >
-              <view class="{{currentTab==3?'on':''}}" data-current="3" bindtap='switchSon'>欧式</view>
-            </view>
-            <view class="son text">
-              <view class="{{currentTab==4?'on':''}}" data-current="4" bindtap='switchSon'>现代</view>
-            </view>
-            <view class="son text">
-              <view class="{{currentTab==5?'on':''}}" data-current="5" bindtap='switchSon'>中式</view>
-            </view>
-          </block>
-        </view>
-      </scroll-view>
-    </view>
-  </swiper-item>
-  <swiper-item class="swiper-item-H">
-    <view class='content'>
-      <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
-        <view class="swiper-tab">
-          <block class="block">
-            <view class="son {{currentTab==0?'on':''}} text" data-current="0" bindtap='switchSon'>别墅</view>
-            <view class="son {{currentTab==1?'on':''}} text" data-current="1" bindtap='switchSon'>平层</view>
-            <view class="son {{currentTab==2?'on':''}} text4" data-current="2" bindtap='switchSon'>单身公寓</view>
-          </block>
-        </view>
-      </scroll-view>
-    </view>
-  </swiper-item>
-  <swiper-item class="swiper-item-H">
-    <view class='content'>
-      <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
-        <view class="swiper-tab">
-          <block class="block">
-            <view class="son {{currentTab==0?'on':''}} text" data-current="0" bindtap='switchSon'>欧式</view>
-            <view class="son {{currentTab==1?'on':''}} text" data-current="1" bindtap='switchSon'>现代</view>
-            <view class="son {{currentTab==2?'on':''}} text" data-current="2"bindtap='switchSon'>中式</view>
-          </block>
-        </view>
-      </scroll-view>
-    </view>
-  </swiper-item>
-</swiper>
+<block wx:for="{{articleData}}">
+  <navigator url="/pages/art/article/article?artId={{item.id}}&artTitle={{item.article_name}}&img={{item.img_src}}" hover-class="none">
+  <view class='article'>
+    <image class='article-img' src='{{item.img_src}}' ></image>
+    <view class='article-name'>{{item.article_name}}</view>
+    <view class='article-bri'>{{item.article_brief}}</view>
+  </view>
+  </navigator>
+</block>

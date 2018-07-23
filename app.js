@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    api: "https://csm.jiihome.com/index.php"
+    api: "http://cyfywk.natappfree.cc/jiimadeeee/index.php"
   }
 })

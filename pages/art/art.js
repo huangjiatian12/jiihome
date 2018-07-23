@@ -20,16 +20,32 @@ Page({
       current: e.detail.current
     })
   },
-  onLoad: function () {
-
+  getArticle(id){
+    var that = this
+    wx.request({
+      url: app.globalData.api + '/home/index/getArticle',
+      data:{
+        cateId:id
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          articleData:res.data
+        })
+      }
+    })
   },
   /**
    * Tab的点击切换事件
    */
   switchNav: function (e) {
-    this.setData({
+    var that = this
+    var tabList = that.data.tabList
+    that.getArticle(tabList[e.currentTarget.dataset.pos]['child'][0]['id'])
+
+    that.setData({
       current: e.currentTarget.dataset.pos,
-      currentTab:0
+      currentTab: tabList[e.currentTarget.dataset.pos]['child'][0]['id']
     })
   },
 
@@ -42,10 +58,11 @@ Page({
   switchSon: function (e) {
 
     var that = this;
-
+    var tabList = that.data.tabList
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
+      that.getArticle(e.target.dataset.current)
       that.setData({
         currentTab: e.target.dataset.current
       })
@@ -55,6 +72,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    var that = this
+    wx.request({
+      url: app.globalData.api + '/home/index/getArticleCate',
+      success: function (res) {
+        that.getArticle(res.data[0]['child'][0]['id'])
+        that.setData({
+          tabList:res.data,
+          currentTab: res.data[0]['child'][0]['id']
+        })
+      }
+    })
   },
 
   /**

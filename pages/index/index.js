@@ -13,84 +13,22 @@ Page({
     duration: 500,
   },
 
-  getInfo() {
+  getThemePic(id){
     var self = this
-
-    //获取轮播图
     wx.request({
-      url: app.globalData.api + '/Home/index/getCarouselImg',
-      success: function (res) {
-        self.setData({
-          imgUrls: res.data,
-        })
-      }
-    })
-    //获取设计文章
-    wx.request({
-      url: app.globalData.api + '/Home/index/getArticle',
-      data: {
-        num: 5
+      url: app.globalData.api + '/home/index/getCarousel',
+      data:{
+        themeId:id,
       },
       success: function (res) {
+        console.log(res.data)
         self.setData({
-          designData: res.data,
+          themePic: res.data,
+          currentTab: id       
         })
       }
     })
-
-    //获取分类图商品同时加载信息
-    wx.request({
-      url: app.globalData.api + '/Home/index/getBlockInfo',
-      data: {
-        block: 1,
-        goodsNum: 8
-      },
-      success: function (res) {
-        self.setData({
-          catGoods: res.data,
-        })
-        wx.hideLoading()
-      }
-    })
-    //获取只加载商品大图信息
-    wx.request({
-      url: app.globalData.api + '/Home/index/getBlockInfo',
-      data: {
-        block: 3,
-        goodsNum: 8
-      },
-      success: function (res) {
-        self.setData({
-          bigGoods: res.data,
-        })
-      }
-    })
-    //获取只加载商品小图信息
-    wx.request({
-      url: app.globalData.api + '/Home/index/getBlockInfo',
-      data: {
-        block: 2,
-        goodsNum: 8
-      },
-      success: function (res) {
-        self.setData({
-          smallGoods: res.data,
-        })
-      }
-    })
-    //获取只加载分类图信息
-    wx.request({
-      url: app.globalData.api + '/Home/index/getBlockInfo',
-      data: {
-        block: 4,
-        goodsNum: 8
-      },
-      success: function (res) {
-        self.setData({
-          onlyCat: res.data,
-        })
-      }
-    })
+    wx.hideLoading()
   },
   /**
    * 生命周期函数--监听页面加载
@@ -127,7 +65,30 @@ Page({
       }
     })
 
-    self.getInfo()
+    /**  
+     * 获取系统信息  
+     */
+    wx.getSystemInfo({
+
+      success: function (res) {
+        self.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+
+    });
+
+    wx.request({
+      url: app.globalData.api + '/home/index/theme',
+      success: function (res) {
+        console.log(res.data)
+        self.setData({
+          themeData:res.data
+        })
+        self.getThemePic(res.data[0]['id'])
+      }
+    })
 
   },
 
@@ -142,8 +103,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var self = this
-    self.getInfo()
+
   },
 
   /**
@@ -153,26 +113,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onLoad: function () {
-    var that = this;
-
-    /**  
-     * 获取系统信息  
-     */
-    wx.getSystemInfo({
-
-      success: function (res) {
-        that.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
-      }
-
-    });
-  },
   /**  
      * 滑动切换tab  
      */
@@ -192,6 +132,8 @@ Page({
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
+      that.getThemePic(e.target.dataset.current)
+
       that.setData({
         currentTab: e.target.dataset.current
       })
