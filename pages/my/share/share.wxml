@@ -6,55 +6,57 @@
      </view>
 </view>
 
-<navigator url="/pages/my/share/rule/rule"><button size="mini" class="member-button" hover-class='btn-hover'>初级会员</button>
+<navigator url="/pages/my/share/rule/rule">
+<view  class="member-button" hover-class='btn-hover'>规则说明</view>
 </navigator>
 <view class="text-score">
   <text>当前累计总积分</text>
-  <view class="score text-score-2">
-    <text>14\n</text>
+  <view class="text-score-2">
+    <text>140\n</text>
   </view>
 </view>
-<view class="score2">
-  <view class="text-score">可用积分
-    <text class="text-can">14</text>
-    <button size='mini' class="button-switch">积分兑换</button>  
+<view>
+  <view wx:for="{{list}}" wx:key="content" wx:for-index="key">
+    <view class='title' data-index='{{key}}' bindtap='hiddenBtn'>
+      <view class="border">
+        <label class="text-score-3">今日获得积分</label>
+        <label class="look ">查看</label>
+      </view>
+    </view>
+    <view hidden='{{item.hidden}}'>
+      <view class='contenta'>
+        <view class="article">每日积分详情</view>
+      </view>
+    </view>
   </view>
-</view>
-<view class="score">
-    <text class="text-score">当前累计总收益（元）</text>
-    <view class="score text-score-2">
-        <text class="total">14.25<text class="text-wait">（含待结算 9.75）</text>\n</text>
+    <view class="text-score-0">
+      <view class="border2 text-score-4">当前累计总收益(元)</view>
+      <view class="text-score-2">
+        <text>200</text>
+      </view>
+      <image class="picsize" src='/image/fri.png'></image>
+      <text class='text-jilu'>收益记录</text>
+    </view>
+    <view class="text-score-5">
+        <text>\n可提现额度</text>
+    </view>
+    <view>
+      <navigator url="/pages/my/share/sharecode/sharecode" hover-class="none">
+        <view class="text-score-6">
+          <text>分享好友</text>
+        </view>
+      </navigator>
+        <view>
+          <text class="text-score">累计推广</text>
+        </view>
+        <view>
+          <text class="text-score">累计客户</text>
+        </view>
+          <view>
+          <text class="text-score">累计客户</text>
+        </view>
     </view>
 </view>
-<view class="score2">
-  <view class="text-score-1">可提现佣金
-    <text class="text-can">6.25</text>
-    <text class="text-can">元</text>
-    <button size='mini' class="button-switch-1">立即提现</button>
-  </view>
-</view>
-<view class="content">
-  <navigator url="/pages/my/share/sharecode/sharecode" hover-class="none">
-    <view style="width:250rpx;height:230rpx;">
-      <view class="picsta"><image src='/image/sharefr.png' class="pic"></image></view>
-      <text class="text-share">分享好友</text>
-    </view>
-  </navigator>
-  <navigator url="/pages/my/order/order?sta=0" hover-class="none">
-    <view style="width:250rpx;height:230rpx;">
-      <view class="picsta"><image src='/image/add.png' class="pic"></image></view>
-      <text class="text-share">收益记录</text>
-    </view>
-  </navigator>
-</view>
-<view class="content">
-  <view style="width:250rpx;height:230rpx;">
-  <text class="text-share-2">累计推广</text>
-</view>
-<view style="width:250rpx;height:230rpx;">
-  <text class="text-share-2">累计客户</text>
-</view>
-</view>
-<view class="rule">
-    <text class="text-rule">点击你的会员等级查看积分规则</text>
-</view>
+
+    
+  

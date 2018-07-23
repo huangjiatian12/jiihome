@@ -20,11 +20,9 @@
   margin-top: 50rpx;
   margin-right: 60%;
 }
-.score{
-  border-bottom:1px whitesmoke solid;
-}
 .score2{
   border-bottom: 10px whitesmoke solid;
+  height: 40rpx;
 }
 .text-score{
   font-size: small;
@@ -32,17 +30,46 @@
   margin-left: 30rpx;
   margin-bottom: 20rpx;
 }
-.text-score-1{
+.text-score-0{
   font-size: small;
-  margin-top: 30rpx;
+  margin-top: 0rpx;
   margin-left: 30rpx;
   margin-bottom: 20rpx;
+}
+.text-score-1{
+  border-top: 1px whitesmoke solid;
+  align-items: center;
+  font-size: small;
+  margin-top: 75rpx;
+  margin-left: 30rpx;
   color: grey;
 }
 .text-score-2{
   font-size: 60rpx;
   margin-left: 0rpx;
-  margin-top: 8rpx;
+  margin-top: 20rpx;
+}
+.text-score-3{
+  font-size: small;
+  margin-left: 15rpx;
+}
+.text-score-4{
+  font-size: small;
+  margin-left: 0rpx;
+}
+.text-score-5{
+  border-top: 1rpx solid whitesmoke;
+  font-size: small;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+.text-score-6{
+  border-top: 15rpx solid whitesmoke;
+  font-size: small;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
 }
 .text-can{
   margin-left: 10rpx;
@@ -60,6 +87,7 @@
   color: gray;
 }
 .total{
+
   margin-left: 30rpx;
 }
 .score-use-2{
@@ -71,59 +99,92 @@
   margin-top: -6rpx;
 }
 .button-switch{
-  float: right;
-  margin-top: -15rpx;
-  margin-right: 10rpx;
-  color: blue;
+  margin-right: 40rpx;
+  color: black;
+  font-weight: bold; 
 }
 .button-switch-1{
   float: right;
-  margin-top: -15rpx;
-  margin-right: 10rpx;
-  color: red;
+  right: 10rpx;
+  margin-right: 40rpx;
+  color: gray;
+  z-index: 99;
 }
 .member-button{
-  float: right;
-  color: yellow;
-  margin-top: -90rpx;
-  margin-right: 10rpx;
-  background: tomato;
+  position: absolute;
+  color: black;
+ right: 10rpx;
+ top: 50rpx;
+  font-size: 25rpx;
 }
 .btn-hover{
   background-color: orangered;
 }
-.text-rule{
-  position: fixed;
-  bottom: 20rpx;
-  font-size: x-small;
+.phone_one{
+  float: right;
 }
-.rule{
-  display: flex;
-  justify-content: center;  
+.person_box{
+  position: relative;
 }
-.content{
-  display: flex;
-  flex-direction: row;
+.phone_select{
+  margin-top:0;
+  z-index: 100;
+  position: absolute;
 }
-.text-share{
+.select_one{
+  background-color:green;
+  width:700rpx;
+  height:300rpx;
+  float: left;
+}
+.image-box{
+  top: 20rpx;
+}
+.title{
+  padding: 15rpx;
+}
+.contenta{
+  height: 500rpx;
+  background-color: white;
+}
+.hide{
+display: none;
+}
+.show{
+display: block;
+}
+.look{
+  font-size: small;
+  margin-right: 40rpx;
+  color: black;
+  font-weight: bold; 
+  float: right;
+  position: absolute;
+  top: 343rpx;
+  right: 30rpx;
+}
+.border{
+
+  border-top: 1px whitesmoke solid;
+}
+.border2{
+  border-top: 15rpx solid whitesmoke;
+}
+.article{
   display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: 20rpx;
-  margin-top: -75rpx;
+}
+.picsize{
+  float: right;
+  margin-right: 53rpx;
+  margin-top: -115rpx;
+  height: 100rpx;
+  width: 100rpx;
+}
+.text-jilu{
+  float: right;
+  margin-right:55rpx;
+  font-size: 23rpx;
   font-weight: bold;
-}
-.text-share-2{
-  display: flex;
-  justify-content: center;
-  font-size: 20rpx;
-  margin-top: 230rpx;
-  font-weight: bold;
-}
-.pic{
-  width: 300rpx;
-  height: 300rpx;
-}
-.picsta{
-  display: inline;
-  margin-left: -10rpx;
 }

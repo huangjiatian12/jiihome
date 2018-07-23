@@ -1,10 +1,14 @@
 const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    list: [
+      { 'hidden': true },
+    ], 
+    selectPerson: true,
+    selectArea: false,
     quote: true
   },
   orderSta() {
@@ -46,6 +50,17 @@ Page({
           }
         })
       },
+    })
+  },
+  hiddenBtn: function (e) {
+    var that = this;
+    // 获取事件绑定的当前组件
+    var index = e.currentTarget.dataset.index;
+    // 获取list中hidden的值
+    // 隐藏或显示内容
+    that.data.list[index].hidden = !that.data.list[index].hidden;
+    that.setData({
+      list: that.data.list
     })
   },
   /**
@@ -119,6 +134,27 @@ Page({
     })
 
   },   
+  clickPerson: function () {
+    var selectPerson = this.data.selectPerson;
+    if (selectPerson == true) {
+      this.setData({
+        selectArea: true,
+        selectPerson: false,
+      })
+    } else {
+      this.setData({
+        selectArea: false,
+        selectPerson: true,
+      })
+    }
+  },
+  mySelect: function (e) {
+    this.setData({
+      firstPerson: e.target.dataset.me,
+      selectPerson: true,
+      selectArea: false,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -54,63 +54,53 @@
 </view>
 <view class='info-box'>
 
-  <navigator url="/pages/my/coupon/coupon" hover-class="none">
-  <view class='info'>
-    <image class='info-img' src='/image/coupon.png'></image>
-    <view class='info-text'>优惠券</view>
-    <image class='info-more' src='/image/right.png'></image>
-  </view>
+  <navigator url="/pages/my/share/share"  hover-class="none">
+    <view class='info'>
+      <image class='info-img' src='/image/question.png'></image>
+      <view class='info-text'>会员中心</view>
+      <image class='info-more' src='/image/right.png'></image>
+    </view>
+  </navigator>
+
+  <navigator wx:if="{{!quote}}" url="/pages/my/quote/quote" hover-class="none">
+    <view class='info'>
+      <image class='info-img' src='/image/quote.png'></image>
+      <view class='info-text'>自主报价</view>
+      <image class='info-more' src='/image/right.png'></image> 
+    </view>
   </navigator>
   
   <navigator url="/pages/my/address/address" hover-class="none">
-  <view class='info'>
-    <image class='info-img' src='/image/address.png'></image>
-    <view class='info-text'>收货地址</view>
-    <image class='info-more' src='/image/right.png'></image>
-  </view>
+    <view class='info'>
+      <image class='info-img' src='/image/address.png'></image>
+      <view class='info-text'>收货地址</view>
+      <image class='info-more' src='/image/right.png'></image>
+    </view>
   </navigator>
-
-
-<navigator wx:if="{{!quote}}" url="/pages/my/quote/quote" hover-class="none">
-  <view class='info'>
-      <image class='info-img' src='/image/quote.png'></image>
-      <view class='info-text'>自主报价</view>
-      <image class='info-more' src='/image/right.png'></image> 
-  </view>
-</navigator>
-   
-  <view class='info' wx:if="{{quote}}">
-    <button  open-type="getPhoneNumber" id='phone' bindgetphonenumber="getPhoneNumber"> </button>
-      <image class='info-img' src='/image/quote.png'></image>
-      <view class='info-text'>自主报价</view>
-      <image class='info-more' src='/image/right.png'></image> 
-  </view>
   
-
-
-  <navigator url="/pages/my/question/question" hover-class="none">
-  <view class='info'>
-    <image class='info-img' src='/image/question.png'></image>
-    <view class='info-text'>常见问题</view>
-    <image class='info-more' src='/image/right.png'></image>
-  </view>
-  </navigator>
-
-  <navigator url="/pages/my/share/share"  hover-class="none">
-  <view class='info'>
-    <image class='info-img' src='/image/question.png'></image>
-    <view class='info-text'>会员中心</view>
-    <image class='info-more' src='/image/right.png'></image>
-  </view>
+  <navigator url="/pages/my/coupon/coupon" hover-class="none">
+    <view class='info'>
+      <image class='info-img' src='/image/coupon.png'></image>
+      <view class='info-text'>优惠券</view>
+      <image class='info-more' src='/image/right.png'></image>
+    </view>
   </navigator>
 </view>
 
 <view class='info-box'>
   <navigator url="/pages/my/about/about" hover-class="none">
-  <view class='info'>
-    <image class='info-img' src='/image/about.png'></image>
-    <view class='info-text'>关于我们</view>
-    <image class='info-more' src='/image/right.png'></image>
+    <view class='info'>
+      <image class='info-img' src='/image/about.png'></image>
+      <view class='info-text'>关于我们</view>
+      <image class='info-more' src='/image/right.png'></image>
   </view>
+  </navigator>
+  
+  <navigator url="/pages/my/question/question" hover-class="none">
+    <view class='info'>
+      <image class='info-img' src='/image/question.png'></image>
+      <view class='info-text'>常见问题</view>
+      <image class='info-more' src='/image/right.png'></image>
+    </view>
   </navigator>
 </view>
