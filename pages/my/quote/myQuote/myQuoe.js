@@ -20,6 +20,9 @@ Page({
       urls: urls // 需要预览的图片http链接列表
     })
   },
+  chooseModule(e){
+     console.log(e)
+  },
   getCel(){
     wx.showLoading({
       title: '加载中...',

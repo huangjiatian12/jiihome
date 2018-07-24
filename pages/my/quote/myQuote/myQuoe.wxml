@@ -19,7 +19,7 @@
     <view class='module-list'>
       <view class='top'> 
           <view class='top-img'>
-             <image class='select' src="{{item.choose?'/image/checked.png':'/image/kong.png'}}"></image>
+             <image class='select' src="{{item.choose?'/image/checked.png':'/image/kong.png'}}" data-cat='1' data-key='{{key}}' bindtap='chooseModule'></image>
              <text class='sort'>{{val.fur_name}}G{{val.sort_id}}</text>
           </view>
           <view class='top-space'><text>{{val.space}}</text></view>

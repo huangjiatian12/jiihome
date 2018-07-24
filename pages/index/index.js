@@ -5,7 +5,7 @@ Page({
    */
   data: {
     currentTab: 0,
-    navScrollLeft: 0,
+    navSrollLeft: 0,
     indicatorDots: true,
     autoplay: true,
     circular: true,
@@ -21,7 +21,6 @@ Page({
         themeId:id,
       },
       success: function (res) {
-        console.log(res.data)
         self.setData({
           themePic: res.data,
           currentTab: id       
