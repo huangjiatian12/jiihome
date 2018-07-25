@@ -58,11 +58,15 @@ Page({
     var index = e.currentTarget.dataset.index;
     // 获取list中hidden的值
     // 隐藏或显示内容
+    this.setData({
+      show: !this.data.show
+    });
     that.data.list[index].hidden = !that.data.list[index].hidden;
     that.setData({
       list: that.data.list
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

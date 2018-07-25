@@ -1,13 +1,14 @@
 <!--pages/my/share/sharecode/sharecode.wxml-->
-<view>立即分享</view>
-<view>方法1
-  <text>小程序内直接分享</text>
+<view class="title"><text>立即分享\n\n</text></view>
+<view class='border'><text class="way">\n方法1</text>
+  <text class="sharein">\t\t\t\t小程序内直接分享</text>
 </view>
-<text>点击小程序右上角...</text>
-<text>通过转发分享给朋友或微信群</text>
-<view>方法2
-  <text>使用专属二维码推广</text>
+<view class="theway"><text>\n点击小程序右上角...</text></view>
+<view class="theway"><text>\n通过转发分享给朋友或微信群</text></view>
+<view class="way2"><text class="way">\n方法2</text>
+  <text class="sharein">\t\t\t\t\t\t\t\t\t使用专属二维码推广</text>
 </view>
-<text>点击放大二维码，请好友扫码即可</text>
-<text>或将二维码分享到朋友圈</text>
-<view></view>
+<view class="theway"><text>\n点击放大二维码，请好友扫码即可</text></view>
+<view class="theway"><text>\n或将二维码分享到朋友圈</text></view>
+<view class="QRcode"></view>
+<button class="button" bindtap='backTap'>关闭</button>
