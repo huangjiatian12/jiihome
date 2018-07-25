@@ -22,7 +22,6 @@
         <label class="text-score-3">今日获得积分</label>
         <text class="text-score-5">20</text>
         <label class="look">查看<image class="select_img {{show&&'select_img_rotate'}}" src='/image/bottom.png'></image></label>
-
       </view>
     </view>
     <view hidden='{{item.hidden}}'>

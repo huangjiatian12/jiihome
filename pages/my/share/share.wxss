@@ -194,7 +194,7 @@ display: none;
 }
 .text-jilu{
   float: right;
-  margin-right:55rpx;
+  margin-right:58rpx;
   font-size: 23rpx;
   font-weight: bold;
 }
