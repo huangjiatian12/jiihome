@@ -1,1 +1,37 @@
 /* pages/my/share/sharecode/sharecode.wxss */
+.title{
+  color: grey;
+  margin-left: 30rpx;
+}
+.way{
+  margin-left: 35rpx;
+  font-size: 30rpx;
+  color: grey;
+}
+.border{
+  margin-left: 35rpx;
+  border-top: 2rpx gray solid;
+}
+.sharein{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.theway{
+  font-size: 27rpx;
+  color: gray;
+  margin-left: 45rpx;
+}
+.way2{
+  margin-left: 35rpx;
+}
+.QRcode{
+  margin-left: 230rpx;
+  margin-top: 45rpx;
+  background-color: black;
+  height: 300rpx;
+  width: 300rpx;
+}
+.button{
+  margin-top: 65rpx;
+  width: 90%;
+}

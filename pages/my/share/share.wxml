@@ -20,7 +20,8 @@
     <view class='title' data-index='{{key}}' bindtap='hiddenBtn'>
       <view class="border">
         <label class="text-score-3">今日获得积分</label>
-        <label class="look ">查看</label>
+        <text class="text-score-5">20</text>
+        <label class="look">查看<image class="select_img {{show&&'select_img_rotate'}}" src='/image/bottom.png'></image></label>
       </view>
     </view>
     <view hidden='{{item.hidden}}'>
@@ -38,23 +39,21 @@
       <text class='text-jilu'>收益记录</text>
     </view>
     <view class="text-score-5">
-        <text>\n可提现额度</text>
+        <text class="part2">\n可提现额度</text>
+        <text class="part1">14元</text>   
+        <text class='outm'>立即提现</text>
     </view>
-    <view>
-      <navigator url="/pages/my/share/sharecode/sharecode" hover-class="none">
-        <view class="text-score-6">
-          <text>分享好友</text>
-        </view>
-      </navigator>
-        <view>
-          <text class="text-score">累计推广</text>
-        </view>
-        <view>
-          <text class="text-score">累计客户</text>
-        </view>
+    <view class="bottom">
+      <view class="text-score-6">
+        <navigator class="shareour" url="/pages/my/share/sharecode/sharecode" hover-class="none">
+          <image src='/image/fri.png' class="picsize2"></image>
+            <text class="shareyou">分享推广</text>
+        </navigator>
           <view>
-          <text class="text-score">累计客户</text>
-        </view>
+            <text class="text-score-7">累计推广</text> 
+            <text class="text-score-8">累计客户</text>
+          </view>
+       </view>
     </view>
 </view>
 

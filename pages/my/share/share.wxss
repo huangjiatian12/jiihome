@@ -58,7 +58,6 @@
   margin-left: 0rpx;
 }
 .text-score-5{
-  border-top: 1rpx solid whitesmoke;
   font-size: small;
   margin-top: 60rpx;
   margin-left: 30rpx;
@@ -70,6 +69,19 @@
   margin-top: 30rpx;
   margin-left: 30rpx;
   margin-bottom: 20rpx;
+}
+.text-score-7{
+  position: relative;
+  margin-left: 300rpx;
+  bottom: 35rpx;
+  font-size: small;
+}
+.text-score-8{
+  position: relative;
+  float: right;
+  margin-right: 95rpx;
+  bottom: 35rpx;
+  font-size: small;
 }
 .text-can{
   margin-left: 10rpx;
@@ -87,7 +99,6 @@
   color: gray;
 }
 .total{
-
   margin-left: 30rpx;
 }
 .score-use-2{
@@ -113,8 +124,8 @@
 .member-button{
   position: absolute;
   color: black;
- right: 10rpx;
- top: 50rpx;
+  right: 10rpx;
+  top: 50rpx;
   font-size: 25rpx;
 }
 .btn-hover{
@@ -151,11 +162,11 @@
 display: none;
 }
 .show{
-display: block;
+  display: block;
 }
 .look{
   font-size: small;
-  margin-right: 40rpx;
+  margin-right: 17rpx;
   color: black;
   font-weight: bold; 
   float: right;
@@ -164,7 +175,6 @@ display: block;
   right: 30rpx;
 }
 .border{
-
   border-top: 1px whitesmoke solid;
 }
 .border2{
@@ -184,7 +194,41 @@ display: block;
 }
 .text-jilu{
   float: right;
-  margin-right:55rpx;
+  margin-right:58rpx;
   font-size: 23rpx;
   font-weight: bold;
+}
+.outm{
+  color: grey;
+  float: right;
+  margin-right: 55rpx;
+}
+.picsize2{
+  margin-left: 40rpx;
+  margin-top: 80rpx;
+  height: 140rpx;
+  width: 140rpx;
+}
+.shareyou{
+  margin-left: 60rpx;
+}
+.shareour{
+  height:260rpx;
+  width:200rpx;
+}
+.part2{
+  margin-left: 30rpx;
+  color: grey;
+}
+.part1{
+  margin-left: 35rpx;
+}
+.select_img{
+  margin-left: 10rpx;
+  height: 30rpx;
+  width: 30rpx;
+  transition: transform 0.3s;
+}
+.select_img_rotate{
+  transform: rotate(180deg);
 }

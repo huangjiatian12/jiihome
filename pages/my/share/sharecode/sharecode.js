@@ -7,7 +7,11 @@ Page({
   data: {
   
   },
-
+  backTap:function(){
+  wx.redirectTo({
+    url: '/pages/my/share/share',
+  })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
