@@ -18,8 +18,8 @@
   <block wx:for="{{cabinet.module}}" wx:for-index="key" wx:for-item="val">
     <view class='module-list'>
       <view class='top'> 
-          <view class='top-img'>
-             <image class='select' src="{{item.choose?'/image/checked.png':'/image/kong.png'}}" data-cat='1' data-key='{{key}}' bindtap='chooseModule'></image>
+          <view class='top-img' data-cat='1' data-sort='{{val.sort_id}}' bindtap='chooseModule'>
+             <image class='select' src="{{chooseModule[1][val.sort_id]?'/image/checked.png':'/image/kong.png'}}" ></image>
              <text class='sort'>{{val.fur_name}}G{{val.sort_id}}</text>
           </view>
           <view class='top-space'><text>{{val.space}}</text></view>
@@ -75,18 +75,14 @@
   </block>
 
 <view class='bottom-hid'></view>
-  <view class='bottom'>
-     <view class='bottom-left'>柜架合计：￥{{cabinet.agioFee}}</view>
-     <view class='bottom-right' bindtap='getCel'>加入购物车</view>
-  </view>
 </view>
 
 <view wx:if="{{status == '2'}}">
   <block wx:for="{{door.module}}" wx:for-index="key" wx:for-item="val">
     <view class='module-list'>
       <view class='top'> 
-          <view class='top-img'>
-             <image class='select' src="/image/kong.png"></image>
+          <view class='top-img' data-cat='2' data-sort='{{val.sort_id}}' bindtap='chooseModule'>
+             <image class='select' src="{{chooseModule[2][val.sort_id]?'/image/checked.png':'/image/kong.png'}}"></image>
              <text class='sort'>{{val.fur_name}}D{{val.sort_id}}</text>
           </view>
           <view class='top-space'><text>{{val.space}}</text></view>
@@ -142,18 +138,15 @@
   </block>
 
 <view class='bottom-hid'></view>
-  <view class='bottom'>
-     <view class='bottom-left'>门控合计：￥{{door.agioFee}}</view>
-     <view class='bottom-right' bindtap='getCel'>加入购物车</view>
-  </view>
+
 </view>
 
 <view wx:if="{{status == '3'}}">
   <block wx:for="{{front.module}}" wx:for-index="key" wx:for-item="val">
     <view class='module-list'>
       <view class='top'> 
-          <view class='top-img'>
-             <image class='select' src="/image/kong.png"></image>
+          <view class='top-img' data-cat='1' data-sort='{{val.sort_id}}' bindtap='chooseModule'>
+             <image class='select' src="{{chooseModule[3][val.sort_id]?'/image/checked.png':'/image/kong.png'}}"></image>
              <text class='sort'>{{val.fur_name}}S{{val.sort_id}}</text>
           </view>
           <view class='top-space'><text>{{val.space}}</text></view>
@@ -209,10 +202,6 @@
   </block>
 
   <view class='bottom-hid'></view>
-  <view class='bottom'>
-     <view class='bottom-left'>饰面合计：￥{{agioFee}}</view>
-     <view class='bottom-right' bindtap='getCel'>加入购物车</view>
-  </view>
 </view>
 
 <navigator open-type='redirect' url="/pages/my/quote/quote" hover-class="none">
@@ -221,7 +210,9 @@
 
 <view id='bottom'>
      <view id='choose'  bindtap='chooseAll'>
-       <image class='choose-all' src="{{chooseAll?'/image/checked.png':'/image/kong.png'}}"></image>
+       <image class='choose-all' src="{{chooseAll[status]?'/image/checked.png':'/image/kong.png'}}"></image>
        <text>全选</text>
      </view>
+     <view class='bottom-left'>￥{{totalPrice[status]}}</view>
+     <view class='bottom-right' bindtap='getCel'>加入购物车</view>
 </view>

@@ -38,19 +38,27 @@
   </block>
 </view>
 
-<view id='coupon'>
-  <view id='coupon-left'>
-     <text id='left-text'>优惠券</text>
-     <text id='right-text'>目前无可用优惠券</text>
+<view class='coupon'>
+  <view class='coupon-left'>
+     <text class='left-text'>优惠券</text>
+     <text class='right-text'>目前无可用优惠券</text>
   </view>
-  <image id='coupon-right' src='/image/right.png' mode="widthFix"></image>
+  <image class='coupon-right' src='/image/right.png' mode="widthFix"></image>
+</view>
+
+<view class='coupon'>
+  <view class='coupon-left'>
+     <text class='left-text'>积分抵扣</text>
+     <text class='right-text'>最高可用{{maxDeduction}}积分</text>
+  </view>
+  <image class='coupon-right' src='/image/right.png' mode="widthFix"></image>
 </view>
 
 <view id='message-box'>
   <view id='mes-top' >买家留言</view>
   <input type='text' id='mes-text' placeholder='写下你的特殊需求' bindblur='changeMes'></input>
 </view>
-
+<view id='hide'></view>
 <view id='bottom'>
      <view id='total'>合计:￥{{totalPrice}}元</view>
      <view id='pay' bindtap='goPay'>去支付</view>

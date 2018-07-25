@@ -106,29 +106,29 @@ page{
   font-size: 28rpx;
   line-height: 40rpx;
 }
-#coupon{
+.coupon{
   margin-top: 20rpx;
   padding: 10rpx 32rpx;
   background: white;
   overflow: hidden;
   height: 80rpx;
 }
-#coupon-left{
+.coupon-left{
   float: left;
   width: 650rpx;
   height: 80rpx;
   font-size: 28rpx;
   line-height: 80rpx;
 }
-#left-text{
+.left-text{
   float: left;
 }
-#right-text{
+.right-text{
   float: right;
   color: gray;
   font-size: 24rpx;
 }
-#coupon-right{
+.coupon-right{
   float: right;
   width: 25rpx;
   margin-top: 27.5rpx;
@@ -152,6 +152,7 @@ page{
 }
 #bottom{
   position: fixed;
+  z-index: 99;
   width: 100%;
   height: 100rpx;
   border-top: 1rpx solid #f3f3f3;
@@ -176,4 +177,8 @@ page{
   text-align: center;
   background:#ffc700;
 
+}
+#hide{
+  width: 100%;
+  height: 110rpx;
 }

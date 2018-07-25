@@ -9,6 +9,9 @@ Page({
     cabinetShow:{},
     doorShow:{},
     froShow:{},
+    chooseModule:[],
+    chooseAll:{'1':false,'2':false,'3':false},
+    totalPrice:{'1':0,'2':0,'3':0}
   },
   imgYu(e) {
     console.log(e)
@@ -22,47 +25,147 @@ Page({
   },
   chooseModule(e){
      console.log(e)
+     var that = this
+     var cate = e.currentTarget.dataset.cat
+     var sort = e.currentTarget.dataset.sort
+     var chooseModule = that.data.chooseModule
+     
+     if(!chooseModule[cate]){
+       chooseModule[cate] = []
+     }
+
+     if(chooseModule[cate][sort]){
+       chooseModule[cate][sort] = false
+     }else{
+       chooseModule[cate][sort] = true
+     }
+    
+     that.getTotalPrice(cate)
+
+    that.setData({
+      chooseModule:chooseModule
+    })
+
   },
-  getCel(){
-    wx.showLoading({
-      title: '加载中...',
+  chooseAll(){
+    var that = this
+    var cate = that.data.status
+    var chooseModule = that.data.chooseModule
+    var chooseAll = that.data.chooseAll
+    if(cate == 1){
+       var moduleData = that.data.cabinet
+    }else if(cate == 2){
+      var moduleData = that.data.door
+    }else if(cate == 3){
+      var moduleData = that.data.front
+    }
+
+    chooseAll[cate] = !chooseAll[cate]
+    if (!chooseModule[cate]) {
+      chooseModule[cate] = []
+    }
+
+    for (var i in moduleData.module) {
+      chooseModule[cate][moduleData.module[i]['sort_id']] = chooseAll[cate]
+    }
+
+    that.getTotalPrice(cate)
+
+    that.setData({
+      chooseModule: chooseModule,
+      chooseAll: chooseAll
     })
-    wx.getStorage({
-      key: 'userKey',
-      success: function(res) {
-        wx.request({
-          url: app.globalData.api + '/Home/index/getExcel',
-          data: {
-            userId: res.data.id,
-            thr_session: res.data.thr_session,
-          },
-          success: function (res1) {
-             wx.downloadFile({
-               url: 'https://csm.jiihome.com/Public/Excel/'+res1.data, 
-               success: function (res2) {
-                 wx.saveFile({
-                   tempFilePath: res2.tempFilePath,
-                   success: function (e) {
-                     wx.openDocument({
-                       filePath: e.savedFilePath,
-                       success: function (e1) {
-                         wx.request({
-                           url: app.globalData.api + '/Home/index/delExcel',
-                           data:{fileName:res1.data},
-                           success:function(e2){
-                             wx.hideLoading();
-                           }
-                         })
-                       }
-                     })
-                   }
-                 })
-               }
-             })
-          }
-        })
-      },
+    
+  },
+  getTotalPrice(cate){
+    var that = this
+    var totalPrice = that.data.totalPrice
+    var chooseModule = that.data.chooseModule
+
+    if (cate == 1) {
+      var moduleData = that.data.cabinet
+    } else if (cate == 2) {
+      var moduleData = that.data.door
+    } else if (cate == 3) {
+      var moduleData = that.data.front
+    }
+
+    var price = 0
+    for (var i in moduleData.module) {
+      if (chooseModule[cate][moduleData.module[i]['sort_id']]){
+        price = price + moduleData.module[i]['totalModulePrice']
+      }
+    }
+
+    totalPrice[cate] = price
+
+    that.setData({
+      totalPrice: totalPrice
     })
+  },
+  getCel() {
+    var that = this
+    var cate = that.data.status
+    var chooseModule = that.data.chooseModule
+
+    if (cate == 1) {
+      var moduleData = that.data.cabinet
+    } else if (cate == 2) {
+      var moduleData = that.data.door
+    } else if (cate == 3) {
+      var moduleData = that.data.front
+    }
+   
+    if (!chooseModule[cate]){
+      chooseModule[cate] = []
+    }
+
+    var sortData = ''
+    for (var i in moduleData.module) {
+      if (chooseModule[cate][moduleData.module[i]['sort_id']]) {
+        sortData = sortData + moduleData.module[i]['sort_id']+','
+      }
+    }
+
+    if(sortData != ''){
+      wx.getStorage({
+        key: 'userKey',
+        success: function (res) {
+          wx.request({
+            url: app.globalData.api + '/Home/index/moduleToCart',
+            data: {
+              userId: res.data.id,
+              thr_session: res.data.thr_session,
+              sort: sortData,
+              cate: cate
+            },
+            success: function (res1) {
+              if(res.data){
+                wx.showToast({
+                  title: '加入购物车成功！',
+                  icon: 'success',
+                  duration: 1000
+                })
+              }else{
+                wx.showToast({
+                  title: '加入购物车失败！',
+                  icon: 'none',
+                  duration: 1000
+                })
+              }
+            
+            }
+          })
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '请选择需要报价！',
+        icon: 'none',
+        duration: 1000
+      })
+    }
+
   },
   changesta(e) {
     var sta = e.currentTarget.dataset.sta
@@ -185,19 +288,6 @@ Page({
     self.setData({
       totalPrice: totalPrice
     })
-  },
-  chooseAll() {
-    var self = this
-    var chooseAll = !self.data.chooseAll
-    var Data = self.data.Data
-    for (var i in Data) {
-      Data[i].choose = chooseAll
-    }
-    self.setData({
-      chooseAll: chooseAll,
-      Data: Data
-    })
-    self.totalPrice()
   },
   chooseGoods: function (e) {
     var self = this

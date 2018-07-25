@@ -167,10 +167,17 @@ Page({
     var self = this
     var totalPrice = app.globalData.totalPrice
     var cartData = app.globalData.cartData
+    
     self.setData({
       cartData: cartData,
       totalPrice: totalPrice
     })
+
+    var maxDeduction = 0
+    for(var i in cartData){
+      maxDeduction = maxDeduction + parseInt(cartData[i]['deduction'])
+    }
+    console.log(maxDeduction)
     wx.getStorage({
       key: 'userKey',
       success: function (res) {
@@ -188,6 +195,22 @@ Page({
                 })
               }
             }
+          }
+        });
+        wx.request({
+          url: app.globalData.api + '/Home/index/integration',
+          data: {
+            userId: res.data.id,
+            thr_session: res.data.thr_session,
+          },
+          success: function (res2) {
+            if(res2.data.integration < maxDeduction){
+              maxDeduction = res2.data.integration
+            }
+
+            self.setData({
+              maxDeduction: maxDeduction
+            })
           }
         })
       },
