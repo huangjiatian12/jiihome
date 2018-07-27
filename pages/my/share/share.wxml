@@ -38,7 +38,7 @@
       <image class="picsize" src='/image/fri.png'></image>
       <text class='text-jilu'>收益记录</text>
     </view>
-    <view class="text-score-5">
+    <view class="text-score-5 border">
         <text class="part2">\n可提现额度</text>
         <text class="part1">14元</text>   
         <text class='outm'>立即提现</text>

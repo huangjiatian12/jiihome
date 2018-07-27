@@ -49,7 +49,10 @@
 <view class='coupon'>
   <view class='coupon-left'>
      <text class='left-text'>积分抵扣</text>
-     <text class='right-text'>最高可用{{maxDeduction}}积分</text>
+     <text bindtap="modalTap" class='right-text'>最高可用{{maxDeduction}}积分</text>
+     <modal hidden="{{hiddenmodalput}}" title="需要使用多少积分" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+     <input type="number" placeholder='请输入要使用积分' auto-focus=''></input>
+     </modal>
   </view>
   <image class='coupon-right' src='/image/right.png' mode="widthFix"></image>
 </view>

@@ -1,11 +1,12 @@
 var app;
 app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    hiddenmodalput:true,
+    maxDeduction:'',
     mes:''
   },
   changeMes:function(e){
@@ -158,6 +159,22 @@ Page({
           }
         })
       }
+    })
+  },
+  /*使用积分弹出框*/
+  modalTap:function(){
+    this.setData({
+      hiddenmodalput:!this.data.hiddenmodalput
+    })
+  },
+  cancel:function(){
+     this.setData({
+       hiddenmodalput:true
+     });
+  },
+  confirm:function(){
+    this.setData({
+      hiddenmodalput:true
     })
   },
   /**
