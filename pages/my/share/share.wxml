@@ -12,7 +12,7 @@
 <view class="text-score">
   <text>当前累计总积分</text>
   <view class="text-score-2">
-    <text>140\n</text>
+    <text>{{integration.integration}}\n</text>
   </view>
 </view>
 <view>
@@ -20,7 +20,7 @@
     <view class='title' data-index='{{key}}' bindtap='hiddenBtn'>
       <view class="border">
         <label class="text-score-3">今日获得积分</label>
-        <text class="text-score-5">20</text>
+        <text class="text-score-5">{{todaySum[0]['todaysum']}}</text>
         <label class="look">查看<image class="select_img {{show&&'select_img_rotate'}}" src='/image/bottom.png'></image></label>
       </view>
     </view>

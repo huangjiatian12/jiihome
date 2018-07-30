@@ -42,7 +42,7 @@
     </block>
   
     <view class='state'>
-      <view class='total'>合计：￥{{item.price}}</view>
+      <view class='total'>合计支付：￥{{item.last_price}}</view>
       <view class='bit-pay' data-order='{{item.order_id}}' data-prepay='{{item.prepay_id}}' bindtap='goPay'>去支付</view>
       <view class='bit-del' data-order='{{item.order_id}}' data-index='{{index}}' bindtap='removeOrder'>取消</view>
     </view>
@@ -73,7 +73,7 @@
     </block>
     
     <view class='state'>
-      <view class='total'>合计：￥{{item.price}}</view>
+      <view class='total'>合计支付：￥{{item.last_price}}</view>
       <view class='bit-del' data-order='{{item.order_id}}' data-index='{{index}}' bindtap='removeOrder'>取消</view>
     </view>
   </view>
@@ -103,7 +103,7 @@
     </block>
     <view class='express' wx:if="{{item.express != ''}}">快递单号：{{item.express}}</view>
     <view class='state'>
-      <view class='total'>合计：￥{{item.price}}</view>
+      <view class='total'>合计支付：￥{{item.last_price}}</view>
       <view class='bit-pay' data-order='{{item.order_id}}' bindtap='comOrder'>确认收货</view>
       <view class='bit-cancel' bindtap='cancelOrd'>申请退货</view>
     </view>

@@ -24,7 +24,8 @@
     "pages/index/spread/spread",
     "pages/my/share/share",
     "pages/my/share/rule/rule",
-    "pages/my/share/sharecode/sharecode"
+    "pages/my/share/sharecode/sharecode",
+    "pages/my/quote/spread/spread"
   ],
   "window": {
     "backgroundTextStyle": "light",

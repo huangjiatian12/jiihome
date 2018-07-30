@@ -7,6 +7,7 @@ Page({
   data: {
     hiddenmodalput:true,
     maxDeduction:'',
+    integration:0,
     mes:''
   },
   changeMes:function(e){
@@ -16,6 +17,31 @@ Page({
     self.setData({
       mes:mes
     })
+  },
+  changeIntegration(e){
+     var that = this
+     var integration = e.detail.value
+     var maxDeduction = that.data.maxDeduction
+     var totalPrice = that.data.totalPrice
+     if (integration > maxDeduction){
+       wx.showToast({
+         title: '输入数超过最大可用积分！',
+         icon: 'none',
+         duration: 1000
+       })
+     } else if (integration > 0){
+       var deductionPrice = totalPrice-integration/10
+       that.setData({
+         integration:integration,
+         deductionPrice: deductionPrice,
+       })
+     }else{
+       var deductionPrice = totalPrice
+       that.setData({
+         integration: 0,
+         deductionPrice: deductionPrice,
+       })
+     }
   },
   goPay(){
     wx.showLoading({
@@ -82,6 +108,8 @@ Page({
     }
   },
   goPaySure(mes, address, goods){
+    var that = this
+    var integration = that.data.integration
     wx.getStorage({
       key: 'userKey',
       success: function (res) {
@@ -93,6 +121,7 @@ Page({
             mes: mes,
             address: address,
             goods: goods,
+            integration:integration,
           },
           success: function (res1) {
              if (res1.data.flag == '11') {
@@ -187,7 +216,8 @@ Page({
     
     self.setData({
       cartData: cartData,
-      totalPrice: totalPrice
+      totalPrice: totalPrice,
+      deductionPrice: totalPrice,
     })
 
     var maxDeduction = 0

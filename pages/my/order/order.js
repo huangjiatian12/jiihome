@@ -155,7 +155,7 @@ Page({
 
               } else if (res1.data == '11') {
                 wx.showToast({
-                  title: '取消订单成功,退款将退还至您付款账户！',
+                  title: '退款将退还至您付款账户！',
                   icon: 'none',
                   duration: 1500
                 })
@@ -169,7 +169,7 @@ Page({
                 })
               } else if (res1.data == '10') {
                 wx.showToast({
-                  title: '取消订单失败！',
+                  title: '请联系客服取消订单！',
                   icon: 'none',
                   duration: 1500
                 })

@@ -49,9 +49,10 @@
 <view class='coupon'>
   <view class='coupon-left'>
      <text class='left-text'>积分抵扣</text>
-     <text bindtap="modalTap" class='right-text'>最高可用{{maxDeduction}}积分</text>
+     <text bindtap="modalTap" wx:if="{{!(integration>0)}}" class='right-text'>最高可用{{maxDeduction}}积分</text>
+     <text bindtap="modalTap" wx:if="{{integration>0}}" class='right-text'>已使用{{integration}}积分抵扣{{integration/10}}元</text>
      <modal hidden="{{hiddenmodalput}}" title="需要使用多少积分" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
-     <input type="number" placeholder='请输入要使用积分' auto-focus=''></input>
+     <input type="number" placeholder='请输入要使用积分' bindblur='changeIntegration' auto-focus=''></input>
      </modal>
   </view>
   <image class='coupon-right' src='/image/right.png' mode="widthFix"></image>
@@ -63,6 +64,6 @@
 </view>
 <view id='hide'></view>
 <view id='bottom'>
-     <view id='total'>合计:￥{{totalPrice}}元</view>
+     <view id='total'>合计:￥{{deductionPrice}}元</view>
      <view id='pay' bindtap='goPay'>去支付</view>
   </view>

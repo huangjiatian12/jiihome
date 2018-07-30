@@ -99,42 +99,24 @@ Page({
     }
 
     var self = this
-    wx.checkSession({
-      success: function () {
-        //session_key 未过期，并且在本生命周期一直有效
-        self.orderSta()
-        self.checkQuote()
-      },
-      fail: function () {
-        // session_key 已经失效，需要重新执行登录流程
-        wx.login({
-          success: function (res) {
-            var code = res.code
-            wx.request({
-              url: app.globalData.api + '/home/index/login',
-              data: {
-                code: code,
-              },
-              success: function (res1) {
-                if (res1.data == 'false') {
-                  wx.showToast({
-                    title: '登陆失败',
-                    icon: 'none',
-                    duration: 2000
-                  })
-                } else {
-                  wx.setStorage({
-                    key: "userKey",
-                    data: res1.data
-                  })
-                }
-              }
+    wx.getStorage({
+      key: 'userKey',
+      success: function (res) {
+        wx.request({
+          url: app.globalData.api + '/Home/index/userInfo',
+          data: {
+            userId: res.data.id,
+            thr_session: res.data.thr_session,
+          },
+          success: function (res1) {
+            self.setData({
+              integration:res1.data.integration,
+              integrationRecord: res1.data.integrationRecord,
+              todaySum: res1.data.todaySum,
             })
           }
         })
-        self.orderSta()
-        self.checkQuote()
-      }
+      },
     })
 
   },   
