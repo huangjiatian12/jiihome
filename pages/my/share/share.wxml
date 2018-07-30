@@ -20,27 +20,45 @@
     <view class='title' data-index='{{key}}' bindtap='hiddenBtn'>
       <view class="border">
         <label class="text-score-3">今日获得积分</label>
-        <text class="text-score-5">{{todaySum[0]['todaysum']}}</text>
+        <text class="text-score-5">{{todaySum}}</text>
         <label class="look">查看<image class="select_img {{show&&'select_img_rotate'}}" src='/image/bottom.png'></image></label>
       </view>
     </view>
     <view hidden='{{item.hidden}}'>
       <view class='contenta'>
-        <view class="article">每日积分详情</view>
+        <view class="table">
+          <view class="first grid-1">
+            <view class="one">使用积分</view>
+            <view class="one">添加时间</view>
+            <view class="one">备注</view>
+          </view>
+            <block wx:for="{{integrationRecord}}" wx:key="{{code}}">
+            <view class="first grid-2" wx:if="{{index % 2 == 0}}">
+              <view class="two">{{item.integration}}</view>
+              <view class="two">{{Date(item.add_time)}}</view>
+              <view class="two">{{item.message}}</view>
+            </view>
+            <view class="first" wx:else>
+              <view class="two">{{item.integration}}</view>
+              <view class="two">{{item.time}}</view>
+              <view class="two">{{item.message}}</view>
+            </view>
+            </block>
+          </view>
       </view>
     </view>
   </view>
     <view class="text-score-0">
       <view class="border2 text-score-4">当前累计总收益(元)</view>
       <view class="text-score-2">
-        <text>200</text>
+        <text>{{integration.sum}}</text>
       </view>
       <image class="picsize" src='/image/fri.png'></image>
       <text class='text-jilu'>收益记录</text>
     </view>
     <view class="text-score-5 border">
         <text class="part2">\n可提现额度</text>
-        <text class="part1">14元</text>   
+        <text class="part1">{{integration.surplus}}元</text>   
         <text class='outm'>立即提现</text>
     </view>
     <view class="bottom">

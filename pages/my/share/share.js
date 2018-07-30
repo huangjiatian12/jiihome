@@ -4,6 +4,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    listData: [
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "-80", "time": "20180727", "message": "订单抵扣"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回" }
+    ],
     list: [
       { 'hidden': true },
     ], 
@@ -96,8 +107,7 @@ Page({
           })
         }
       })
-    }
-
+    } 
     var self = this
     wx.getStorage({
       key: 'userKey',
@@ -109,6 +119,7 @@ Page({
             thr_session: res.data.thr_session,
           },
           success: function (res1) {
+            console.log(res1.data)
             self.setData({
               integration:res1.data.integration,
               integrationRecord: res1.data.integrationRecord,
@@ -118,7 +129,6 @@ Page({
         })
       },
     })
-
   },   
   clickPerson: function () {
     var selectPerson = this.data.selectPerson;
@@ -141,6 +151,7 @@ Page({
       selectArea: false,
     })
   },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
