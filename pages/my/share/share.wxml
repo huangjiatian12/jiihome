@@ -24,6 +24,7 @@
         <label class="look">查看<image class="select_img {{show&&'select_img_rotate'}}" src='/image/bottom.png'></image></label>
       </view>
     </view>
+    <scroll-view scroll-y="true">
     <view hidden='{{item.hidden}}'>
       <view class='contenta'>
         <view class="table">
@@ -47,9 +48,11 @@
           </view>
       </view>
     </view>
+    </scroll-view>
   </view>
+  <view class="border2">
     <view class="text-score-0">
-      <view class="border2 text-score-4">当前累计总收益(元)</view>
+      <view class="text-score-4">当前累计总收益(元)</view>
       <view class="text-score-2">
         <text>{{integration.sum}}</text>
       </view>
@@ -61,17 +64,22 @@
         <text class="part1">{{integration.surplus}}元</text>   
         <text class='outm'>立即提现</text>
     </view>
+  </view>
     <view class="bottom">
       <view class="text-score-6">
         <navigator class="shareour" url="/pages/my/share/sharecode/sharecode" hover-class="none">
           <image src='/image/fri.png' class="picsize2"></image>
             <text class="shareyou">分享推广</text>
         </navigator>
-          <view>
-            <text class="text-score-7">累计推广</text> 
-            <text class="text-score-8">累计客户</text>
-          </view>
-       </view>
+      </view>
+      <view class="text-score-6">
+        <view class="number"><view class="number-text">{{promote}}</view></view>
+        累计推广
+      </view> 
+      <view class="text-score-6">
+        <view class="number"><view class="number-text">{{client}}</view></view>
+        累计客户
+      </view>
     </view>
 </view>
 

@@ -4,6 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    promote:"0",
+    client:"1",
     listData: [
       { "integration": "0",   "time": "20180727", "message": "订单退回"},
       { "integration": "-80", "time": "20180727", "message": "订单抵扣"},
@@ -123,7 +125,7 @@ Page({
             self.setData({
               integration:res1.data.integration,
               integrationRecord: res1.data.integrationRecord,
-              todaySum: res1.data.todaySum,
+              todaySum: res1.data.todaySum
             })
           }
         })

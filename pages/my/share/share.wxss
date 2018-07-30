@@ -64,24 +64,10 @@
   margin-bottom: 20rpx;
 }
 .text-score-6{
-  border-top: 15rpx solid whitesmoke;
+  width: 33.3333%;
   font-size: small;
-  margin-top: 30rpx;
-  margin-left: 30rpx;
-  margin-bottom: 20rpx;
-}
-.text-score-7{
-  position: relative;
-  margin-left: 300rpx;
-  bottom: 35rpx;
-  font-size: small;
-}
-.text-score-8{
-  position: relative;
-  float: right;
-  margin-right: 95rpx;
-  bottom: 35rpx;
-  font-size: small;
+  text-align: center;
+
 }
 .text-can{
   margin-left: 10rpx;
@@ -192,6 +178,12 @@ display: none;
   height: 100rpx;
   width: 100rpx;
 }
+.picsize2{
+  margin-left: 45rpx;
+  margin-top: 80rpx;
+  height: 140rpx;
+  width: 140rpx;
+}
 .text-jilu{
   float: right;
   margin-right:58rpx;
@@ -202,12 +194,6 @@ display: none;
   color: grey;
   float: right;
   margin-right: 55rpx;
-}
-.picsize2{
-  margin-left: 40rpx;
-  margin-top: 80rpx;
-  height: 140rpx;
-  width: 140rpx;
 }
 .shareyou{
   margin-left: 60rpx;
@@ -264,4 +250,17 @@ display: none;
   display: flex;
   height: 50rpx;
   align-items: center;
+}
+.bottom{
+  border-top: 15rpx solid whitesmoke;
+  flex-direction: row;
+  display: flex;
+}
+.number{
+  margin-top: 113rpx;
+  font-size: 60rpx;
+}
+.number-text{
+  color: #00ccff;
+  margin-bottom: 30rpx;
 }
