@@ -12,7 +12,7 @@
 <view class="text-score">
   <text>当前累计总积分</text>
   <view class="text-score-2">
-    <text>140\n</text>
+    <text>{{integration.integration}}\n</text>
   </view>
 </view>
 <view>
@@ -20,13 +20,31 @@
     <view class='title' data-index='{{key}}' bindtap='hiddenBtn'>
       <view class="border">
         <label class="text-score-3">今日获得积分</label>
-        <text class="text-score-5">20</text>
+        <text class="text-score-5">{{todaySum[0]['todaysum']}}</text>
         <label class="look">查看<image class="select_img {{show&&'select_img_rotate'}}" src='/image/bottom.png'></image></label>
       </view>
     </view>
     <view hidden='{{item.hidden}}'>
       <view class='contenta'>
-        <view class="article">每日积分详情</view>
+        <view class="table">
+          <view class="first grid-1">
+            <view class="one">使用积分</view>
+            <view class="one">添加时间</view>
+            <view class="one">备注</view>
+          </view>
+            <block wx:for="{{listData}}" wx:key="{{code}}">
+            <view class="first grid-2" wx:if="{{index % 2 == 0}}">
+              <view class="two">{{item.integration}}</view>
+              <view class="two">{{item.time}}</view>
+              <view class="two">{{item.message}}</view>
+            </view>
+            <view class="first" wx:else>
+              <view class="two">{{item.integration}}</view>
+              <view class="two">{{item.time}}</view>
+              <view class="two">{{item.message}}</view>
+            </view>
+            </block>
+          </view>
       </view>
     </view>
   </view>

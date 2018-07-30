@@ -4,6 +4,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    listData: [
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "-80", "time": "20180727", "message": "订单抵扣"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回"},
+      { "integration": "0",   "time": "20180727", "message": "订单退回" }
+    ],
     list: [
       { 'hidden': true },
     ], 
@@ -96,8 +107,7 @@ Page({
           })
         }
       })
-    }
-
+    } 
     var self = this
     wx.checkSession({
       success: function () {
@@ -108,7 +118,7 @@ Page({
       fail: function () {
         // session_key 已经失效，需要重新执行登录流程
         wx.login({
-          success: function (res) {
+          success: function (res){
             var code = res.code
             wx.request({
               url: app.globalData.api + '/home/index/login',
@@ -136,7 +146,27 @@ Page({
         self.checkQuote()
       }
     })
-
+    var self = this
+    wx.getStorage({
+      key: 'userKey',
+      success: function (res) {
+        wx.request({
+          url: app.globalData.api + '/Home/index/userInfo',
+          data: {
+            userId: res.data.id,
+            thr_session: res.data.thr_session
+          },
+          succcess: function (res1) {
+            console.log(res1.data)
+            self.setData({
+              integration: res1.data.integration,
+              integrationRecord: res1.data.integrationRecord,
+              todaySum: res1.data.todaySum,
+            })
+          }
+        })
+      },
+    })
   },   
   clickPerson: function () {
     var selectPerson = this.data.selectPerson;
@@ -159,6 +189,7 @@ Page({
       selectArea: false,
     })
   },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
