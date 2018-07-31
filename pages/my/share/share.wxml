@@ -29,7 +29,7 @@
       <view class='contenta'>
         <view class="table">
           <view class="first grid-1">
-            <view class="one">使用积分</view>
+            <view class="one">获得积分</view>
             <view class="one">添加时间</view>
             <view class="one">备注</view>
           </view>
@@ -53,7 +53,7 @@
   <view class="border2">
     <view class="text-score-0">
       <view class="text-score-4">当前累计总收益(元)</view>
-      <view class="text-score-2">
+      <view class="text-score-7">
         <text>{{integration.sum}}</text>
       </view>
       <image class="picsize" src='/image/fri.png'></image>

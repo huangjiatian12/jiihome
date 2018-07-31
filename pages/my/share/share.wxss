@@ -1,7 +1,7 @@
 #info{
   height: 130rpx;
   width: 100%;
-  background: yellow;
+  background: #ffc700;
 }
 #head-img{
   display: flex;
@@ -67,7 +67,12 @@
   width: 33.3333%;
   font-size: small;
   text-align: center;
-
+}
+.text-score-7{
+  height: 80rpx;
+  font-size: 60rpx;
+  margin-left: 0rpx;
+  margin-top: 20rpx;
 }
 .text-can{
   margin-left: 10rpx;
