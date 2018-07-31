@@ -9,9 +9,11 @@
 <view class='swiper'>
   <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
     <view class="swiper-tab">
-      <block wx:for="{{themeData}}">
-         <view class="swiper-tab-list {{currentTab==item.id ? 'on' : ''}} text" data-current="{{item.id}}" bindtap="swichNav">{{item.theme_name}}</view> 
-      </block>    
+      <image class="left" src='/image/right.png'></image>    
+        <block wx:for="{{themeData}}">
+           <view class="swiper-tab-list {{currentTab==item.id ? 'on' : ''}} text" data-current="{{item.id}}" bindtap="swichNav">{{item.theme_name}}</view> 
+        </block>
+      <image class="right" src='/image/right.png'></image>    
     </view>  
   </scroll-view>    
 </view>

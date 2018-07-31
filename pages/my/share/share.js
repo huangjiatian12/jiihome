@@ -4,19 +4,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    promote:"0",
-    client:"1",
-    listData: [
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "-80", "time": "20180727", "message": "订单抵扣"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回" }
-    ],
+    integration: { 'total_custom': '-', "custom": '-', 'integration': '-', 'sum': '-','surplus':'-',},
+    todaySum:"-",
+    maxCash:'0',
+    hiddenmodalput: true,
     list: [
       { 'hidden': true },
     ], 
@@ -65,6 +56,45 @@ Page({
       },
     })
   },
+  changeCash(e) {
+    var that = this
+    var cash = e.detail.value
+    var sum = that.data.integration.sum
+    var surplus = that.data.integration.surplus
+    if (cash < surplus || cash < sum) {
+      wx.request({
+        url: app.globalData.api + 'Home/index/withdraw',
+        data: {
+          userId: res.data.id,
+          thr_session: res.data.thr_session,
+          withdraw: withdraw,
+        },
+        success: function (res) {
+          if (res.data.flag == '1') {
+            wx.showToast({
+              title: '提现成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }else if(res.data.flag == 0){
+            wx.showToast({
+              title: res.data.msg,
+              icon:'none',
+              duration:2000
+            })
+          }
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '提现超额',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+    
+  //提现弹出框
   hiddenBtn: function (e) {
     var that = this;
     // 获取事件绑定的当前组件
@@ -79,7 +109,21 @@ Page({
       list: that.data.list
     })
   },
-
+  modalTap: function () {
+    this.setData({
+      hiddenmodalput: !this.data.hiddenmodalput
+    })
+  },
+  cancel: function () {
+    this.setData({
+      hiddenmodalput: true
+    });
+  },
+  confirm: function () {
+    this.setData({
+      hiddenmodalput: true
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -194,13 +238,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
 

@@ -89,3 +89,14 @@ page{
   background-color: #55AA66;
   color: white;    
   }
+.left{
+  height: 35rpx;
+  width: 35rpx;
+  z-index: 80;
+}
+.right{
+  height: 35rpx;
+  width: 35rpx;
+  float: right;
+  z-index: 80;
+}
