@@ -73,11 +73,11 @@
         </navigator>
       </view>
       <view class="text-score-6">
-        <view class="number"><view class="number-text">{{promote}}</view></view>
+        <view class="number"><view class="number-text">{{integration.custom}}</view></view>
         累计推广
       </view> 
       <view class="text-score-6">
-        <view class="number"><view class="number-text">{{client}}</view></view>
+        <view class="number"><view class="number-text">{{integration.total_custom}}</view></view>
         累计客户
       </view>
     </view>

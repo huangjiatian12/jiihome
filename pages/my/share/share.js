@@ -4,19 +4,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    promote:"0",
-    client:"1",
-    listData: [
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "-80", "time": "20180727", "message": "订单抵扣"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回"},
-      { "integration": "0",   "time": "20180727", "message": "订单退回" }
-    ],
     list: [
       { 'hidden': true },
     ], 
@@ -194,13 +181,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
 
