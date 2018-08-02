@@ -11,19 +11,21 @@ Page({
     circular: true,
     interval: 3000,
     duration: 500,
+    leftsrc:'/image/right.png',
+    rightsrc:'/image/right.png'
   },
 
-  getThemePic(id){
+  getThemePic(id) {
     var self = this
     wx.request({
       url: app.globalData.api + '/home/index/getCarousel',
-      data:{
-        themeId:id,
+      data: {
+        themeId: id,
       },
       success: function (res) {
         self.setData({
           themePic: res.data,
-          currentTab: id       
+          currentTab: id
         })
       }
     })
@@ -83,7 +85,7 @@ Page({
       success: function (res) {
         console.log(res.data)
         self.setData({
-          themeData:res.data
+          themeData: res.data
         })
         self.getThemePic(res.data[0]['id'])
       }
@@ -139,6 +141,22 @@ Page({
     }
   },
 
+  // 点左箭头向左移动1格
+
+  leftTab: function () {
+    if (this.data.content > 0 && this.data.content <= 6) {
+      var n = this.data.content - 1;
+      this.swichNav(n);
+    }
+  },
+// 点右箭头向右移动1格
+
+rightTab: function () {
+  if (this.data.content >= 0 && this.data.content < 6) {
+    var n = Number(this.data.content) + 1;
+    this.swichNav(n);
+  }
+},
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

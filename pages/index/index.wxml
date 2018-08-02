@@ -9,11 +9,16 @@
 <view class='swiper'>
   <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
     <view class="swiper-tab">
-      <image class="left" src='/image/right.png'></image>    
-        <block wx:for="{{themeData}}">
-           <view class="swiper-tab-list {{currentTab==item.id ? 'on' : ''}} text" data-current="{{item.id}}" bindtap="swichNav">{{item.theme_name}}</view> 
-        </block>
-      <image class="right" src='/image/right.png'></image>    
+        <view class="leftimg" bindtap='leftTab'>
+          <image mode="widthFix" src='{{leftsrc}}'></image>
+        </view>
+          <block wx:for="{{themeData}}">
+            <view class="swiper-tab-list {{currentTab==item.id ? 'on' : ''}} text" data-current="{{item.id}}" bindtap="swichNav">{{item.theme_name}}</view> 
+          </block>
+        <view class="rightimg" bindtap='rightTab'>
+          <image mode="widthFix" src='{{rightsrc}}'></image>
+        </view>
+ 
     </view>  
   </scroll-view>    
 </view>

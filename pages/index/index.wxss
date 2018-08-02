@@ -42,16 +42,39 @@ page{
   top: 0;
 }
 .swiper-tab{    
-   
   line-height: 50rpx;
 }
+.leftimg,.rightimg{
+  width:40rpx;
+  text-align: center;
+  display: inline-block;
+}
+.leftimg{
+  text-align: left;
+}
+.rightimg{
+  text-align: right;
+}
+.leftimg {
+  position: fixed;
+  top: 87rpx;
+  left: 10rpx;
+}
+ 
+.rightimg {
+  position: fixed;
+  top: 87rpx;
+  right: 10rpx;
+}
+.leftimg image, .rightimg image {
+  width: 100%;
+}
 .swiper-tab-list{
-
   font-size: 30rpx;  
   display: inline-block;   
   color: black;
   background-color: whitesmoke; 
-  margin-left: 20rpx;
+  margin-left: 50rpx;
 }    
 .swiper-box view{    
   text-align: center; 
