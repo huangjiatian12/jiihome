@@ -9,7 +9,7 @@ Page({
     ], 
     selectPerson: true,
     selectArea: false,
-    quote: true
+    quote: true,
   },
   orderSta() {
     var self = this
@@ -108,7 +108,6 @@ Page({
             thr_session: res.data.thr_session,
           },
           success: function (res1) {
-            console.log(res1.data)
             self.setData({
               integration:res1.data.integration,
               integrationRecord: res1.data.integrationRecord,

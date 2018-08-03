@@ -81,7 +81,6 @@ Page({
     wx.request({
       url: app.globalData.api + '/home/index/theme',
       success: function (res) {
-        console.log(res.data)
         self.setData({
           themeData:res.data
         })
