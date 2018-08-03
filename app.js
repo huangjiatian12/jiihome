@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    api: "http://rwzf5p.natappfree.cc/jiimadeeee/index.php"
+    api: "http://z25ram.natappfree.cc/jiimadeeee/index.php"
   }
 })

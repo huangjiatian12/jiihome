@@ -27,15 +27,11 @@
 .QRcode{
   margin-left: 230rpx;
   margin-top: 45rpx;
-  background-color: black;
   height: 300rpx;
   width: 300rpx;
 }
 .QRcode image{
+  border: 2rpx solid black;
   width: 100%;
   height: 100%;
-}
-.button{
-  margin-top: 65rpx;
-  width: 90%;
 }

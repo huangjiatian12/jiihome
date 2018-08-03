@@ -7,11 +7,18 @@
   </view>
 </navigator>
 <view class='swiper'>
-  <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" style="width:100%">
+  <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" scroll-into-view="to{{currentTab}}" style="width:100%">
     <view class="swiper-tab">
-      <block wx:for="{{themeData}}">
-         <view class="swiper-tab-list {{currentTab==item.id ? 'on' : ''}} text" data-current="{{item.id}}" bindtap="swichNav">{{item.theme_name}}</view> 
-      </block>    
+        <view class="leftimg" bindtap='leftTab'>
+          <image mode="widthFix" src='{{leftsrc}}'></image>
+        </view>
+          <block wx:for="{{themeData}}">
+            <view class="swiper-tab-list {{currentTab==index ? 'on' : ''}} text" id='to{{index}}'  data-key="{{index}}" bindtap="swichNav">{{item.theme_name}}</view> 
+          </block>
+        <view class="rightimg" bindtap='rightTab'>
+          <image mode="widthFix" src='{{rightsrc}}'></image>
+        </view>
+ 
     </view>  
   </scroll-view>    
 </view>

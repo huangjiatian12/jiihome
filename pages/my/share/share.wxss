@@ -1,7 +1,7 @@
 #info{
   height: 130rpx;
   width: 100%;
-  background: yellow;
+  background: #ffc700;
 }
 #head-img{
   display: flex;
@@ -67,7 +67,12 @@
   width: 33.3333%;
   font-size: small;
   text-align: center;
-
+}
+.text-score-7{
+  height: 80rpx;
+  font-size: 60rpx;
+  margin-left: 0rpx;
+  margin-top: 20rpx;
 }
 .text-can{
   margin-left: 10rpx;
@@ -110,9 +115,17 @@
 .member-button{
   position: absolute;
   color: black;
-  right: 10rpx;
+  right: 50rpx;
   top: 50rpx;
   font-size: 25rpx;
+}
+.rulepic{
+  top: -3rpx;
+  position: absolute;
+  right: 110rpx;
+  height: 40rpx;
+  width: 40rpx;
+  color: #ffc700;
 }
 .btn-hover{
   background-color: orangered;
@@ -152,7 +165,7 @@ display: none;
 }
 .look{
   font-size: small;
-  margin-right: 17rpx;
+  margin-right: 7rpx;
   color: black;
   font-weight: bold; 
   float: right;
@@ -180,9 +193,9 @@ display: none;
 }
 .picsize2{
   margin-left: 45rpx;
-  margin-top: 80rpx;
-  height: 140rpx;
-  width: 140rpx;
+  margin-top: 100rpx;
+  height: 120rpx;
+  width: 120rpx;
 }
 .text-jilu{
   float: right;
@@ -219,7 +232,7 @@ display: none;
   transform: rotate(180deg);
 }
 .table{
-  border: 0px solid greenyellow;
+  border: 0px solid black;
 }
 .first{
   height: 50rpx;
@@ -245,7 +258,7 @@ display: none;
 .one{
   width: 40%;
   justify-content: center;
-  background: greenyellow;
+  background-color: white;
   color: black;
   display: flex;
   height: 50rpx;

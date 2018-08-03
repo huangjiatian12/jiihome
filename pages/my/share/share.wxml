@@ -7,7 +7,7 @@
 </view>
 
 <navigator url="/pages/my/share/rule/rule">
-<view  class="member-button" hover-class='btn-hover'>规则说明</view>
+<view  class="member-button" hover-class='btn-hover'><image class="rulepic" src="/image/rule.png"></image>规则说明</view>
 </navigator>
 <view class="text-score">
   <text>当前累计总积分</text>
@@ -29,9 +29,9 @@
       <view class='contenta'>
         <view class="table">
           <view class="first grid-1">
-            <view class="one">使用积分</view>
-            <view class="one">添加时间</view>
-            <view class="one">备注</view>
+            <view class="one">获得积分</view>
+            <view class="one">获得时间</view>
+            <view class="one">获得方法</view>
           </view>
             <block wx:for="{{integrationRecord}}" wx:key="{{code}}">
             <view class="first grid-2" wx:if="{{index % 2 == 0}}">
@@ -53,22 +53,26 @@
   <view class="border2">
     <view class="text-score-0">
       <view class="text-score-4">当前累计总收益(元)</view>
-      <view class="text-score-2">
+      <view class="text-score-7">
         <text>{{integration.sum}}</text>
       </view>
-      <image class="picsize" src='/image/fri.png'></image>
+      <image class="picsize" src='/image/shouyi.png'></image>
       <text class='text-jilu'>收益记录</text>
     </view>
     <view class="text-score-5 border">
         <text class="part2">\n可提现额度</text>
         <text class="part1">{{integration.surplus}}元</text>   
-        <text class='outm'>立即提现</text>
+        <text bindtap="modalTap" wx:if="{{!(cash>0)}}" class='outm'>立即提现</text>
+        <text bindtap="modalTap" wx:if="{{cash>0}}" class='right-text'>{{cash}}</text>
+     <modal hidden="{{hiddenmodalput}}" title="请输入提现金额" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+     <input type="number" placeholder='最高可提现{{maxCash}}元' bindblur='changeCash' auto-focus=''></input>
+     </modal>
     </view>
   </view>
     <view class="bottom">
       <view class="text-score-6">
         <navigator class="shareour" url="/pages/my/share/sharecode/sharecode" hover-class="none">
-          <image src='/image/fri.png' class="picsize2"></image>
+          <image src='/image/sharefr.png' class="picsize2"></image>
             <text class="shareyou">分享推广</text>
         </navigator>
       </view>

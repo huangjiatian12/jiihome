@@ -47,14 +47,14 @@
       },
       {
         "pagePath": "pages/art/art",
-        "iconPath": "/image/brand.png",
-        "selectedIconPath": "/image/brandc.png",
+        "iconPath": "/image/example.png",
+        "selectedIconPath": "/image/examplec.png",
         "text": "案例"
       },
       {
         "pagePath": "pages/category/category",
-        "iconPath": "/image/cate.png",
-        "selectedIconPath": "/image/catec.png",
+        "iconPath": "/image/brand.png",
+        "selectedIconPath": "/image/brandc.png",
         "text": "商城"
       },
       {
