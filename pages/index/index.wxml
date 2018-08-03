@@ -7,7 +7,7 @@
   </view>
 </navigator>
 <view class='swiper'>
-  <scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" scroll-into-view="to{{currentTab}}" style="width:100%">
+  <scroll-view  scroll-x="true" class="nav" scroll-with-animation="{{true}}" scroll-into-view="to{{currentTab}}">
     <view class="swiper-tab">
         <view class="leftimg" bindtap='leftTab'>
           <image mode="widthFix" src='{{leftsrc}}'></image>

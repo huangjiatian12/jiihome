@@ -41,20 +41,25 @@ page{
 .swiper{
   top: 0;
 }
+
 .swiper-tab{    
   line-height: 50rpx;
 }
+
 .leftimg,.rightimg{
   width:40rpx;
   text-align: center;
   display: inline-block;
 }
+
 .leftimg{
   text-align: left;
 }
+
 .rightimg{
   text-align: right;
 }
+
 .leftimg {
   position: fixed;
   top: 87rpx;
@@ -66,27 +71,32 @@ page{
   top: 87rpx;
   right: 10rpx;
 }
+
 .leftimg image, .rightimg image {
   width: 100%;
 }
+
 .swiper-tab-list{
   font-size: 30rpx;  
-  display: inline-block;   
+  display: inline-block;  
   color: black;
   background-color: whitesmoke; 
-  margin-left: 50rpx;
+  margin-right: 50rpx;
 }    
+
 .swiper-box view{    
   text-align: center; 
   top: 0;
 }
+
 .swiper-box{
   margin-top: 70rpx; 
   width: 100%; 
 }    
+
 .nav {
   height: 60rpx;
-  width: 100%;
+  width: 85%;
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -95,7 +105,7 @@ page{
   white-space: nowrap;
   position: absolute;
   top:80rpx;
-  left: 0;
+  left: 50rpx;
   z-index: 99;
 }
 .item{

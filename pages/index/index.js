@@ -11,7 +11,7 @@ Page({
     circular: true,
     interval: 3000,
     duration: 500,
-    leftsrc:'/image/right.png',
+    leftsrc:'/image/left.png',
     rightsrc:'/image/right.png'
   },
 
